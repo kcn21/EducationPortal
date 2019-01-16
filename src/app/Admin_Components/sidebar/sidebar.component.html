@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="../../../assets/Admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!--<link href="../../../assets/Admin/css/simple-sidebar.css" rel="stylesheet">-->
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a  class="menuItem" routerLink="/admin">Hello Admin</a>
+                <li>
+                    <button type="button" class="menuItem" (click)="onToggleMenu('c')">
+                        Course
+                    </button>
+                    <div  *ngIf="toggleCourseMenu">
+                        <button type="button" class="subItem"  id="addCourse" (click)="subLinkCliked($event.target)">
+                            Add Course
+                        </button>
+                        <button type="button" class="subItem"  id="updateCourse" (click)="subLinkCliked($event.target)">
+                            Update Course
+                        </button>
+                        <button type="button" class="subItem"  id="deleteCourse" (click)="subLinkCliked($event.target)">
+                            Delete Course
+                        </button>                      
+                    </div>
+                </li>
+                <li>
+                        <button type="button" class="menuItem" (click)="onToggleMenu('t')">
+                                Topic
+                        </button>
+                        <div  *ngIf="toggleTopicMenu">
+                            <a routerLink="/admin/ac">Add Topic</a>
+                            <a  href="#"> Link 3</a>
+                        </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid"> 
+                <h1>Simple Sidebar</h1>
+                <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                <div *ngIf="displayAddCourse" class="mainContent">
+                        <app-add-course></app-add-course>
+                </div>            
+            </div>
+        </div>
+    
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../../assets/Admin/jquery/jquery.min.js"></script>
+    <script src="../../../assets/Admin/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <!-- Menu Toggle Script -->
+   
+
+</body>
+</html>

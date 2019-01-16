@@ -1,0 +1,59 @@
+
+  <meta charset="UTF-8">
+  <title>Sign-Up/Login Form</title>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  -<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">  
+  -->
+  <div class="form">
+      <div class="tab-content">
+        <div id="login">     
+            <div class="task">Add Course</div>        
+          <form #CourseLoginForm="ngForm" (ngSubmit)="onSubmit(CourseName.value,Subject.value,Description.value,Duration.value,Cost.value)" action="/" method="post"> 
+            <div class="field-wrap">
+            <label>
+              Course Name <span class="req">*</span>
+            </label>
+            <input type="text" name="CourseName" #CourseName ngModel  autocomplete="off" required/>
+            <div *ngIf="CourseName.invalid" style="background-color: brown">
+                  CourseName is required.
+            </div>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+                Subject <span class="req">*</span>
+            </label>
+            <input type="text" name="Subject" #Subject ngModel required autocomplete="off"/>
+          </div>         
+          <div class="field-wrap">
+              <label>
+                  Description <span class="req">*</span>
+              </label>
+              <input type="text" name="Description" #Description ngModel required autocomplete="off"/>
+            </div>          
+            <div class="field-wrap" >
+                <label>
+                    Duration <span class="req">*</span>
+                </label>
+                <input type="number" name="Duration" #Duration ngModel required autocomplete="off"/>
+              </div> 
+              <div class="field-wrap">
+                  <label>
+                      Cost <span class="req">*</span>
+                  </label>
+                  <input type="number" min="0" name="Cost" #Cost ngModel required autocomplete="off"/>
+                </div>         
+          <button class="button button-block"  [disabled]="CourseLoginForm.invalid">Add</button>
+          </form>
+          <!--<div class="field-wrap" *ngIf="checkLogin"> 
+              <label>
+                  <h4 class="text-darken-2" style="font-size:20px;text-align: center;" >Please enter correct username or password</h4>
+              </label>
+            </div>
+        </div>
+    -->
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+
