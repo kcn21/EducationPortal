@@ -19,8 +19,10 @@ export class SignInComponent implements OnInit {
     }
     this.AuthService.loginUser(user).subscribe(data=>{
       console.log(data)
-      if(data)
+      if(data){
+        localStorage.setItem('token',data._id)
         this.route.navigate(['/home']);
+      } 
       else  
       {
         this.checkLogin=true;

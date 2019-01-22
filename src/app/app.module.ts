@@ -12,6 +12,9 @@ import { SidebarComponent } from './Admin_Components/sidebar/sidebar.component';
 import { ContentComponent } from './Admin_Components/content/content.component';
 import { AddCourseComponent } from './Admin_Components/add-course/add-course.component';
 import { RouterModule } from '@angular/router';
+import { AuthServiceService } from 'src/services/auth-service.service';
+import { AdminService } from 'src/services/admin.service';
+import { AuthGuard } from 'src/auth.guard';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AuthServiceService,AdminService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

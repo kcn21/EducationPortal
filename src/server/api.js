@@ -19,6 +19,7 @@ app.post('/register',function(req,res){
     var userData=req.body
     console.log(userData)
     var user=new User(userData)
+    console.log(user)
     user.save((err,registeredUser)=>{
         if(err)
             console.log(err)
@@ -61,6 +62,4 @@ app.post('/AddCourse',function(req,res){
             res.status(200).send(addedCourse)
     })
 })
-
-
 app.listen(8081,()=>console.log("Server listening at 8081"))
