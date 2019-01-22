@@ -12,10 +12,10 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSubmit(Fname,Lname,Email,Password){
+  onSubmit(FName,LName,Email,Password){
     var user={
-        Fname,
-        Lname,
+        FName,
+        LName,
         Email,
         Password
     }
@@ -27,6 +27,5 @@ export class SignUpComponent implements OnInit {
       else
         this.route.navigate(['/signup'])
     })
-    
   }
 }

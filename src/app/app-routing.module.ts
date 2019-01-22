@@ -6,12 +6,13 @@ import { HomeComponent } from './home/home.component';
 import { ContentComponent } from './Admin_Components/content/content.component';
 import { AddCourseComponent } from './Admin_Components/add-course/add-course.component';
 import { SidebarComponent } from './Admin_Components/sidebar/sidebar.component';
+import { AuthGuard } from 'src/auth.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'/signin',pathMatch:'full'},
     {path:'signin',component:SignInComponent},
     {path:'signup',component:SignUpComponent},
-    {path:'home',component:HomeComponent},
+    {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
     {path:'admin',component:ContentComponent},
     {path:'sidebar',component:SidebarComponent}
 ];
