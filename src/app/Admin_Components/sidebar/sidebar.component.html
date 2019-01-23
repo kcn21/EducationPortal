@@ -39,14 +39,26 @@
                         </button>                      
                     </div>
                 </li>
+
                 <li>
-                        <button type="button" class="menuItem" (click)="onToggleMenu('t')">
-                                Topic
-                        </button>
-                        <div  *ngIf="toggleTopicMenu">
-                            <a routerLink="/admin/ac">Add Topic</a>
-                            <a  href="#"> Link 3</a>
-                        </div>
+                    <button type="button" class="menuItem" (click)="onToggleMenu('v')">
+                        Tutorials
+                    </button>
+                    <div  *ngIf="toggleTutorialMenu">
+                        <button type="button" class="subItem"  id="addVideo" (click)="subLinkCliked($event.target)">
+                            Add Tutorial
+                        </button>  
+                                         
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="menuItem" (click)="onToggleMenu('t')">
+                        Topic
+                    </button>
+                    <div  *ngIf="toggleTopicMenu">
+                        <a routerLink="/admin/ac">Add Topic</a>
+                        <a  href="#">Add Topic</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -62,7 +74,11 @@
                 -->
                 <div *ngIf="displayAddCourse" class="mainContent">
                         <app-add-course></app-add-course>
-                </div>            
+                </div> 
+                
+                <div *ngIf="displayAddVideo" class="mainContent">
+                    <app-add-video></app-add-video>
+            </div> 
             </div>
         </div>
     
