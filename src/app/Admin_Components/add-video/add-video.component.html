@@ -1,0 +1,82 @@
+
+  <meta charset="UTF-8">
+  <title>Sign-Up/Login Form</title>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  -<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">  
+  -->
+
+  <div class="form">
+      <div class="tab-content">
+        <div id="login">     
+            <div class="task">  Add Video for Course</div>        
+          <form #AddVideoForm="ngForm"  action="/" method="post" (ngSubmit)="onSubmit(AddVideoForm.value)"> 
+            
+            <div class="field-wrap">
+         
+            <select  [(ngModel)]="SelectedCourse" style="margin-right:50px;" name="CourseId">
+              <option value="0" selected>
+                  Select Course
+                </option>
+              <option *ngFor="let cname of CourseNames" [ngValue]="cname._id">
+                  {{cname.CourseName}}
+              </option>
+            </select>
+     
+            <!--<input type="" name="CourseName" #CourseName ngModel  autocomplete="off" required/>-->
+            <!--<select name="CourseNames"  #CourseName ngModel required>
+              <div *ngFor="let cname of CourseNames">
+                <option value="cname.CourseName">{{cname.CourseName}}</option>
+              </div>
+            </select>
+          -->
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+                Video Title <span class="req">*</span>
+            </label>
+            <input type="text" name="Title" #Title ngModel required autocomplete="off"/>
+            <div *ngIf="Title.invalid" style="background-color: brown">
+              Title is required.
+            </div>
+          </div>         
+          
+          <div class="field-wrap">
+            <label>
+              Link <span class="req">*</span>
+            </label>
+            <input type="url" name="link" #Link [(ngModel)]="videourl" (change)="urlSet()"  autocomplete="off" required/>
+            <div *ngIf="Link.invalid" style="background-color: brown">
+              Link is required.
+            </div>
+            <video *ngIf="videoIsSet"  [src]="videourl | safe" controls>
+            </video>
+
+              <!--<iframe *ngIf="videoIsSet" width="560" height="315" [src]="videourl | safe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>         
+              -->
+          </div>
+          <div class="field-wrap">
+            <label>
+              Description <span class="req">*</span>
+            </label>
+            <input type="text" name="Description" #Description ngModel  autocomplete="off" required/>
+            <div *ngIf="Description.invalid" style="background-color: brown">
+              Description is required.
+            </div>
+          </div>
+          
+
+          <button class="button button-block"  [disabled]="AddVideoForm.invalid">Add</button>
+          </form>
+          <!--<div class="field-wrap" *ngIf="checkLogin"> 
+              <label>
+                  <h4 class="text-darken-2" style="font-size:20px;text-align: center;" >Please enter correct username or password</h4>
+              </label>
+            </div>
+        </div>
+    -->
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+

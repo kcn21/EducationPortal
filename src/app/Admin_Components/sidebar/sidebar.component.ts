@@ -10,10 +10,12 @@ declare var $:any;
 export class SidebarComponent implements OnInit {
   public toggleCourseMenu=false;
   public toggleTopicMenu=false;
+  public toggleTutorialMenu=false;
   public router:Router;
   public displayAddCourse=false;
   public displayUpdateCourse=false;
   public displayDeleteCourse=false;
+  public displayAddVideo=false;
   constructor() { }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class SidebarComponent implements OnInit {
     this.displayAddCourse=false;
     this.displayUpdateCourse=false;
     this.displayDeleteCourse=false;
+    this.displayAddVideo=false;
       if(e.id == 'addCourse')
       {
         this.displayAddCourse=true;
@@ -34,6 +37,11 @@ export class SidebarComponent implements OnInit {
       {
         this.displayDeleteCourse=true;
       }
+      else if(e.id == 'addVideo')
+      {
+        this.displayAddVideo=true;
+      }
+
   }
   onToggleMenu(data){
     if(data == 'c'){
@@ -44,7 +52,7 @@ export class SidebarComponent implements OnInit {
           this.toggleCourseMenu=true;
         }
       }
-    else
+    else if(data =='t')
     {
         if(this.toggleTopicMenu ==true){
           this.toggleTopicMenu=false;
@@ -52,6 +60,16 @@ export class SidebarComponent implements OnInit {
         }
         else{
           this.toggleTopicMenu=true;
+        }
+    }
+    else if(data =='v')
+    {
+        if(this.toggleTutorialMenu ==true){
+          this.toggleTutorialMenu=false;
+
+        }
+        else{
+          this.toggleTutorialMenu=true;
         }
     }
   }

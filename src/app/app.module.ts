@@ -15,6 +15,8 @@ import { RouterModule } from '@angular/router';
 import { AuthServiceService } from 'src/services/auth-service.service';
 import { AdminService } from 'src/services/admin.service';
 import { AuthGuard } from 'src/auth.guard';
+import { AddVideoComponent } from './Admin_Components/add-video/add-video.component';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AuthGuard } from 'src/auth.guard';
     SignUpComponent,
     SidebarComponent,
     ContentComponent,
-    AddCourseComponent
+    AddCourseComponent,
+    AddVideoComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

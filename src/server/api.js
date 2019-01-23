@@ -3,15 +3,21 @@ var bodyParser=require('body-parser')
 var mongoose=require('mongoose')
 var cors=require('cors')
 var url=require('url')
+var db
 
 var app=express()
 app.use(bodyParser.json())
 app.use(cors())
-mongoose.connect('mongodb://127.0.0.1:27017/EducationPortal',err=>{
+mongoose.connect('mongodb://127.0.0.1:27017/EducationPortal',function(err,database){
     if(err)
         console.error("Error"+err)
     else
+    {
         console.log("MongoDB Connected")
+        db = database;
+
+    }
+        
 })
 var User=require('./schema/users')
 app.post('/register',function(req,res){
@@ -61,5 +67,50 @@ app.post('/AddCourse',function(req,res){
         else
             res.status(200).send(addedCourse)
     })
+})
+
+app.post('/getCourseNames',function(req,res){
+    db.collection("courses").find({},{CourseName:1}).toArray(function(err,result){
+        if(err)
+        {
+            console.log("error while getting course names")
+        }
+        else
+        {
+            console.log(result)
+            res.status(200).send(result)
+        }
+})
+})
+var Video=require('./schema/video')
+
+app.post('/AddVideo',function(req,res){
+    console.log("POST Request")
+    var videoData=req.body
+    
+    var video=new Video(videoData)
+    console.log(video)
+    video.save((err,addedVideo)=>{
+        if(err)
+            console.log(err)
+        else
+            res.status(200).send(addedVideo)
+    })
+})
+app.post('/GetVideos',function(req,res){
+    var data=req.body
+    //console.log(data.cId)
+    
+    db.collection("videos").find({CourseId:data.cId}).toArray(function(err,result){
+        if(err)
+        {
+            console.log("error while getting course names")
+        }
+        else
+        {
+            //console.log(result)
+            res.status(200).send(result)
+        }
+})
 })
 app.listen(8081,()=>console.log("Server listening at 8081"))
