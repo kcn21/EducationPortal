@@ -20,6 +20,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/EducationPortal',function(err,databa
         
 })
 var User=require('./schema/users')
+var Video=require('./schema/video')
+var Course=require('./schema/course')
+var Subject=require('./schema/subject')
 app.post('/register',function(req,res){
     console.log("POST Request")
     var userData=req.body
@@ -55,7 +58,6 @@ app.post('/login',function(req,res){
         }
     })
 })
-var Course=require('./schema/course')
 app.post('/AddCourse',function(req,res){
     console.log("POST Request")
     var courseData=req.body
@@ -82,7 +84,6 @@ app.post('/getCourseNames',function(req,res){
         }
 })
 })
-var Video=require('./schema/video')
 
 app.post('/AddVideo',function(req,res){
     console.log("POST Request")
@@ -109,6 +110,46 @@ app.post('/GetVideos',function(req,res){
         else
         {
             //console.log(result)
+            res.status(200).send(result)
+        }
+    })
+})
+app.post('/GetCourseAsPerSubject',function(req,res){
+    db.collection('subjects').aggregate([
+
+    ]).toArray(function(err,result){
+        if(err)
+        {
+            console.log("Error while /GetCourseAsPerSubject")
+        }
+        else
+        {
+            console.log(JSON.stringify(result));
+            res.status(200).send(result)
+        }
+    })
+})
+app.post('/AddSubject',function(req,res){
+    console.log("POST Request")
+    var subjectData=req.body
+    console.log(subjectData)
+    var subject=new Subject(subjectData)
+    subject.save((err,addedSubject)=>{
+        if(err)
+            console.log(err)
+        else
+            res.status(200).send(addedSubject)
+    })
+})
+app.post('/getSubjects',function(req,res){
+    db.collection("subjects").find({},{SubjectName:1}).toArray(function(err,result){
+        if(err)
+        {
+            console.log("error while getting course names")
+        }
+        else
+        {
+            console.log(result)
             res.status(200).send(result)
         }
 })

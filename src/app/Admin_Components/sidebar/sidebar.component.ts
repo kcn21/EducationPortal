@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 declare var jquery:any;
 declare var $:any;
 @Component({
@@ -11,20 +11,44 @@ export class SidebarComponent implements OnInit {
   public toggleCourseMenu=false;
   public toggleTopicMenu=false;
   public toggleTutorialMenu=false;
+  public toggleSubjectMenu=false;
   public router:Router;
   public displayAddCourse=false;
   public displayUpdateCourse=false;
-  public displayDeleteCourse=false;
   public displayAddVideo=false;
-  constructor() { }
+  public displayAddSubject=false; 
+  public displayViewCourses=false;
+  public task
+  constructor(private route:ActivatedRoute) { 
+    this.task=this.route.snapshot.paramMap.get('task');
+    console.log(this.task);
+    if(this.task == 'addCourse')
+    {
+        this.displayAddCourse=true;
+    }
+    else if(this.task=='addVideo')
+    {
+      this.displayAddVideo=true;
+    }
+    else if(this.task=='addSubject')
+    {
+      this.displayAddSubject=true;
+    }
+    else if(this.task == 'viewCourses')
+    {
+      this.displayViewCourses=true;
+    }
+      
+  }
 
   ngOnInit() {
   }
   subLinkCliked(e){
     this.displayAddCourse=false;
     this.displayUpdateCourse=false;
-    this.displayDeleteCourse=false;
     this.displayAddVideo=false;
+    this.displayAddSubject=false;
+    this.displayViewCourses=false;
       if(e.id == 'addCourse')
       {
         this.displayAddCourse=true;
@@ -33,13 +57,17 @@ export class SidebarComponent implements OnInit {
       {
         this.displayUpdateCourse=true;
       }
-      else if(e.id == 'deleteCourse')
-      {
-        this.displayDeleteCourse=true;
-      }
       else if(e.id == 'addVideo')
       {
         this.displayAddVideo=true;
+      }
+      else if(e.id=='addSubject')
+      {
+        this.displayAddSubject=true;
+      }
+      else if(e.id == 'viewCourse')
+      {
+        this.displayViewCourses=true;
       }
 
   }
@@ -70,6 +98,16 @@ export class SidebarComponent implements OnInit {
         }
         else{
           this.toggleTutorialMenu=true;
+        }
+    }
+    else if(data =='s')
+    {
+        if(this.toggleSubjectMenu ==true){
+          this.toggleSubjectMenu=false;
+
+        }
+        else{
+          this.toggleSubjectMenu=true;
         }
     }
   }
