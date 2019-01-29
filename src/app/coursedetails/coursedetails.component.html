@@ -10,26 +10,31 @@
 </div>
 
 <div style="margin-left:20%">
-<div class="w3-container " *ngIf="currentlyshowingVideoIndex > -1">
-    <div class="w3-display-left" style="margin-left:25%">
-        <button type="button" (click)="displayPrevVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8249;</button>
-    </div>
-    <div class="w3-card-4 w3-display-middle" style="width:50%;margin-left:5%;  border: 10px solid #fff;" >
-            <video  [src]="currentlyshowingVideo.Link" width="100%"  poster="../../assets/a.png" height="inherit" controls>
-                Loading
-            </video>    
-            <div class="w3-container w3-center">
-              <p>{{currentlyshowingVideo.Title}}</p>
+    <div class="w3-container" *ngIf=" currentlyshowingVideoForCourseId > -1 && !currentlyshowingVideo">
+            <div class="w3-card-4 w3-center w3-xlarge">
+                    <p>Sorry! No Tutorials Are Available.</p>
             </div>
-            
     </div>
-    <div class="w3-card-4 w3-container w3-center w3-display-bottommiddle" style="width:50%;margin-left:5%;padding-left:20px; ">
-            <p>Description <br>{{currentlyshowingVideo.Description}}</p>
+    <div class="w3-container " *ngIf="currentlyshowingVideo">
+        <div class="w3-display-left" style="margin-left:25%">
+            <button type="button" (click)="displayPrevVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8249;</button>
+        </div>
+        <div class="w3-card-4 w3-display-middle" style="width:50%;margin-left:5%;  border: 10px solid #fff;" >
+                <video  [src]="currentlyshowingVideo.Link" width="100%"  poster="../../assets/a.png" height="inherit" controls>
+                    Loading
+                </video>    
+                <div class="w3-container w3-center">
+                <p>{{currentlyshowingVideo.Title}}</p>
+                </div>
+                
+        </div>
+        <div class="w3-card-4 w3-container w3-center w3-display-bottommiddle" style="width:50%;margin-left:5%;padding-left:20px; ">
+                <p>Description <br>{{currentlyshowingVideo.Description}}</p>
+        </div>
+        <div class="w3-display-left" style="margin-left:82%">
+                <button type="button" (click)="displayNextVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8250;</button>
+        </div>
     </div>
-    <div class="w3-display-left" style="margin-left:82%">
-            <button type="button" (click)="displayNextVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8250;</button>
-    </div>
-</div>
 </div>
       
 </body>
