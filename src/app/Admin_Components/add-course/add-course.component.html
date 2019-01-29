@@ -9,7 +9,7 @@
       <div class="tab-content">
         <div id="login">     
             <div class="task">Add Course</div>        
-          <form #CourseLoginForm="ngForm" (ngSubmit)="onSubmit(CourseName.value,Subject.value,Description.value,Duration.value,Cost.value)" action="/" method="post"> 
+          <form #CourseLoginForm="ngForm" (ngSubmit)="onSubmit(CourseLoginForm.value)" action="/" method="post"> 
             <div class="field-wrap">
             <label>
               Course Name <span class="req">*</span>
@@ -20,12 +20,22 @@
             </div>
           </div>
           
-          <div class="field-wrap">
+          <!--<div class="field-wrap">
             <label>
                 Subject <span class="req">*</span>
             </label>
             <input type="text" name="Subject" #Subject ngModel required autocomplete="off"/>
-          </div>         
+          </div>-->
+          <div class="field-wrap">
+            <select  [(ngModel)]="SelectedSubject" style="margin-right:50px;" name="SubjectId">
+                <option value="0" selected>
+                    Select Subject
+                  </option>
+                <option *ngFor="let sname of SubjectNames" [ngValue]="sname._id">
+                    {{sname.SubjectName}}
+                </option>
+          </select>
+        </div>          
           <div class="field-wrap">
               <label>
                   Description <span class="req">*</span>

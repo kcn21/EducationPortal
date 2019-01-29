@@ -166,16 +166,4 @@
     margin-top: -20px;
     text-align: right;
   }
-  select{
-    display: block;
-    background-color: black;
-    color:  #a0b3b0;
-    outline:none;
-    border: none;
-    border: 1px solid #a0b3b0;
-  }
-  select:hover ,option:hover{
-      outline: 0;
-      border-color: #1ab188;
-     
-  }
+  

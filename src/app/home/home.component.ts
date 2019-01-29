@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminService}from '../../services/admin.service'
+import {AdminService} from '../../services/admin.service'
 import {SafePipe} from'../safe.pipe'
 @Component({
   selector: 'app-home',
@@ -13,14 +13,18 @@ export class HomeComponent implements OnInit {
     var obj={
       cId:'5c40582a0eac8150206ae23b'
     }
-    this._AdminService.getVideos(obj).subscribe(data=>{
+    /*this._AdminService.getVideos(obj).subscribe(data=>{
       console.log(data)
         if(data)
         {
           this.videos=data;
           console.log("Vidos:"+this.videos)
         }
+      })*/
+      this._AdminService.getCourseAsPerSubject().subscribe(data=>{
+        console.log(data)
       })
+     
    }
 
   ngOnInit() {
