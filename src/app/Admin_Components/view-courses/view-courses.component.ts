@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService}from '../../../services/admin.service';
+
 @Component({
   selector: 'app-view-courses',
   templateUrl: './view-courses.component.html',
@@ -15,15 +16,30 @@ export class ViewCoursesComponent implements OnInit {
   private itemToRemoveId
   private itemToRemoveName=null
   public _Message=null
-
+  public subjects
   constructor(private _AdminService:AdminService) {
     this.fields=["Course Name","Subject","Description","Duration","Cost"]
     this._AdminService.getCourseNames().subscribe(data=>{
       this.courses=data;
+      
       this.coursesBackup=JSON.parse(JSON.stringify(this.courses))
       console.log(this.coursesBackup)
     })
+    this._AdminService.getSubjects().subscribe(data=>{
+      this.subjects=data;
+    })
+    //console.log(this.courses)
+ }
+ getSubjectName =  function(ob)
+ {
+   if(!this.subjects)
+   {
+     return ;  
    }
+    var subject = this.subjects.filter(item=> item._id == ob.SubjectId)[0];
+    console.log(subject);
+    return subject.SubjectName;
+ }
 
   ngOnInit() {
   }
@@ -81,4 +97,6 @@ export class ViewCoursesComponent implements OnInit {
       }
     })
   }
+
+
 }

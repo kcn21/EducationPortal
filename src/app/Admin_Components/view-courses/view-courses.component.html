@@ -12,7 +12,7 @@
   <tr *ngFor="let c of courses; index as i">
     <td>{{i+1}}</td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].CourseName" id=""></td>
-    <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].SubjectId"></td>
+    <td *ngIf="isEnabledEditView(i)">{{getSubjectName(c)}}</td>    
     <td class="desc" *ngIf="isEnabledEditView(i)"><textarea type="text" [(ngModel)]="courses[i].Description" ></textarea></td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Duration"></td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Cost"></td>
@@ -20,7 +20,7 @@
     <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="cancelEditCourse()">Cancel</button></td>
     
     <td *ngIf="!isEnabledEditView(i)">{{c.CourseName}}</td>
-    <td *ngIf="!isEnabledEditView(i)">{{c.SubjectId}}</td>
+   <td *ngIf="!isEnabledEditView(i)">{{getSubjectName(c)}}</td>
     <td class="desc" *ngIf="!isEnabledEditView(i)">{{c.Description}}</td>
     <td *ngIf="!isEnabledEditView(i)">{{c.Duration}}</td>
     <td *ngIf="!isEnabledEditView(i)">{{c.Cost}}</td>

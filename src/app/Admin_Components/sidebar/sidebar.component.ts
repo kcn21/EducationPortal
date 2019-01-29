@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
   public displayViewCourses=false;
   public displayAddSubject=false; 
   public task
- 
+  
   constructor(private route:ActivatedRoute) { 
     this.task=this.route.snapshot.paramMap.get('task');
     console.log(this.task);
