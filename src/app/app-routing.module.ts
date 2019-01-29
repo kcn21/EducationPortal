@@ -18,7 +18,7 @@ const routes: Routes = [
     {path:'admin',component:ContentComponent},
     {path:'sidebar',component:SidebarComponent},
     {path:'tutorial',component:AddVideoComponent},
-    {path:'coursedetails',component:CoursedetailsComponent}
+    {path:'coursedetails',component:CoursedetailsComponent,canActivate:[AuthGuard]},
 ];
 
 @NgModule({

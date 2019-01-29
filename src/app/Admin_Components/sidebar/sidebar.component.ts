@@ -13,29 +13,25 @@ export class SidebarComponent implements OnInit {
   public toggleTutorialMenu=false;
   public router:Router;
   public displayAddCourse=false;
-  public displayUpdateCourse=false;
-  public displayDeleteCourse=false;
   public displayAddVideo=false;
+  public displayViewCourses=false;
+
   constructor() { }
 
   ngOnInit() {
   }
   subLinkCliked(e){
     this.displayAddCourse=false;
-    this.displayUpdateCourse=false;
-    this.displayDeleteCourse=false;
+    this.displayViewCourses=false;
     this.displayAddVideo=false;
+    
       if(e.id == 'addCourse')
       {
         this.displayAddCourse=true;
       }
-      else if(e.id == 'updateCourse')
+      else if(e.id == 'viewCourses')
       {
-        this.displayUpdateCourse=true;
-      }
-      else if(e.id == 'deleteCourse')
-      {
-        this.displayDeleteCourse=true;
+        this.displayViewCourses=true;
       }
       else if(e.id == 'addVideo')
       {

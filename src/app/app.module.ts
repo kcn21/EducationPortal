@@ -18,6 +18,7 @@ import { AuthGuard } from 'src/auth.guard';
 import { AddVideoComponent } from './Admin_Components/add-video/add-video.component';
 import { SafePipe } from './safe.pipe';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
+import { ViewCoursesComponent } from './Admin_Components/view-courses/view-courses.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CoursedetailsComponent } from './coursedetails/coursedetails.component'
     AddVideoComponent,
     SafePipe,
     CoursedetailsComponent,
+    ViewCoursesComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,12 +31,9 @@
                         <button type="button" class="subItem"  id="addCourse" (click)="subLinkCliked($event.target)">
                             Add Course
                         </button>
-                        <button type="button" class="subItem"  id="updateCourse" (click)="subLinkCliked($event.target)">
-                            Update Course
-                        </button>
-                        <button type="button" class="subItem"  id="deleteCourse" (click)="subLinkCliked($event.target)">
-                            Delete Course
-                        </button>                      
+                        <button type="button" class="subItem"  id="viewCourses" (click)="subLinkCliked($event.target)">
+                            View Courses
+                        </button>                  
                     </div>
                 </li>
 
@@ -75,10 +72,12 @@
                 <div *ngIf="displayAddCourse" class="mainContent">
                         <app-add-course></app-add-course>
                 </div> 
-                
+                <div *ngIf="displayViewCourses" class="mainContent">
+                    <app-view-courses></app-view-courses>
+                </div>
                 <div *ngIf="displayAddVideo" class="mainContent">
                     <app-add-video></app-add-video>
-            </div> 
+                </div> 
             </div>
         </div>
     
