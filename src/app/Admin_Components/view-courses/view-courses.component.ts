@@ -81,19 +81,4 @@ export class ViewCoursesComponent implements OnInit {
       }
     })
   }
-=======
-  constructor(private _AdminService:AdminService) {
-    this._AdminService.getCourseNames().subscribe(data=>{
-      if(data)
-      {
-        this.courses=data;
-        console.log(data);
-      }
-    })
-   }
-
-  ngOnInit() {
-  }
-
-
 }
