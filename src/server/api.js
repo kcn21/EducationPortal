@@ -71,6 +71,32 @@ app.post('/AddCourse',function(req,res){
     })
 })
 
+app.post('/RemoveCourse',function(req,res){
+    var data=req.body
+    //console.log(data.cId)
+    var myQuery={_id:mongoose.Types.ObjectId(data.cId)}
+    db.collection('courses').deleteOne(myQuery,function(err,result){
+            if(err)
+                throw err;
+            //console.log('deleted Course With Id '+data.cId);
+            res.status(200).send(result)
+    })
+})
+
+app.post('/UpdateCourse',function(req,res){
+    var CourseData=req.body
+    var myquery = { _id : mongoose.Types.ObjectId(CourseData._id)};
+    //console.log(myquery)
+    var newvalues = { $set: {CourseName: CourseData.CourseName,Subject:CourseData.Subject,Description:CourseData.Description,Duration:CourseData.Duration,Cost:CourseData.Cost } };
+    //console.log(newvalues)
+    db.collection("courses").updateOne(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        console.log("course updated");
+        res.status(200).send(result);
+
+      });
+});
+
 app.post('/getCourseNames',function(req,res){
     db.collection("courses").find({},{CourseName:1}).toArray(function(err,result){
         if(err)
@@ -79,7 +105,7 @@ app.post('/getCourseNames',function(req,res){
         }
         else
         {
-            console.log(result)
+            //console.log(result)
             res.status(200).send(result)
         }
 })
@@ -113,7 +139,6 @@ app.post('/GetVideos',function(req,res){
             res.status(200).send(result)
         }
     })
-})
 app.post('/GetCourseAsPerSubject',function(req,res){
     db.collection('subjects').aggregate([
 

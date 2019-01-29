@@ -14,11 +14,12 @@ export class SidebarComponent implements OnInit {
   public toggleSubjectMenu=false;
   public router:Router;
   public displayAddCourse=false;
-  public displayUpdateCourse=false;
   public displayAddVideo=false;
-  public displayAddSubject=false; 
   public displayViewCourses=false;
+  public displayAddSubject=false; 
   public task
+  constructor() { }
+ 
   constructor(private route:ActivatedRoute) { 
     this.task=this.route.snapshot.paramMap.get('task');
     console.log(this.task);
@@ -45,17 +46,17 @@ export class SidebarComponent implements OnInit {
   }
   subLinkCliked(e){
     this.displayAddCourse=false;
-    this.displayUpdateCourse=false;
+    this.displayViewCourses=false;
     this.displayAddVideo=false;
     this.displayAddSubject=false;
-    this.displayViewCourses=false;
       if(e.id == 'addCourse')
       {
         this.displayAddCourse=true;
       }
-      else if(e.id == 'updateCourse')
+      else if(e.id == 'viewCourses')
       {
-        this.displayUpdateCourse=true;
+        this.displayViewCourses=true;
+
       }
       else if(e.id == 'addVideo')
       {

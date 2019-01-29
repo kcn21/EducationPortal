@@ -1,98 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Bootstrap core CSS -->
-    <link href="../../../assets/Admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <!--<link href="../../../assets/Admin/css/simple-sidebar.css" rel="stylesheet">-->
-</head>
-
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="topic-img">
-                  <img src="https://www.tutorialspoint.com/assets/videos/courses/289/images/course_289_image.png" alt="topic image">
-                <li>
-                <li>
-                    <a  class="menuItem" routerLink="#">
-                     <i class="fa fa-play-circle-o"></i> topic 1</a> 
-                </li>
-                <li>
-                  <a  class="menuItem" routerLink="#">
-                   <i class="fa fa-play-circle-o"></i> topic 1</a> 
-              </li> <li>
-                <a  class="menuItem" routerLink="#">
-                 <i class="fa fa-play-circle-o"></i> topic 1</a> 
-            </li> <li>
-              <a  class="menuItem" routerLink="#">
-               <i class="fa fa-play-circle-o"></i> topic 1</a> 
-          </li> <li>
-            <a  class="menuItem" routerLink="#">
-             <i class="fa fa-play-circle-o"></i> topic 1</a> 
-        </li>
-            </ul>
-        </div>
-        
-        <!-- /#sidebar-wrapper -->
+<div class="w3-sidebar w3-bar-block w3-large w3-red" style="width:20%;">
+  <h2 class="w3-bar-item">Courses</h2>
+  <button *ngFor="let c of courses; index as i" type="button" class="w3-bar-item w3-button " [value]="i" (click)="selectCourseForVideos($event.target)">{{c.CourseName}}</button>
+</div>
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            
-            <div class="container-fluid"> 
-              
-               <div class="topic-header-background">
-                    <div class="topic_header">
-                        <div class="course_header_title" style="background:#44aa4b">MongoDB Online Training           
-                        </div>
-                        <h2 class="course_header_sub">Simply Easy Learning</h2>
-                     </div> 		  		  		   
-               </div>
-               <div class="topic-content">
-                        <div class="options">                                            
-                          <hr>
-                            <a href="https://www.tutorialspoint.com/mongodb_online_training/index.asp" class="button round accent-color date prevpage">   
-                               <i class="fa fa-arrow-circle-o-left big-font"></i> Previous Page
-                            </a>                    
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-                            <a href="https://www.tutorialspoint.com/mongodb_online_training/introduction_to_mongodb.asp" class="button round accent-color date nextpage">
-                            Next Page <i class="fa fa-arrow-circle-o-right big-font"></i>&nbsp;
-                            </a>
-                         </div>
-                         <div class="video-content">
-                            <iframe width="1000" height="450" src="https://www.youtube.com/embed/5aixi7_EFwk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                         </div>
-               </div>
-
-                
-            </div>
-        </div>
-    
-        <!-- /#page-content-wrapper -->
-
+<div style="margin-left:20%">
+<div class="w3-container " *ngIf="currentlyshowingVideoIndex > -1">
+    <div class="w3-display-left" style="margin-left:25%">
+        <button type="button" (click)="displayPrevVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8249;</button>
     </div>
-    
-    <!-- /#wrapper -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="../../../assets/Admin/jquery/jquery.min.js"></script>
-    <script src="../../../assets/Admin/bootstrap/js/bootstrap.bundle.js"></script>
-   
-    <!-- Menu Toggle Script -->
-   
-
+    <div class="w3-card-4 w3-display-middle" style="width:50%;margin-left:5%;  border: 10px solid #fff;" >
+            <video  [src]="currentlyshowingVideo.Link" width="100%"  poster="../../assets/a.png" height="inherit" controls>
+                Loading
+            </video>    
+            <div class="w3-container w3-center">
+              <p>{{currentlyshowingVideo.Title}}</p>
+            </div>
+            
+    </div>
+    <div class="w3-card-4 w3-container w3-center w3-display-bottommiddle" style="width:50%;margin-left:5%;padding-left:20px; ">
+            <p>Description <br>{{currentlyshowingVideo.Description}}</p>
+    </div>
+    <div class="w3-display-left" style="margin-left:82%">
+            <button type="button" (click)="displayNextVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8250;</button>
+    </div>
+</div>
+</div>
+      
 </body>
 </html>

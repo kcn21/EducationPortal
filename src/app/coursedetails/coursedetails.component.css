@@ -1,156 +1,23 @@
-.displayMenu{
-    display:block;
+
+.sidebar{
+  background-color: #f44336;
 }
-.hideMenu{
-    display: none;
-}
-.mainContent{
-  position: relative;
-  left: 15%;
-}
-.topic-img{
-    width: 350px;
-    height: 200px;
+video{
+  box-shadow: 8px 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
 }
 .menuItem{
-    background-color:green;
-    font-size: 20px;
-    border: none;
-    width: 350px;
-    padding-left: 30px;
-    text-align: left;
-    color: green;
-    cursor: pointer;
-    overflow: hidden;
-    outline:none;
+  background-color: transparent;
+  font-size: 20px;
+  border: none;
+  width: 250px;
+  padding-left: 30px;
+  text-align: left;
+  color:white;
+  cursor: pointer;
+  overflow: hidden;
+  outline:none;
+  background-color: #f44336;
 }
-.menuItem:hover{
-  color: #fff;
+.menuItem :hover{
+  background-color: black;
 }
-
-/*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
- */
-
- body {
-    overflow-x: hidden;
-  }
-  #sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    width: 250px;
-    height: 100%;
-    margin-left: 0px;
-    margin-top: 0px;
-    overflow-y: auto;
-    background:green;
-  }
-  #page-content-wrapper {
-    
-    margin-left: 250px;
-    
-    padding: 50 px;/*for navbar */
-    background-color:wheat;
-    overflow:auto;
-    
-  }
-  .wrapper{
-      overflow-y: auto;
-  }
-  #wrapper #sidebar-wrapper{
-      width: 250px;
-
-  }
-  .video-content{
-      width: 100px;;
-      height: 500px;
-  }
-  /* Sidebar Styles */
-  
-  .sidebar-nav {
-      
-    position: fixed;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .sidebar-nav li {
-    text-align: left;
-    line-height: 40px;
-  }
-  
-  .sidebar-nav li a ,.subItem {
-    display: block;
-    text-decoration: none;
-    background-color:rgb(214, 214, 214);
-
-    color:black;
-    width: 250px;
-    padding-left: 30px;
-    text-align: left;
-    cursor: pointer;
-    border: none;
-    overflow: hidden;
-    outline:none;
-  }
-  .subItem:hover{
-    background: rgba(28, 32, 243, 0.2);
-    color: #fff;
-    text-decoration: none;
-
-
-  }
-  .sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(28, 32, 243, 0.2);
-  }
-  
-  .sidebar-nav li a:active, .sidebar-nav li a:focus {
-    text-decoration: none;
-  }
-  
-  .sidebar-nav>.sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-    
-  }
-
-  .sidebar-nav>.sidebar-brand a {
-    color: #999999;
-  }
-  
-  .sidebar-nav>.sidebar-brand a:hover {
-    color: #fff;
-    background: none;
-  }
-  
-  @media(min-width:768px) {
-    #wrapper {
-      padding-left: 0;
-    }
-    #wrapper.toggled {
-      padding-left: 250px;
-    }
-    #sidebar-wrapper {
-      width: 0;
-    }
-    #wrapper.toggled #sidebar-wrapper {
-      width: 250px;
-    }
-    #page-content-wrapper {
-      padding: 20px;
-      position: relative;
-    }
-    #wrapper.toggled #page-content-wrapper {
-      position: relative;
-      margin-right: 0;
-    }
-  }
-  
