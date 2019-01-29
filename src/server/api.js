@@ -139,6 +139,7 @@ app.post('/GetVideos',function(req,res){
             res.status(200).send(result)
         }
     })
+})
 app.post('/GetCourseAsPerSubject',function(req,res){
     db.collection('subjects').aggregate([
 
