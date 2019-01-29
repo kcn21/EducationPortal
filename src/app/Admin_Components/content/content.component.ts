@@ -9,12 +9,11 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 export class ContentComponent implements OnInit {
   public router:Router;
   public task:String;
-  constructor(private route: ActivatedRoute) { 
+  constructor() { 
   }
 
   ngOnInit() {
-    this.task = this.route.snapshot.paramMap.get('t')
-    console.log(this.task)
+
   }
 
 }

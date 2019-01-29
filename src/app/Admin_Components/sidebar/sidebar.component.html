@@ -34,8 +34,22 @@
                         <button type="button" class="subItem"  id="viewCourses" (click)="subLinkCliked($event.target)">
                             View Courses
                         </button>                  
+
                     </div>
                 </li>
+                
+                <li>
+                        <button type="button" class="menuItem" (click)="onToggleMenu('s')">
+                            Subject
+                        </button>
+                        <div  *ngIf="toggleSubjectMenu">
+                            <button type="button" class="subItem"  id="addSubject" (click)="subLinkCliked($event.target)">
+                                Add Subject
+                            </button>  
+                                             
+                        </div>
+                    </li>
+                
 
                 <li>
                     <button type="button" class="menuItem" (click)="onToggleMenu('v')">
@@ -78,6 +92,11 @@
                 <div *ngIf="displayAddVideo" class="mainContent">
                     <app-add-video></app-add-video>
                 </div> 
+
+
+                <div *ngIf="displayAddSubject" class="mainContent">
+                        <app-add-subject></app-add-subject>
+                </div>
             </div>
         </div>
     
