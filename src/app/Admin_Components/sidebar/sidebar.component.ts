@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit {
   public displayAddVideo=false;
   public displayViewCourses=false;
   public displayAddSubject=false; 
+<<<<<<< HEAD
   public displayViewSubject=false;
   public task
   
@@ -55,6 +56,37 @@ export class SidebarComponent implements OnInit {
         this.displayViewSubject=true;
       }
     });  
+=======
+  public displayRemoveSubject=false;
+  public task
+
+
+ 
+  constructor(private route:ActivatedRoute) { 
+    this.task=this.route.snapshot.paramMap.get('task');
+    console.log(this.task);
+    if(this.task == 'addCourse')
+    {
+        this.displayAddCourse=true;
+    }
+    else if(this.task=='addVideo')
+    {
+      this.displayAddVideo=true;
+    }
+    else if(this.task=='addSubject')
+    {
+      this.displayAddSubject=true;
+    }
+    else if(this.task == 'viewCourses')
+    {
+      this.displayViewCourses=true;
+    }
+    else if(this.task == 'removeSubject')
+    {
+      this.displayRemoveSubject=true;
+    }
+      
+>>>>>>> e680bb1b49b3a515a5aac9e4223a0b66baf2c229
   }
 
   ngOnInit() {
@@ -86,7 +118,16 @@ export class SidebarComponent implements OnInit {
       else if(e.id == 'viewCourse')
       {
         this.displayViewCourses=true;
+<<<<<<< HEAD
       }*/
+=======
+      }
+      else if(e.id=='removeSubject')
+      {
+        this.displayRemoveSubject=true;
+      }
+
+>>>>>>> e680bb1b49b3a515a5aac9e4223a0b66baf2c229
   }
   onToggleMenu(data){
     if(data == 'c'){

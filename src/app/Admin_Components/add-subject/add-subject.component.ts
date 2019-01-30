@@ -21,7 +21,11 @@ export class AddSubjectComponent implements OnInit {
 
     this._AdminService.AddSubject(Subject).subscribe(data=>{
       console.log(data)
+<<<<<<< HEAD
       this.Route.navigate(['/admin','viewSubject'])
+=======
+      this.Route.navigate(['/admin','viewCourses'])
+>>>>>>> e680bb1b49b3a515a5aac9e4223a0b66baf2c229
     })
   }
 }
