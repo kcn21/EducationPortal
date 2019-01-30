@@ -17,8 +17,10 @@ export class SidebarComponent implements OnInit {
   public displayAddVideo=false;
   public displayViewCourses=false;
   public displayAddSubject=false; 
+  public displayRemoveSubject=false;
   public task
-  constructor() { }
+
+
  
   constructor(private route:ActivatedRoute) { 
     this.task=this.route.snapshot.paramMap.get('task');
@@ -39,6 +41,10 @@ export class SidebarComponent implements OnInit {
     {
       this.displayViewCourses=true;
     }
+    else if(this.task == 'removeSubject')
+    {
+      this.displayRemoveSubject=true;
+    }
       
   }
 
@@ -49,6 +55,7 @@ export class SidebarComponent implements OnInit {
     this.displayViewCourses=false;
     this.displayAddVideo=false;
     this.displayAddSubject=false;
+    this.displayRemoveSubject=false;
       if(e.id == 'addCourse')
       {
         this.displayAddCourse=true;
@@ -69,6 +76,10 @@ export class SidebarComponent implements OnInit {
       else if(e.id == 'viewCourse')
       {
         this.displayViewCourses=true;
+      }
+      else if(e.id=='removeSubject')
+      {
+        this.displayRemoveSubject=true;
       }
 
   }
