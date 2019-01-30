@@ -12,50 +12,60 @@ export class SidebarComponent implements OnInit {
   public toggleTopicMenu=false;
   public toggleTutorialMenu=false;
   public toggleSubjectMenu=false;
-  public router:Router;
   public displayAddCourse=false;
   public displayAddVideo=false;
   public displayViewCourses=false;
   public displayAddSubject=false; 
   public task
   
-  constructor(private route:ActivatedRoute) { 
-    this.task=this.route.snapshot.paramMap.get('task');
-    console.log(this.task);
-    if(this.task == 'addCourse')
-    {
-        this.displayAddCourse=true;
-    }
-    else if(this.task=='addVideo')
-    {
-      this.displayAddVideo=true;
-    }
-    else if(this.task=='addSubject')
-    {
-      this.displayAddSubject=true;
-    }
-    else if(this.task == 'viewCourses')
-    {
-      this.displayViewCourses=true;
-    }
-      
+ 
+  constructor(private route:ActivatedRoute,private router:Router) { 
+    route.params.subscribe(val => {
+      this.task=this.route.snapshot.paramMap.get('task');
+      console.log(this.task);
+      this.displayAddCourse=false;
+      this.displayViewCourses=false;
+      this.displayAddVideo=false;
+      this.displayAddSubject=false;
+      if(this.task == 'addCourse')
+      {
+          this.displayAddCourse=true;
+          this.toggleCourseMenu=true;
+      }
+      else if(this.task=='addVideo')
+      {
+        this.displayAddVideo=true;
+        this.toggleTutorialMenu=true;
+      }
+      else if(this.task=='addSubject')
+      {
+        this.toggleSubjectMenu=true;
+        this.displayAddSubject=true;
+      }
+      else if(this.task == 'viewCourses')
+      {
+        this.toggleCourseMenu=true;
+        this.displayViewCourses=true;
+      }
+    });  
   }
 
   ngOnInit() {
   }
   subLinkCliked(e){
-    this.displayAddCourse=false;
+    /*this.displayAddCourse=false;
     this.displayViewCourses=false;
     this.displayAddVideo=false;
     this.displayAddSubject=false;
       if(e.id == 'addCourse')
       {
         this.displayAddCourse=true;
+        this.router.navigate(['/admin','addCourse']);
       }
       else if(e.id == 'viewCourses')
       {
         this.displayViewCourses=true;
-
+        this.router.navigate(['/admin','viewCourses']);
       }
       else if(e.id == 'addVideo')
       {
@@ -68,8 +78,7 @@ export class SidebarComponent implements OnInit {
       else if(e.id == 'viewCourse')
       {
         this.displayViewCourses=true;
-      }
-
+      }*/
   }
   onToggleMenu(data){
     if(data == 'c'){

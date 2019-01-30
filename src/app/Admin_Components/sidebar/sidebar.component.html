@@ -28,13 +28,12 @@
                         Course
                     </button>
                     <div  *ngIf="toggleCourseMenu">
-                        <button type="button" class="subItem"  id="addCourse" (click)="subLinkCliked($event.target)">
+                        <a routerLink="/admin/addCourse" class="subItem"  id="addCourse">
                             Add Course
-                        </button>
-                        <button type="button" class="subItem"  id="viewCourses" (click)="subLinkCliked($event.target)">
+                        </a>
+                        <a routerLink="/admin/viewCourses" class="subItem"  id="viewCourses">
                             View Courses
-                        </button>                  
-
+                        </a>
                     </div>
                 </li>
                 
@@ -42,11 +41,10 @@
                         <button type="button" class="menuItem" (click)="onToggleMenu('s')">
                             Subject
                         </button>
-                        <div  *ngIf="toggleSubjectMenu">
-                            <button type="button" class="subItem"  id="addSubject" (click)="subLinkCliked($event.target)">
+                        <div routerLink="/admin/addSubject" *ngIf="toggleSubjectMenu">
+                            <a  class="subItem"  id="addSubject">
                                 Add Subject
-                            </button>  
-                                             
+                            </a>  
                         </div>
                     </li>
                 
@@ -56,9 +54,9 @@
                         Tutorials
                     </button>
                     <div  *ngIf="toggleTutorialMenu">
-                        <button type="button" class="subItem"  id="addVideo" (click)="subLinkCliked($event.target)">
+                        <a routerLink="/admin/addVideo" class="subItem"  id="addVideo">
                             Add Tutorial
-                        </button>  
+                        </a>  
                                          
                     </div>
                 </li>
