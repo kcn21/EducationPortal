@@ -46,6 +46,10 @@
                             <button type="button" class="subItem"  id="addSubject" (click)="subLinkCliked($event.target)">
                                 Add Subject
                             </button>  
+
+                            <button type="button" class="subItem"  id="removeSubject" (click)="subLinkCliked($event.target)">
+                                    View Subject
+                                </button>  
                                              
                         </div>
                     </li>
@@ -93,9 +97,12 @@
                     <app-add-video></app-add-video>
                 </div> 
 
-
                 <div *ngIf="displayAddSubject" class="mainContent">
                         <app-add-subject></app-add-subject>
+                </div>
+
+                <div *ngIf="displayRemoveSubject" class="mainContent">
+                    <app-view-subjects></app-view-subjects>
                 </div>
             </div>
         </div>

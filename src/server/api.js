@@ -94,18 +94,18 @@ app.post('/UpdateCourse',function(req,res){
         console.log("course updated");
         res.status(200).send(result);
 
-      });
-});
+      })
+})
 
 app.post('/getCourseNames',function(req,res){
-    db.collection("courses").find({},{CourseName:1}).toArray(function(err,result){
+    db.collection("courses").find({}).toArray(function(err,result){
         if(err)
         {
             console.log("error while getting course names")
         }
         else
         {
-            //console.log(result)
+            console.log(result)
             res.status(200).send(result)
         }
 })
@@ -139,6 +139,7 @@ app.post('/GetVideos',function(req,res){
             res.status(200).send(result)
         }
     })
+})
 app.post('/GetCourseAsPerSubject',function(req,res){
     db.collection('subjects').aggregate([
 
@@ -165,6 +166,25 @@ app.post('/AddSubject',function(req,res){
         else
             res.status(200).send(addedSubject)
     })
+})
+app.post('/removeSubject',function(req,res){
+    var data=req.body
+    //console.log(data.sId)
+    var myQuery={_id:mongoose.Types.ObjectId(data.sId)}
+    db.collection('subjects').deleteOne(myQuery,function(err,result){
+            if(err)
+                throw err;
+            //console.log('deleted Course With Id '+data.sId);
+            var myQuery1={SubjectId:data.sId}
+            db.collection('courses').deleteMany(myQuery1,function(err,obj){
+                if(err)
+                    throw err;
+            console.log("gayu")
+            res.status(200).send(result)
+            })
+    })
+   
+    
 })
 app.post('/getSubjects',function(req,res){
     db.collection("subjects").find({},{SubjectName:1}).toArray(function(err,result){

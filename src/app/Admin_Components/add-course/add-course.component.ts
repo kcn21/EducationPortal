@@ -37,10 +37,10 @@ export class AddCourseComponent implements OnInit {
     this.AdminService.AddCourse(course).subscribe(data=>{
       console.log(data)
       if(data)
-        this.route.navigate(['/admin','viewCourses']);
+        this.route.navigate(['/admin','viewCourses'])
       else  
       {
-        this.route.navigate(['/addCourse'])
+        this.route.navigate(['/admin','addCourse'])
       }
     })
   }

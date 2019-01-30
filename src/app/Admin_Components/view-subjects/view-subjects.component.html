@@ -1,0 +1,18 @@
+<div class="mes">
+    <title class="mes">{{_Message}}
+    </title>
+  </div>
+  <table id="customers">
+      <tr>
+        <th>#</th>
+        <th>SubjectName</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let s of subjects; index as i">
+        <td>{{i+1}}</td>
+        <td>{{s.SubjectName}}</td>
+        <td><button type="button" [value]="i" (click)="removeSubject(s)">Remove</button></td>
+      </tr>
+    </table>
+    
+    

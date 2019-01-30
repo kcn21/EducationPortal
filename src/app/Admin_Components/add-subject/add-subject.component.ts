@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin.service'
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-add-subject',
   templateUrl: './add-subject.component.html',
@@ -7,7 +8,7 @@ import { AdminService } from '../../../services/admin.service'
 })
 export class AddSubjectComponent implements OnInit {
 
-  constructor(private _AdminService:AdminService) { }
+  constructor(private Route:Router,private _AdminService:AdminService) { }
 
   ngOnInit() {
     
@@ -20,6 +21,7 @@ export class AddSubjectComponent implements OnInit {
 
     this._AdminService.AddSubject(Subject).subscribe(data=>{
       console.log(data)
+      this.Route.navigate(['/admin','viewCourses'])
     })
   }
 }
