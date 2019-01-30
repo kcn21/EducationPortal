@@ -97,4 +97,9 @@ export class ViewCoursesComponent implements OnInit {
       }
     })
   }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 239a217b29e0f6c501011f3b9c45793bb57f6f2c
 }

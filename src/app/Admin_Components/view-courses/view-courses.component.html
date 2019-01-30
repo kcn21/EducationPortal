@@ -12,7 +12,12 @@
   <tr *ngFor="let c of courses; index as i">
     <td>{{i+1}}</td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].CourseName" id=""></td>
+<<<<<<< HEAD
     <td *ngIf="isEnabledEditView(i)">{{getSubjectName(c)}}</td>    <td class="desc" *ngIf="isEnabledEditView(i)"><textarea type="text" [(ngModel)]="courses[i].Description" ></textarea></td>
+=======
+    <td *ngIf="isEnabledEditView(i)">{{getSubjectName(c)}}</td>    
+    <td class="desc" *ngIf="isEnabledEditView(i)"><textarea type="text" [(ngModel)]="courses[i].Description" ></textarea></td>
+>>>>>>> 239a217b29e0f6c501011f3b9c45793bb57f6f2c
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Duration"></td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Cost"></td>
     <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="updateCourse()">Update</button></td>

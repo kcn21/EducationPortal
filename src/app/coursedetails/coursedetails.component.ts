@@ -10,7 +10,7 @@ export class CoursedetailsComponent implements OnInit {
   public currentlyshowingVideoForCourseId=-1
   public videos
   public currentlyshowingVideoIndex=-1
-  public currentlyshowingVideo
+  public currentlyshowingVideo=null
   constructor(private _AdminService:AdminService) {
     this._AdminService.getCourseNames().subscribe(data=>{
       this.courses=data;
