@@ -16,37 +16,8 @@ export class SidebarComponent implements OnInit {
   public displayAddVideo=false;
   public displayViewCourses=false;
   public displayAddSubject=false; 
-  public displayRemoveSubject=false;
+  public displayViewSubject=false;
   public task
-<<<<<<< HEAD
-
-
- 
-  constructor(private route:ActivatedRoute) { 
-    this.task=this.route.snapshot.paramMap.get('task');
-    console.log(this.task);
-    if(this.task == 'addCourse')
-    {
-        this.displayAddCourse=true;
-    }
-    else if(this.task=='addVideo')
-    {
-      this.displayAddVideo=true;
-    }
-    else if(this.task=='addSubject')
-    {
-      this.displayAddSubject=true;
-    }
-    else if(this.task == 'viewCourses')
-    {
-      this.displayViewCourses=true;
-    }
-    else if(this.task == 'removeSubject')
-    {
-      this.displayRemoveSubject=true;
-    }
-      
-=======
   
  
   constructor(private route:ActivatedRoute,private router:Router) { 
@@ -57,6 +28,7 @@ export class SidebarComponent implements OnInit {
       this.displayViewCourses=false;
       this.displayAddVideo=false;
       this.displayAddSubject=false;
+      this.displayViewSubject=false;
       if(this.task == 'addCourse')
       {
           this.displayAddCourse=true;
@@ -77,8 +49,12 @@ export class SidebarComponent implements OnInit {
         this.toggleCourseMenu=true;
         this.displayViewCourses=true;
       }
+      else if(this.task == 'viewSubject')
+      {
+        this.toggleSubjectMenu=true;
+        this.displayViewSubject=true;
+      }
     });  
->>>>>>> 239a217b29e0f6c501011f3b9c45793bb57f6f2c
   }
 
   ngOnInit() {
@@ -110,16 +86,7 @@ export class SidebarComponent implements OnInit {
       else if(e.id == 'viewCourse')
       {
         this.displayViewCourses=true;
-<<<<<<< HEAD
-      }
-      else if(e.id=='removeSubject')
-      {
-        this.displayRemoveSubject=true;
-      }
-
-=======
       }*/
->>>>>>> 239a217b29e0f6c501011f3b9c45793bb57f6f2c
   }
   onToggleMenu(data){
     if(data == 'c'){
