@@ -20,6 +20,7 @@ import { SafePipe } from './safe.pipe';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
 import { AddSubjectComponent } from './Admin_Components/add-subject/add-subject.component';
 import { ViewCoursesComponent } from './Admin_Components/view-courses/view-courses.component';
+import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-subjects.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ViewCoursesComponent } from './Admin_Components/view-courses/view-cours
     CoursedetailsComponent,
     ViewCoursesComponent,
     AddSubjectComponent,
+    ViewSubjectsComponent,
 
   ],
   imports: [

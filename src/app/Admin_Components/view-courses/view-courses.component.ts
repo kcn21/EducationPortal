@@ -87,8 +87,8 @@ export class ViewCoursesComponent implements OnInit {
           this._Message=this.itemToRemoveName+' Is Removed Successfully!';
           this._AdminService.getCourseNames().subscribe(data=>{
             //console.log(data)
-            this.courses=data;
-            this.coursesBackup=JSON.parse(JSON.stringify(this.courses))
+          this.courses=data;
+          this.coursesBackup=JSON.parse(JSON.stringify(this.courses))
           })
       }
       else
@@ -97,6 +97,9 @@ export class ViewCoursesComponent implements OnInit {
       }
     })
   }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> e680bb1b49b3a515a5aac9e4223a0b66baf2c229
 }

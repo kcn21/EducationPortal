@@ -41,10 +41,22 @@
                         <button type="button" class="menuItem" (click)="onToggleMenu('s')">
                             Subject
                         </button>
-                        <div routerLink="/admin/addSubject" *ngIf="toggleSubjectMenu">
-                            <a  class="subItem"  id="addSubject">
+                        <div  *ngIf="toggleSubjectMenu">
+                            <a  routerLink="/admin/addSubject" class="subItem"  id="addSubject">
                                 Add Subject
+<<<<<<< HEAD
+                            </a>
+                            <a  routerLink="/admin/viewSubject" class="subItem"  id="viewSubject">
+                                View Subject
                             </a>  
+=======
+                            </button>  
+
+                            <button type="button" class="subItem"  id="removeSubject" (click)="subLinkCliked($event.target)">
+                                    View Subject
+                                </button>  
+                                             
+>>>>>>> e680bb1b49b3a515a5aac9e4223a0b66baf2c229
                         </div>
                     </li>
                 
@@ -91,9 +103,16 @@
                     <app-add-video></app-add-video>
                 </div> 
 
-
                 <div *ngIf="displayAddSubject" class="mainContent">
                         <app-add-subject></app-add-subject>
+                </div>
+
+<<<<<<< HEAD
+                <div *ngIf="displayViewSubject" class="mainContent">
+=======
+                <div *ngIf="displayRemoveSubject" class="mainContent">
+>>>>>>> e680bb1b49b3a515a5aac9e4223a0b66baf2c229
+                    <app-view-subjects></app-view-subjects>
                 </div>
             </div>
         </div>
