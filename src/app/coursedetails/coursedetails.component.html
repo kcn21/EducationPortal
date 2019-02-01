@@ -17,12 +17,14 @@
     </div>
     <div class="w3-container " *ngIf="currentlyshowingVideo">
         <div class="w3-display-left" style="margin-left:25%">
-            <button type="button" (click)="displayPrevVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8249;</button>
+            <button type="button" (click)="displayPrevVideo()" class="w3-button w3-xlarge  w3-red w3-card-4">&#8249;</button>
         </div>
-        <div class="w3-card-4 w3-display-middle" style="width:50%;margin-left:5%;  border: 10px solid #fff;" >
-                <video  [src]="currentlyshowingVideo.Link" width="100%"  poster="../../assets/a.png" height="inherit" controls>
+        <div class="w3-card-4 w3-display-topmiddle" style="width:50%;margin-left:5%;  border: 10px solid #fff;" >
+                <!--<video  [src]="currentlyshowingVideo.Link" width="100%"  poster="../../assets/a.png" height="inherit" controls>
                     Loading
-                </video>    
+                </video>
+                -->
+                <iframe [src]="currentlyshowingVideo.Link | safe" width="100%"  poster="../../assets/a.png" height="315px;"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
                 <div class="w3-container w3-center">
                 <p>{{currentlyshowingVideo.Title}}</p>
                 </div>
@@ -32,7 +34,7 @@
                 <p>Description <br>{{currentlyshowingVideo.Description}}</p>
         </div>
         <div class="w3-display-left" style="margin-left:82%">
-                <button type="button" (click)="displayNextVideo()" class="w3-button w3-xlarge w3-circle w3-red w3-card-4">&#8250;</button>
+                <button type="button" (click)="displayNextVideo()" class="w3-button w3-xlarge  w3-red w3-card-4">&#8250;</button>
         </div>
     </div>
 </div>

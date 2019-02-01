@@ -7,11 +7,16 @@
         <th>#</th>
         <th>SubjectName</th>
         <th></th>
+        <th></th>
       </tr>
       <tr *ngFor="let s of subjects; index as i">
         <td>{{i+1}}</td>
-        <td>{{s.SubjectName}}</td>
-        <td><button type="button" [value]="i" (click)="removeSubject(s)">Remove</button></td>
+        <td *ngIf="!isEnabledEditView(i)">{{s.SubjectName}}</td>
+        <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="subjects[i].SubjectName" id=""></td>
+        <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="updateSubject()">Update</button></td>
+        <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="cancelEditSubject()">Cancel</button></td>
+        <td *ngIf="!isEnabledEditView(i)"><button type="button" [value]="i" (click)="displayEditView($event.target)">Edit</button></td>
+        <td *ngIf="!isEnabledEditView(i)"><button type="button" [value]="i" (click)="removeSubject(s)">Remove</button></td>
       </tr>
     </table>
     

@@ -73,6 +73,7 @@ export class ViewCoursesComponent implements OnInit {
   displayEditView(buttonRef){
     this._Message=""
     this.editViewEnabled=true;
+    this.courses=JSON.parse(JSON.stringify(this.coursesBackup))
     //console.log(buttonRef.value) 
     this.indAtEditView=buttonRef.value// Index Of Course which user want to edit
   }
@@ -97,9 +98,4 @@ export class ViewCoursesComponent implements OnInit {
       }
     })
   }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> e680bb1b49b3a515a5aac9e4223a0b66baf2c229
 }
