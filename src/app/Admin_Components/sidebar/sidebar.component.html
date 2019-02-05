@@ -68,8 +68,12 @@
                         Topic
                     </button>
                     <div  *ngIf="toggleTopicMenu">
-                        <a routerLink="/admin/ac">Add Topic</a>
-                        <a  href="#">Add Topic</a>
+                        <a routerLink="/admin/addTopic" class="subItem"  id="addTopic">
+                            Add Topic
+                        </a>
+                        <a routerLink="/admin/viewTopics" class="subItem"  id="viewTopics">
+                            View Topics
+                        </a>
                     </div>
                 </li>
             </ul>
@@ -100,6 +104,12 @@
 
                 <div *ngIf="displayViewSubject" class="mainContent">
                     <app-view-subjects></app-view-subjects>
+                </div>
+                <div *ngIf="displayAddTopic" class="maincontent">
+                    <app-add-topic></app-add-topic>
+                </div>
+                <div *ngIf="displayViewTopics" class="maincontent">
+                        <app-view-topics></app-view-topics>
                 </div>
             </div>
         </div>

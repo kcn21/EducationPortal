@@ -4,7 +4,11 @@ var mongoose=require('mongoose')
 var cors=require('cors')
 var url=require('url')
 var db
-
+var User=require('./schema/users')
+var Video=require('./schema/video')
+var Course=require('./schema/course')
+var Subject=require('./schema/subject')
+var Topic=require('./schema/topic')
 var app=express()
 app.use(bodyParser.json())
 app.use(cors())
@@ -19,10 +23,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/EducationPortal',function(err,databa
     }
         
 })
-var User=require('./schema/users')
-var Video=require('./schema/video')
-var Course=require('./schema/course')
-var Subject=require('./schema/subject')
+
 app.post('/register',function(req,res){
     console.log("POST Request")
     var userData=req.body
@@ -56,6 +57,26 @@ app.post('/login',function(req,res){
                 res.status(200).send(user)
             }
         }
+    })
+})
+
+app.post('/AddTopic',function(req,res){
+    var t=req.body
+    //console.log(t);
+    //console.log(t.CourseId)
+    //t.CourseId=mongoose.Types.ObjectId(t.CourseId)
+    var topic=new Topic(t)
+    console.log(topic)
+    topic.save((err,data)=>{
+        if(err)
+        {
+            console.log(err)
+        }
+        else
+        {
+            res.status(200).send(data)
+        }
+
     })
 })
 app.post('/AddCourse',function(req,res){
@@ -110,7 +131,49 @@ app.post('/getCourseNames',function(req,res){
         }
 })
 })
-
+app.post('/getTopics',function(req,res){
+    db.collection('courses').aggregate([
+        {
+            $lookup:
+            {
+                from:'topics',
+                localField:'_id',
+                foreignField:'CourseId',
+                as:'topicdetails'
+            }
+        }
+    ]).toArray(function(err,result){
+        if(err)
+            console.log("error while join")
+        else
+        {
+           // console.log(JSON.stringify(result));
+            res.status(200).send(result)
+        }
+    })
+})
+app.post('/removeTopic',function(req,res){
+    var data=req.body
+    var myQuery={_id:mongoose.Types.ObjectId(data.tId)}
+    db.collection('topics').deleteOne(myQuery,function(err,result){
+        if(err)
+            throw err;
+        //console.log('deleted Course With Id '+data.cId);
+        res.status(200).send(result)
+})
+})
+app.post('/updateTopic',function(req,res){
+    var TopicData=req.body
+    var myquery = { _id : mongoose.Types.ObjectId(TopicData._id)};
+    console.log(myquery)
+    var newvalues = { $set: {TopicName: TopicData.TopicName,Content:TopicData.Content }};
+    console.log(newvalues)
+    db.collection("topics").updateOne(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        console.log("course updated");
+        res.status(200).send(result);
+      })
+})
 app.post('/AddVideo',function(req,res){
     console.log("POST Request")
     var videoData=req.body

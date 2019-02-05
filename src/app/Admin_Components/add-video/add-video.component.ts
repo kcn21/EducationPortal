@@ -34,14 +34,14 @@ export class AddVideoComponent implements OnInit {
     }
   }
   onSubmit(cname){
-    console.log(cname.Title)
+    console.log(cname.Poster)
     var Video= {
       CourseId:cname.CourseId,
       Title:cname.Title,
       Link:this.videourl,
       Description:cname.Description
     }
-    this.AdminService.AddVideo(Video).subscribe(data=>{
+    /*this.AdminService.AddVideo(Video).subscribe(data=>{
       console.log(data)
       if(data)
         this.route.navigate(['/admin']);
@@ -49,7 +49,7 @@ export class AddVideoComponent implements OnInit {
       {
         console.log("Error")
       }
-    })
+    })*/
   }
 
 }

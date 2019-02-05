@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div *ngIf="displayEditor">
+  <div class="editor" [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
+  <div class="w3-container">
+    <p><button class="w3-button w3-black w3-round-xxlarge" (click)="addTopic()">Add</button></p>
+  </div>
+</div>
+
+<div *ngIf="!displayEditor" class="w3-container">
+  
+  <div class="form">
+      <div class="w3-container">
+          <div class="w3-card-4 w3-center w3-xlarge">
+                  <p>{{_Message}}</p>
+          </div>
+      </div>
+    <div class="tab-content">
+        <div class="tab-content">
+            <div class="field-wrap">
+              <select  [(ngModel)]="SelectedCourse" style="margin-right:50px;" name="CourseId">
+                  <option value="0" selected>
+                      Select Course
+                    </option>
+                  <option *ngFor="let cname of CourseNames" [ngValue]="cname._id">
+                      {{cname.CourseName}}
+                  </option>
+              </select>
+            </div>
+            <div class="field-wrap">
+                <label>
+                    Topic Name <span class="req">*</span>
+                </label>
+                <input type="text" name="TopicName" [(ngModel)]="topicName" #TopicName required autocomplete="off"/> 
+            </div>
+            <button class="button button-block" (click)="displayTopicEditView()">Add Topic</button>
+         </div>
+            
+    </div> 
+  </div>
+</div>
