@@ -176,25 +176,19 @@ app.post('/AddSubject',function(req,res){
             res.status(200).send(addedSubject)
     })
 })
-/*app.post('/removeSubject',function(req,res){
-    var arrofcourses
-    var data=req.body
-   // console.log(data.sId)
-    var myQuery={_id:mongoose.Types.ObjectId(data.sId)}
-    //var myQuery1={SubjectId:data.sId}
-    //console.log("MyQuery : \n"+myQuery1)
-    db.collection("courses").find(myQuery1).toArray(function(err,result){
-        if(err)
-        {
-            console.log("error while getting course names")
-        }
-        else
-        {
-            console.log("DAta : "+JSON.stringify(result))
-            res.status(200).send(result)
-        }
-    })
-})*/
+
+app.post('/updateSubject',function(req,res){
+    var SubjectData=req.body
+    var myquery = { _id : mongoose.Types.ObjectId(SubjectData._id)};
+    //console.log(myquery)
+    var newvalues = { $set: {SubjectName: SubjectData.SubjectName} };
+    //console.log(newvalues)
+    db.collection("subjects").updateOne(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        console.log("subject updated");
+        res.status(200).send(result);
+      })
+})
 
 app.post('/removeSubject',function(req,res){
     var arrofcourses

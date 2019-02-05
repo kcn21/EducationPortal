@@ -29,6 +29,11 @@ export class SidebarComponent implements OnInit {
       this.displayAddVideo=false;
       this.displayAddSubject=false;
       this.displayViewSubject=false;
+      
+      this.toggleCourseMenu=false;
+      this.toggleSubjectMenu=false;
+      this.toggleTopicMenu=false;
+      this.toggleTutorialMenu=false;
       if(this.task == 'addCourse')
       {
           this.displayAddCourse=true;
@@ -66,7 +71,7 @@ export class SidebarComponent implements OnInit {
   }
   onToggleMenu(data){
     if(data == 'c'){
-        if(this.toggleCourseMenu === true){
+        if(this.toggleCourseMenu == true){
           this.toggleCourseMenu=false;
         }
         else{

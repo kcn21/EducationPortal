@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService}from '../../services/admin.service';
+import {SafePipe}from '../safe.pipe'
 @Component({
   selector: 'app-coursedetails',
   templateUrl: './coursedetails.component.html',
