@@ -18,6 +18,9 @@ export class AdminService {
   private _getSubjectUrl="http://localhost:8081/getSubjects"
   private _updatesubjectUrl="http://localhost:8081/updateSubject"
   private _removeSubjectUrl="http://localhost:8081/removeSubject"
+  private _getTutorialUrl="http://localhost:8081/getTutorial"
+  private _removeTutorialUrl="http://localhost:8081/removeTutorial"
+  private _addTopicUrl="http://localhost:8081/addTopic"
   constructor(private _http:HttpClient) { }
   AddCourse(course)
   {
@@ -63,5 +66,17 @@ export class AdminService {
   removeSubject(SubjectId)
   {
     return this._http.post<any>(this._removeSubjectUrl,SubjectId)
+  }
+  getTutorial()
+  {
+    return this._http.post<any>(this._getTutorialUrl,null)
+  }
+  removeTutorial(tutorialId)
+  {
+    return this._http.post<any>(this._removeTutorialUrl,tutorialId)
+  }
+  AddTopic(topic)
+  {
+    return this._http.post<any>(this._addTopicUrl,topic)
   }
 }

@@ -44,7 +44,7 @@ export class AddVideoComponent implements OnInit {
     this.AdminService.AddVideo(Video).subscribe(data=>{
       console.log(data)
       if(data)
-        this.route.navigate(['/admin']);
+        this.route.navigate(['/admin','viewTutorials']);
       else  
       {
         console.log("Error")
