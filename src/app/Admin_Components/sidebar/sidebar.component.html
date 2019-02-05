@@ -60,6 +60,9 @@
                         <a routerLink="/admin/addVideo" class="subItem"  id="addVideo">
                             Add Tutorial
                         </a>  
+                        <a routerLink="/admin/viewTutorials" class="subItem"  id="viewTutorials">
+                            View Tutorial
+                        </a>  
                                          
                     </div>
                 </li>
@@ -100,6 +103,10 @@
 
                 <div *ngIf="displayViewSubject" class="mainContent">
                     <app-view-subjects></app-view-subjects>
+                </div>
+
+                <div *ngIf="displayViewTutorials" class="mainContent">
+                    <app-view-tutorials></app-view-tutorials>
                 </div>
             </div>
         </div>

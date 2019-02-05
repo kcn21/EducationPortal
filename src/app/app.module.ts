@@ -21,6 +21,7 @@ import { CoursedetailsComponent } from './coursedetails/coursedetails.component'
 import { AddSubjectComponent } from './Admin_Components/add-subject/add-subject.component';
 import { ViewCoursesComponent } from './Admin_Components/view-courses/view-courses.component';
 import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-subjects.component';
+import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-tutorials.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-sub
     ViewCoursesComponent,
     AddSubjectComponent,
     ViewSubjectsComponent,
+    ViewTutorialsComponent,
 
   ],
   imports: [

@@ -74,6 +74,8 @@ export class ViewSubjectsComponent implements OnInit {
             this._AdminService.getSubjects().subscribe(data=>{
               //console.log(data)
               this.subjects=data;
+              this.subjectsBackup=JSON.parse(JSON.stringify(this.subjects))
+
             })
         }
         else
