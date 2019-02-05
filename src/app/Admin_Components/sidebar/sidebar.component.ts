@@ -29,6 +29,11 @@ export class SidebarComponent implements OnInit {
       this.displayAddVideo=false;
       this.displayAddSubject=false;
       this.displayViewSubject=false;
+      
+      this.toggleCourseMenu=false;
+      this.toggleSubjectMenu=false;
+      this.toggleTopicMenu=false;
+      this.toggleTutorialMenu=false;
       if(this.task == 'addCourse')
       {
           this.displayAddCourse=true;
@@ -59,38 +64,9 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
   }
-  subLinkCliked(e){
-    /*this.displayAddCourse=false;
-    this.displayViewCourses=false;
-    this.displayAddVideo=false;
-    this.displayAddSubject=false;
-    this.displayRemoveSubject=false;
-      if(e.id == 'addCourse')
-      {
-        this.displayAddCourse=true;
-        this.router.navigate(['/admin','addCourse']);
-      }
-      else if(e.id == 'viewCourses')
-      {
-        this.displayViewCourses=true;
-        this.router.navigate(['/admin','viewCourses']);
-      }
-      else if(e.id == 'addVideo')
-      {
-        this.displayAddVideo=true;
-      }
-      else if(e.id=='addSubject')
-      {
-        this.displayAddSubject=true;
-      }
-      else if(e.id == 'viewCourse')
-      {
-        this.displayViewCourses=true;
-      }*/
-  }
   onToggleMenu(data){
     if(data == 'c'){
-        if(this.toggleCourseMenu === true){
+        if(this.toggleCourseMenu == true){
           this.toggleCourseMenu=false;
         }
         else{
