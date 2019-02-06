@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<title>Tutorials</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container" *ngFor="let t of Tutorials">
+  <ul class="w3-ul w3-card-4">
+    <li class="w3-bar">
+      <!--<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>-->
+      <!--<span (click)="removeTutorial(t)" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">x</span>-->
+      <span><button type="button" [value]="i" (click)="removeTutorial(t)" style="margin-left:300px;">Remove</button></span>
+      <video class="w3-bar-item" [src]="t.Link | safe" controls style="width:400px" poster="../../../assets/posters/C.png"> 
+        </video>
+      <div class="w3-bar-item">
+        <span class="w3-large">{{t.Title}}</span><br>
+        <details><span>{{t.Description}}</span></details>
+      </div>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

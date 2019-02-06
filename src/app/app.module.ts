@@ -23,6 +23,7 @@ import { ViewCoursesComponent } from './Admin_Components/view-courses/view-cours
 import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-subjects.component';
 import { AddTopicComponent } from './Admin_Components/add-topic/add-topic.component';
 import { ViewTopicsComponent } from './Admin_Components/view-topics/view-topics.component';
+import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-tutorials.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ViewTopicsComponent } from './Admin_Components/view-topics/view-topics.
     ViewSubjectsComponent,
     AddTopicComponent,
     ViewTopicsComponent,
+    ViewTutorialsComponent,
 
   ],
   imports: [

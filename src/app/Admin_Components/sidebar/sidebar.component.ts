@@ -19,14 +19,14 @@ export class SidebarComponent implements OnInit {
   public displayViewSubject=false;
   public displayAddTopic=false;
   public displayViewTopics=false;
+  public displayViewTutorials=false;
   public task
-  
- 
   constructor(private route:ActivatedRoute,private router:Router) { 
     route.params.subscribe(val => {
       this.task=this.route.snapshot.paramMap.get('task');
       console.log(this.task);
       this.displayAddCourse=false;
+      this.displayViewTutorials=false;
       this.displayViewCourses=false;
       this.displayAddVideo=false;
       this.displayAddSubject=false;
@@ -71,6 +71,11 @@ export class SidebarComponent implements OnInit {
       {
         this.toggleTopicMenu=true;
         this.displayViewTopics=true;
+      }
+      else if(this.task == "viewTutorials")
+      {
+        this.toggleTutorialMenu=true;
+        this.displayViewTutorials=true;
       }
     });  
   }
