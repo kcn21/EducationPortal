@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AdminService}from '../../services/admin.service'
+import {AdminService} from '../../services/admin.service'
 import {SafePipe} from'../safe.pipe'
 @Component({
   selector: 'app-home',
@@ -9,17 +9,16 @@ import {SafePipe} from'../safe.pipe'
 export class HomeComponent implements OnInit {
 
   public videos
+  public topics
+  public subjects
+  public selectedTopic
   constructor(private _AdminService:AdminService ) {
-    var obj={
-      cId:'5c40582a0eac8150206ae23b'
-    }
-    this._AdminService.getVideos(obj).subscribe(data=>{
-      console.log(data)
-        if(data)
-        {
-          this.videos=data;
-          console.log("Vidos:"+this.videos)
-        }
+      this._AdminService.getSubjects().subscribe(data=>{
+          this.subjects=data;
+      }) 
+      this._AdminService.getTopics().subscribe(data=>{
+        this.topics=data;
+        this.selectedTopic=this.topics[0].topicdetails[0]
       })
    }
 

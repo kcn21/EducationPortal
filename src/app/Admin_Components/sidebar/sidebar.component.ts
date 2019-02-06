@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 declare var jquery:any;
 declare var $:any;
 @Component({
@@ -11,41 +11,80 @@ export class SidebarComponent implements OnInit {
   public toggleCourseMenu=false;
   public toggleTopicMenu=false;
   public toggleTutorialMenu=false;
-  public router:Router;
+  public toggleSubjectMenu=false;
   public displayAddCourse=false;
-  public displayUpdateCourse=false;
-  public displayDeleteCourse=false;
   public displayAddVideo=false;
-  constructor() { }
+  public displayViewCourses=false;
+  public displayAddSubject=false; 
+  public displayViewSubject=false;
+  public displayAddTopic=false;
+  public displayViewTopics=false;
+  public displayViewTutorials=false;
+  public task
+  constructor(private route:ActivatedRoute,private router:Router) { 
+    route.params.subscribe(val => {
+      this.task=this.route.snapshot.paramMap.get('task');
+      console.log(this.task);
+      this.displayAddCourse=false;
+      this.displayViewTutorials=false;
+      this.displayViewCourses=false;
+      this.displayAddVideo=false;
+      this.displayAddSubject=false;
+      this.displayViewSubject=false;
+      this.displayViewTopics=false;
+      this.displayAddTopic=false;
+      this.toggleCourseMenu=false;
+      this.toggleSubjectMenu=false;
+      this.toggleTopicMenu=false;
+      this.toggleTutorialMenu=false;
+      if(this.task == 'addCourse')
+      {
+          this.displayAddCourse=true;
+          this.toggleCourseMenu=true;
+      }
+      else if(this.task=='addVideo')
+      {
+        this.displayAddVideo=true;
+        this.toggleTutorialMenu=true;
+      }
+      else if(this.task=='addSubject')
+      {
+        this.toggleSubjectMenu=true;
+        this.displayAddSubject=true;
+      }
+      else if(this.task == 'viewCourses')
+      {
+        this.toggleCourseMenu=true;
+        this.displayViewCourses=true;
+      }
+      else if(this.task == 'viewSubject')
+      {
+        this.toggleSubjectMenu=true;
+        this.displayViewSubject=true;
+      }
+      else if(this.task == 'addTopic')
+      {
+        this.toggleTopicMenu=true;
+        this.displayAddTopic=true;
+      }
+      else if(this.task == 'viewTopics')
+      {
+        this.toggleTopicMenu=true;
+        this.displayViewTopics=true;
+      }
+      else if(this.task == "viewTutorials")
+      {
+        this.toggleTutorialMenu=true;
+        this.displayViewTutorials=true;
+      }
+    });  
+  }
 
   ngOnInit() {
   }
-  subLinkCliked(e){
-    this.displayAddCourse=false;
-    this.displayUpdateCourse=false;
-    this.displayDeleteCourse=false;
-    this.displayAddVideo=false;
-      if(e.id == 'addCourse')
-      {
-        this.displayAddCourse=true;
-      }
-      else if(e.id == 'updateCourse')
-      {
-        this.displayUpdateCourse=true;
-      }
-      else if(e.id == 'deleteCourse')
-      {
-        this.displayDeleteCourse=true;
-      }
-      else if(e.id == 'addVideo')
-      {
-        this.displayAddVideo=true;
-      }
-
-  }
   onToggleMenu(data){
     if(data == 'c'){
-        if(this.toggleCourseMenu === true){
+        if(this.toggleCourseMenu == true){
           this.toggleCourseMenu=false;
         }
         else{
@@ -70,6 +109,16 @@ export class SidebarComponent implements OnInit {
         }
         else{
           this.toggleTutorialMenu=true;
+        }
+    }
+    else if(data =='s')
+    {
+        if(this.toggleSubjectMenu ==true){
+          this.toggleSubjectMenu=false;
+
+        }
+        else{
+          this.toggleSubjectMenu=true;
         }
     }
   }

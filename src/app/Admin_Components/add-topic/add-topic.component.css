@@ -1,4 +1,24 @@
-*, *:before, *:after {
+.editor{
+    width: 1000px;
+} 
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+select{
+    display: block;
+    background-color: black;
+    color:  #a0b3b0;
+    outline:none;
+    border: none;
+    border: 1px solid #a0b3b0;
+  }
+
+  select:hover ,option:hover{
+      outline: 0;
+      border-color: #1ab188;
+  }
+  *, *:before, *:after {
     box-sizing: border-box;
   }
   
@@ -114,12 +134,7 @@
     outline: 0;
     border-color: #1ab188;
   }
-  
-  textarea {
-    border: 2px solid #a0b3b0;
-    resize: vertical;
-  }
-  
+
   .field-wrap {
     position: relative;
     margin-bottom: 40px;
@@ -160,22 +175,4 @@
   .button-block {
     display: block;
     width: 100%;
-  }
-  
-  .forgot {
-    margin-top: -20px;
-    text-align: right;
-  }
-  select{
-    display: block;
-    background-color: black;
-    color:  #a0b3b0;
-    outline:none;
-    border: none;
-    border: 1px solid #a0b3b0;
-  }
-  select:hover ,option:hover{
-      outline: 0;
-      border-color: #1ab188;
-     
   }

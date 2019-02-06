@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
 import { Router } from '@angular/router';
 import {SafePipe} from'../../safe.pipe'
-
 @Component({
   selector: 'app-add-video',
   templateUrl: './add-video.component.html',
@@ -35,23 +34,22 @@ export class AddVideoComponent implements OnInit {
     }
   }
   onSubmit(cname){
-    console.log(cname.Title)
-    var Video = {
+    console.log(cname.Poster)
+    var Video= {
       CourseId:cname.CourseId,
       Title:cname.Title,
-      Link:cname.Link,
+      Link:this.videourl,
       Description:cname.Description
     }
     this.AdminService.AddVideo(Video).subscribe(data=>{
       console.log(data)
       if(data)
-        this.route.navigate(['/home']);
+        this.route.navigate(['/admin','viewTutorials']);
       else  
       {
         console.log("Error")
       }
     })
   }
-
 }
 
