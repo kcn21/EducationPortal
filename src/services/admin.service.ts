@@ -10,7 +10,6 @@ export class AdminService {
   private _getCourseNamesUrl='http://localhost:8081/getCourseNames'
   private _addVideoUrl="http://localhost:8081/AddVideo"
   private _getVideosUrl="http://localhost:8081/GetVideos"
-
   private _removeCourseUrl="http://localhost:8081/RemoveCourse"
   private _updateCourseUrl="http://localhost:8081/UpdateCourse"
   private _getCourseAsPerSubjectUrl="http://localhost:8081/GetCourseAsPerSubject"
@@ -18,9 +17,12 @@ export class AdminService {
   private _getSubjectUrl="http://localhost:8081/getSubjects"
   private _updatesubjectUrl="http://localhost:8081/updateSubject"
   private _removeSubjectUrl="http://localhost:8081/removeSubject"
+  private _addTopicUrl="http://localhost:8081/AddTopic"
+  private _getTopicsUrl="http://localhost:8081/getTopics"
+  private _removeTopicUrl="http://localhost:8081/removeTopic"
+  private _updateTopicUrl="http://localhost:8081/updateTopic"
   private _getTutorialUrl="http://localhost:8081/getTutorial"
   private _removeTutorialUrl="http://localhost:8081/removeTutorial"
-  private _addTopicUrl="http://localhost:8081/addTopic"
   constructor(private _http:HttpClient) { }
   AddCourse(course)
   {
@@ -29,6 +31,18 @@ export class AdminService {
   updateCourse(course)
   {
       return this._http.post<any>(this._updateCourseUrl,course)
+  }
+  AddTopic(topic)
+  {
+     return this._http.post<any>(this._addTopicUrl,topic)
+  }
+  getTopics()
+  {
+      return this._http.post<any>(this._getTopicsUrl,null)
+  }
+  removeTopic(topic)
+  {
+    return this._http.post<any>(this._removeTopicUrl,topic)
   }
   removeCourse(CourseId)
   {
@@ -67,6 +81,10 @@ export class AdminService {
   {
     return this._http.post<any>(this._removeSubjectUrl,SubjectId)
   }
+  updateTopic(topic)
+  {
+    return this._http.post<any>(this._updateTopicUrl,topic)
+  }
   getTutorial()
   {
     return this._http.post<any>(this._getTutorialUrl,null)
@@ -74,9 +92,5 @@ export class AdminService {
   removeTutorial(tutorialId)
   {
     return this._http.post<any>(this._removeTutorialUrl,tutorialId)
-  }
-  AddTopic(topic)
-  {
-    return this._http.post<any>(this._addTopicUrl,topic)
   }
 }

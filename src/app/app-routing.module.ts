@@ -9,6 +9,7 @@ import { SidebarComponent } from './Admin_Components/sidebar/sidebar.component';
 import { AuthGuard } from 'src/auth.guard';
 import { AddVideoComponent } from './Admin_Components/add-video/add-video.component';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
+import { AddTopicComponent } from './Admin_Components/add-topic/add-topic.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/signin',pathMatch:'full'},

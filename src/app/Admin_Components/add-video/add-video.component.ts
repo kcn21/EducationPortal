@@ -34,7 +34,7 @@ export class AddVideoComponent implements OnInit {
     }
   }
   onSubmit(cname){
-    console.log(cname.Title)
+    console.log(cname.Poster)
     var Video= {
       CourseId:cname.CourseId,
       Title:cname.Title,

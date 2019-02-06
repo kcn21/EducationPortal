@@ -17,6 +17,8 @@ export class SidebarComponent implements OnInit {
   public displayViewCourses=false;
   public displayAddSubject=false; 
   public displayViewSubject=false;
+  public displayAddTopic=false;
+  public displayViewTopics=false;
   public displayViewTutorials=false;
   public task
   constructor(private route:ActivatedRoute,private router:Router) { 
@@ -29,7 +31,8 @@ export class SidebarComponent implements OnInit {
       this.displayAddVideo=false;
       this.displayAddSubject=false;
       this.displayViewSubject=false;
-      
+      this.displayViewTopics=false;
+      this.displayAddTopic=false;
       this.toggleCourseMenu=false;
       this.toggleSubjectMenu=false;
       this.toggleTopicMenu=false;
@@ -58,6 +61,16 @@ export class SidebarComponent implements OnInit {
       {
         this.toggleSubjectMenu=true;
         this.displayViewSubject=true;
+      }
+      else if(this.task == 'addTopic')
+      {
+        this.toggleTopicMenu=true;
+        this.displayAddTopic=true;
+      }
+      else if(this.task == 'viewTopics')
+      {
+        this.toggleTopicMenu=true;
+        this.displayViewTopics=true;
       }
       else if(this.task == "viewTutorials")
       {
