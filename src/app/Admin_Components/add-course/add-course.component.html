@@ -36,24 +36,33 @@
                 </option>
           </select>
         </div>          
-          <div class="field-wrap">
+            <div class="field-wrap">
               <label>
                   Description <span class="req">*</span>
               </label>
               <input type="text" name="Description" #Description ngModel required autocomplete="off"/>
-            </div>          
+            </div>    
+            
+            <div class="field-wrap">
+                <label>
+                    ImagePath <span class="req">*</span>
+                </label>
+                <input type="url" name="ImagePath" #ImagePath [(ngModel)]="imageurl" (change)="pathSet()" required autocomplete="off"/>
+
+                <img *ngIf="ImageIsSet" [src]="imageurl" allowfullscreen>
+            </div>    
             <div class="field-wrap" >
                 <label>
                     Duration <span class="req">*</span>
                 </label>
                 <input type="number" name="Duration" #Duration ngModel required autocomplete="off"/>
-              </div> 
-              <div class="field-wrap">
+            </div> 
+            <div class="field-wrap">
                   <label>
                       Cost <span class="req">*</span>
                   </label>
                   <input type="number" min="0" name="Cost" #Cost ngModel required autocomplete="off"/>
-                </div>         
+            </div>         
           <button class="button button-block"  [disabled]="CourseLoginForm.invalid">Add</button>
           </form>
           <!--<div class="field-wrap" *ngIf="checkLogin"> 

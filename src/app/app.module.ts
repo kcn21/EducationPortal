@@ -24,6 +24,9 @@ import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-sub
 import { AddTopicComponent } from './Admin_Components/add-topic/add-topic.component';
 import { ViewTopicsComponent } from './Admin_Components/view-topics/view-topics.component';
 import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-tutorials.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-t
     AddTopicComponent,
     ViewTopicsComponent,
     ViewTutorialsComponent,
+    NavigationComponent,
 
   ],
   imports: [
@@ -51,6 +55,8 @@ import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-t
     FormsModule,
     RouterModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot()
   ],
