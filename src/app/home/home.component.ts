@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import {AdminService} from '../../services/admin.service'
+import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import {AdminService} from '../../services/admin.service';
+import { Router } from '@angular/router';
 declare var jquery:any;
 declare var $ :any;
 var num:number=0;
+var colors = ['#9932CC', '#F08080', '#00FF7F', '#00CED1', '	#1E90FF', '	#BC8F8F'];
 import {SafePipe} from'../safe.pipe'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
   public videos
   public topics
   public subjects
@@ -21,7 +23,10 @@ export class HomeComponent implements OnInit {
   public colvalue
   public numofcourses
   public lastDisplayed=-1
-  constructor(private _AdminService:AdminService ) {
+  public router:Router
+  p:number=1
+  count:number=1
+  constructor(private route:Router,private _AdminService:AdminService ) {
       this._AdminService.getSubjects().subscribe(data=>{
           this.subjects=data;
       }) 
@@ -33,62 +38,69 @@ export class HomeComponent implements OnInit {
         this.topics=data;
         this.selectedTopic=this.topics[0].topicdetails[0]
       })
-      /*while(num<=this.numofcourses)
-      {
-        if(num==0)
-        {
-            $("div.main").append("<div class='row'></div>")
-            $("div.main div.row:last-child").append("<div class='column' style='float:left;margin-bottom:10px;margin-left:10px;width: 33.33%;padding: 10px;width: 480px;height: 300px;'><img src='../../assets/HTML5.PNG'><figcaption>HTML learning</figcaption></div>")
-        }
-        else
-        {
-          if((num%3)==0)
-          {
-              $("div.main div.row:last-child").after("<div class='row'></div>")
-          }
-          $("div.main div.row:last-child").append("<div class='column' style='float:left;margin-bottom:10px;margin-left:10px;width: 33.33%;padding: 10px;width: 480px;height: 300px;'><img src='../../assets/HTML5.PNG'><figcaption>HTML learning</figcaption></div>")
-        }
-        num=num+1
-      }*/
-      //addBlocks(){
-        
-     // }
-      /*this.db.collection("courses").count({},function(err,data){
-        if(err)
-         {
-            return err
-         }
-         else
-         {
-            this.numofcourses=data;
-         }
-      })*/
-      //this.items = [{ name: "archie" }, { name: "jake" }, { name: "richard" }];
    }
-   decrementrow()
-   {
-     this.rowvalue=this.rowvalue-1;
-   }
-   decrementcol()
-   {
-     this.colvalue=this.colvalue-1;
-   }
-  ngOnInit() {
+   gototextcontent(item){
+    console.log("hiiii")
+    console.log(item.CourseName);
+    this.route.navigate(['/textcontent',item.CourseName]);
   }
-  addBlocks(){
-    if(num==0)
+  ngOnInit() {
+    
+  }
+  ngAfterViewInit()
+  {
+  }
+  ngAfterViewChecked()
+  {
+   /* while(num<this.numofcourses)
     {
-        $("div.main").append("<div class='row'></div>")
-        $("div.main div.row:last-child").append("<div class='column' style='float:left;margin-bottom:10px;margin-left:10px;width: 33.33%;padding: 10px;width: 480px;height: 300px;'><img src='../../assets/HTML5.PNG'><figcaption>HTML learning</figcaption></div>")
-    }
-    else
-    {
-      if((num%3)==0)
+      if(num==0)
       {
-          $("div.main div.row:last-child").after("<div class='row'></div>")
+          $("div.main").append("<div class='row'></div>")
+          $("div.main div.row:last-child").append("<div class='column' (click)='gototextcontent(item)' *ngFor='let item of"
+          +this.courses+"'style='float:left;margin-bottom:25px;margin-left:10px;margin-right:10px;width: 25%;width: 326px;height: 326px; border-style: solid;border-width:2px;'><img src="
+          +this.courses[num].ImagePath+" height='280' width='321'/><div style='height:35px; width:321px; background-color:"
+          +colors[Math.floor(Math.random() * colors.length)]+";text-align: center;font-size: 25px;'>"
+          +this.courses[num].CourseName+"</div></div>")
       }
-      $("div.main div.row:last-child").append("<div class='column' style='float:left;margin-bottom:10px;margin-left:10px;width: 33.33%;padding: 10px;width: 480px;height: 300px;'><img src='../../assets/HTML5.PNG'><figcaption>HTML learning</figcaption></div>")
+      else
+      {
+        if((num%4)==0)
+        {
+            $("div.main div.row:last-child").after("<div class='row'></div>")
+        }
+          $("div.main div.row:last-child").append("<div class='column' (click)='gototextcontent(item)' *ngFor='let item of"
+          +this.courses+"'style='float:left;margin-bottom:25px;margin-left:10px;margin-right:10px;width: 25%;width: 326px;height: 326px; border-style: solid;border-width:2px;'><img src="
+          +this.courses[num].ImagePath+" height='280' width='321' /><div style='height:35px; width:321px; background-color:"
+          +colors[Math.floor(Math.random() * colors.length)]+";text-align: center;font-size: 25px;'>"
+          +this.courses[num].CourseName+"</div></div>")
+      }
+      num=num+1
     }
-    num=num+1
+    */
+    /*$('.column').on('click', function() {
+      console.log("hiiii")
+      this.route.navigate(['/admin','viewTutorials']);
+    })*/
   }
 }
+
+/*
+    while(num<this.numofcourses)
+    {
+      if(num==0)
+      {
+          $("div.main").append("<div class='row'></div>")
+          $("div.main div.row:last-child").append("<div class='column' *ngFor='let item of"+this.courses+"| paginate: { itemsPerPage: 3, currentPage:"+this.p+"};' style='float:left;margin-bottom:25px;margin-left:10px;margin-right:10px;width: 25%;width: 350px;height: 355px; border-style: solid;border-width:2px;'><img src="+this.courses[num].ImagePath+" height='300' width='346'><div style='height:45px; width:346px;margin-bottom:5px; background-color:"+colors[Math.floor(Math.random() * colors.length)]+";text-align: center;font-size: 25px;'>"+this.courses[num].CourseName+"</div></div>")
+      }
+      else
+      {
+        if((num%4)==0)
+        {
+            $("div.main div.row:last-child").after("<div class='row'></div>")
+        }
+        $("div.main div.row:last-child").append("<div class='column' *ngFor='let item of"+this.courses+"| paginate: { itemsPerPage: 3, currentPage:"+this.p+"};' style='float:left;margin-bottom:25px;margin-left:10px;margin-right:10px;width: 25%;width: 350px;height: 355px; border-style: solid;border-width:2px;'><img src="+this.courses[num].ImagePath+" height='300' width='346'><div style='height:45px; width:346px; background-color:"+colors[Math.floor(Math.random() * colors.length)]+";text-align: center;font-size: 25px;'>"+this.courses[num].CourseName+"</div></div>")
+      }
+      num=num+1
+    }
+*/

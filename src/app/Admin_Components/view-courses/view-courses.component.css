@@ -45,3 +45,25 @@
     background-color: #f44336;
     color: white;
   }
+  .search{
+    width: 25%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../../../assets/search.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+/* mozilla solution */
+input:-moz-placeholder { text-align:right; }
+-webkit-input-placeholder { text-align:right; }
+  
+  /*input[class=search]:focus {
+    width: 100%;
+  }*/
+  

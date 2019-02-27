@@ -27,6 +27,8 @@ import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-t
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NavigationComponent } from './navigation/navigation.component';
+import { TextcontentComponent } from './textcontent/textcontent.component';
+import { SanitizeHtmlPipe } from './sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     ViewTopicsComponent,
     ViewTutorialsComponent,
     NavigationComponent,
+    TextcontentComponent,
+    SanitizeHtmlPipe,
 
   ],
   imports: [

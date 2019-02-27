@@ -49,7 +49,7 @@
                 </label>
                 <input type="url" name="ImagePath" #ImagePath [(ngModel)]="imageurl" (change)="pathSet()" required autocomplete="off"/>
 
-                <img *ngIf="ImageIsSet" [src]="imageurl" allowfullscreen>
+                <img *ngIf="ImageIsSet" [src]="imageurl" style="width: 450px;height:400px;" allowfullscreen>
             </div>    
             <div class="field-wrap" >
                 <label>

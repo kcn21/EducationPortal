@@ -1,27 +1,76 @@
-
-<h2>HELLO</h2>
-<span id="result"></span>
-<button (click)="addBlocks()">this button</button>
-<div class="main">
-  <!--<div class="row">
-    <div class="column">
-      <a (click)="x()"><img src="../../assets/CSS.PNG"></a>
-      <figcaption>CSS learning</figcaption>
-    </div>
-    <div class="column">
-        <img src="../../assets/HTML5.PNG">
-        <figcaption>HTML learning</figcaption>
-    </div>
-    <div class="column">
-        <img src="../../assets/JQuery.PNG">
-        <figcaption>JQuery learning</figcaption>
-    </div>
-  </div>-->
-</div>
-  <div>
-    <ul>
-      <li *ngFor="let item of courses | paginate: { itemsPerPage: 1, currentPage: p }"> ... </li>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">     
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>
+body {font-family: "Roboto", sans-serif}
+.w3-bar-block .w3-bar-item {
+  padding: 16px;
+  font-weight: bold;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--<nav>
+  <div class="nav-wrapper" style="background-color: black;">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="sass.html">About</a></li>
+          <li><a href="badges.html">Login</a></li>
+      </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="sass.html">About</a></li>
+      <li><a href="badges.html">Login</a></li>
+      <li><a href="collapsible.html">Registration</a></li>
     </ul>
-               
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <ul id="nav-mobile" class="dropdown-toggle" data-toggle="dropdown"  routerLink="#">Explore Courses<span class="caret"></span>
+    <ul  id="nav-mobile" class="dropdown-menu">
+        <div class="w3-row-padding" style="position:fixed;height:auto ; display: block;
+        overflow: auto;background-color: rgb(0, 150, 136);">
+          <table>
+          <div class="w3-col l3 m4" *ngFor="let c of courses;">
+            <tr><a class="w3-bar-item w3-button" (click)="gototextcontent(c)">{{c.CourseName}}</a></tr>
+          </div>
+          </table>
+        </div>
+  
+    </ul>
+    </ul>
   </div>
+</nav>-->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+      <div class="w3-dropdown-hover w3-hide-small">
+        <button class="w3-padding-large w3-button" title="More">CATEGORY<i class="fa fa-caret-down"></i></button>     
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <div class="w3-row-padding" style="position:fixed;height:auto ; display: block;
+            overflow: auto;background-color: rgb(0, 150, 136);">
+              <table>
+              <div class="w3-col l3 m4" *ngFor="let c of courses;">
+                <tr><a class="w3-bar-item w3-button" (click)="gototextcontent(c)">{{c.CourseName}}</a></tr>
+              </div>
+              </table>
+            </div>
+        </div>
+      </div>
+      <a routerLink="/signin" class="w3-padding-large w3-right">SIGN IN</a>
+      <a routerLink="/signup" class="w3-padding-large w3-right">SIGN UP</a>
+    </div>
+</div>
+
+<hr>
+<img src="../../assets/e-learning.png"/>
+<hr>
+
+<div class="main">
+  <div class="row">
+    <div class="column" *ngFor="let item of courses | paginate: { itemsPerPage: 8, currentPage: p };" (click)="gototextcontent(item)" >
+      <a><img [src]="item.ImagePath"></a>
+      <div style='height:35px; width:auto; background-color:#666;text-align: center;font-size: 25px;'>
+        {{item.CourseName}}
+     </div>
+  </div>
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

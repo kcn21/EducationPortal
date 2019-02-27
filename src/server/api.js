@@ -156,7 +156,8 @@ app.post('/getTopics',function(req,res){
             console.log("error while join")
         else
         {
-           // console.log(JSON.stringify(result));
+            console.log("=============================================\n");
+           console.log(result);
             res.status(200).send(result)
         }
     })
