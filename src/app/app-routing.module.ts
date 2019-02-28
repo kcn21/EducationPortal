@@ -10,6 +10,8 @@ import { AuthGuard } from 'src/auth.guard';
 import { AddVideoComponent } from './Admin_Components/add-video/add-video.component';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
 import { AddTopicComponent } from './Admin_Components/add-topic/add-topic.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import {TextcontentComponent} from './textcontent/textcontent.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/signin',pathMatch:'full'},
@@ -21,6 +23,9 @@ const routes: Routes = [
     {path:'sidebar',component:SidebarComponent},
     {path:'tutorial',component:AddVideoComponent},
     {path:'coursedetails',component:CoursedetailsComponent,canActivate:[AuthGuard]},
+    {path:'navigation',component:NavigationComponent},
+    {path:'textcontent/:id',component:TextcontentComponent}
+
 ];
 
 @NgModule({

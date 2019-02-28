@@ -1,0 +1,13 @@
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    height: 30px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
