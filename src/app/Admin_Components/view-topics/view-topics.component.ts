@@ -53,11 +53,13 @@ export class ViewTopicsComponent implements OnInit {
     this.topicNameInEditor=t.TopicName
   }
   cancelUpdateTopic(){
+    this._Message=""
     this.stopEditing()
     this.Coursetopics=JSON.parse(JSON.stringify(this.CoursetopicsBackup))
   }
   updateTopic()
   {
+    this._Message=""
     var topic={
       _id:this.editingTopicObj._id,
       TopicName:this.topicNameInEditor,
@@ -74,12 +76,14 @@ export class ViewTopicsComponent implements OnInit {
     })
   }
   stopEditing(){
+    this._Message=""
     this.displayEditor=false;
     this.editingTopicObj=null;
     this.editorContent=null
     this.topicNameInEditor=null
   }
   fetchTopicData(){
+    this._Message=""
     this._AdminService.getTopics().subscribe(data=>{
       this.Coursetopics=data;
       console.log(this.Coursetopics)

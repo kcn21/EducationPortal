@@ -9,8 +9,9 @@
 <div *ngIf="!displayEditor" class="w3-container">
   
   <div class="form">
+      <div class="task">Add Topic</div>        
       <div class="w3-container">
-          <div class="w3-card-4 w3-center w3-xlarge">
+          <div class="w3-card-4 w3-center w3-xlarge"*ngIf="_Message">
                   <p>{{_Message}}</p>
           </div>
       </div>
@@ -32,7 +33,7 @@
                 </label>
                 <input type="text" name="TopicName" [(ngModel)]="topicName" #TopicName required autocomplete="off"/> 
             </div>
-            <button class="button button-block" (click)="displayTopicEditView()">Add Topic</button>
+            <button class="button button-block" (click)="displayTopicEditView()">Next</button>
          </div>
             
     </div> 
