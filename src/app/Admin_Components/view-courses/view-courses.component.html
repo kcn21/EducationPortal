@@ -29,6 +29,8 @@
     <td *ngIf="!isEnabledEditView(i)"><button type="button"  (click)="removeCourse(c)">Remove</button></td>    
   </tr>
 </table>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<div style="text-align: center;">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
 
 

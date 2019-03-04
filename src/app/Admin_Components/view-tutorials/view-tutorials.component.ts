@@ -12,6 +12,7 @@ export class ViewTutorialsComponent implements OnInit {
   public Tutorials
   public TutorialToRemoveId
   public TutorialToRemoveName
+  p:number=1
   constructor(private _AdminService:AdminService) { 
     this._AdminService.getTutorial().subscribe(data=>{
       this.Tutorials=data

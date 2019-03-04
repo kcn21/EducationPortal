@@ -86,8 +86,9 @@ body {
   float: left;
   margin-bottom: 40px;
   margin-left: 40px;
+  padding: 5px;
   width: 20%;
-  box-shadow: 0 2px 2px 2px  rgba(53, 54, 54, 0.8);
+  outline:2px solid rgb(204,204,204,0.8);
 }
 .row:after {
   content: "";
@@ -98,9 +99,11 @@ body {
   border:2pxsolid#666;width:60px;}
   
   .column:hover {
-    transform: scale(1.02); 
+    cursor: pointer;
+    box-shadow: 1px 1px 5px 8px rgb(204,204,204,0.8);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
   }
   .column img{
     height:250px;
     width:100%;
   }
+  
