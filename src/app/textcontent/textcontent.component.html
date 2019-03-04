@@ -5,7 +5,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
 body {font-family: "Roboto", sans-serif}
 .w3-bar-block .w3-bar-item {
   padding: 16px;
@@ -15,18 +16,18 @@ body {font-family: "Roboto", sans-serif}
 <body>
 
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>
+  <!--<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.w3schools.com/images/w3schools.png" style="width:80%;"></a>-->
   <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="#">Home</a>
-  <a *ngFor="let t of disp_topics; index as i" class="w3-bar-item w3-button w3-teal" (click)="onselectedtopic(i)">{{t.TopicName}}</a>
-  <div>
+  <a class="w3-bar-item w3-button w3-teal select"><h3><b>{{cName}}</b></h3></a>
+  <a *ngFor="let t of disp_topics; index as i" class="w3-bar-item w3-button w3-teal select" (click)="onselectedtopic(i)">{{t.TopicName}}</a>
+  <!--<div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Dropdown <i class="fa fa-caret-down"></i></a>
     <div id="demo" class="w3-hide">
       <a class="w3-bar-item w3-button" href="#">Link</a>
       <a class="w3-bar-item w3-button" href="#">Link</a>
       <a class="w3-bar-item w3-button" href="#">Link</a>
     </div>
-  </div>
+  </div>-->
 </nav>
 
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
@@ -41,10 +42,7 @@ body {font-family: "Roboto", sans-serif}
 <div class="w3-top">
         <div class="w3-bar w3-black w3-card">
           <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-          <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-          <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>
-          <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
-          <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+          <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
           <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
@@ -52,27 +50,7 @@ body {font-family: "Roboto", sans-serif}
                     <div class="column"  *ngFor="let c of courses;" >
                       <h2>{{c.CourseName}}</h2>
                     </div>
-                  </div>
-            <!--<table>
-                <div class="w3-col l3 m4" *ngFor="let c of courses;">
-                    <tr><a class="w3-bar-item w3-button" href="/html/default.asp">{{c.CourseName}}</a></tr>
-                </div>
-                <tr>
-                  <td><a href="#" class="w3-bar-item w3-button">Merchandise</a>
-                  </td>
-                  <td><a href="#" class="w3-bar-item w3-button">Extras</a>
-                  </td>
-                  <td><a href="#" class="w3-bar-item w3-button">Extras</a>
-                  </td>
-                  <td><a href="#" class="w3-bar-item w3-button">Extras</a>
-                  </td>
-                </tr>
-              <tr>
-                  <td><a href="#" class="w3-bar-item w3-button">Merchandise</a>
-                  </td>    
-              </tr>
-            </table>-->
-              
+                  </div>  
             </div>
           </div>
           <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
@@ -91,15 +69,19 @@ body {font-family: "Roboto", sans-serif}
 </div>
 <header class="w3-container w3-theme" style="padding:64px 32px">
   <div style="margin-left: 300px;">
-    <h1 class="w3-xxxlarge">{{cName}}</h1>
+    <!--<h1 class="w3-xxxlarge">{{cName}}</h1>-->
+    <h2>{{selectedTopictitle}}</h2>
+    <!--<button type="button" [disabled]="enabled" style="margin-left: 500px;">next</button>
+<button type="button" style="margin-left: 500px;">previous</button>-->
   </div>
 </header>
 <div style="margin-left:300px;">
-<input type="button" name="text" value="text"/>
-<input type="button" name="video"  value="video"/>
 </div>
 <div class="w3-container" style="padding:32px;margin-left: 250px;" [innerHTML]="selectedTopic | sanitizeHtml">
 </div>
+<a class="previous" (click)="displayprevcontent()"  ng-class="{disabled: addInviteesDisabled()}">&laquo; Previous</a>
+<a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
+
 
 <script>
 // Open and close the sidebar on medium and small screens
