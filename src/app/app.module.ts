@@ -24,7 +24,9 @@ import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-sub
 import { AddTopicComponent } from './Admin_Components/add-topic/add-topic.component';
 import { ViewTopicsComponent } from './Admin_Components/view-topics/view-topics.component';
 import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-tutorials.component';
-
+import { SanitizeHtmlPipe } from './sanitize-html.pipe';
+import { AddQuizComponent } from './Admin_Components/add-quiz/add-quiz.component';
+import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,9 @@ import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-t
     AddTopicComponent,
     ViewTopicsComponent,
     ViewTutorialsComponent,
-
+    SanitizeHtmlPipe,
+    AddQuizComponent,
+    ViewQuizesComponent,
   ],
   imports: [
     BrowserModule,

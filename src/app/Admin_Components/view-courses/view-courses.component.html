@@ -16,8 +16,8 @@
     <td class="desc" *ngIf="isEnabledEditView(i)"><textarea type="text" [(ngModel)]="courses[i].Description" ></textarea></td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Duration"></td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Cost"></td>
-    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="updateCourse()">Update</button></td>
-    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="cancelEditCourse()">Cancel</button></td>
+    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" class="editButton" (click)="updateCourse()">Update</button></td>
+    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" class="editButton" (click)="cancelEditCourse()">Cancel</button></td>
     
     <td *ngIf="!isEnabledEditView(i)">{{c.CourseName}}</td>
    <td *ngIf="!isEnabledEditView(i)">{{getSubjectName(c)}}</td>

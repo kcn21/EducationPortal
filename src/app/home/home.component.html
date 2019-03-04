@@ -85,7 +85,7 @@ body {font-family: "Roboto", sans-serif}
     <h1 class="w3-xxxlarge">W3.CSS</h1>
     </header>
 
-<div class="w3-container" style="padding:32px" [innerHTML]="selectedTopic.Content">
+<div class="w3-container" style="padding:32px;margin-left: 250px;" [innerHTML]="selectedTopic.Content | sanitizeHtml">
 
 </div>
 
