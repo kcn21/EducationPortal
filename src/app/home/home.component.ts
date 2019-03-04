@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
     }) 
       this._AdminService.getTopics().subscribe(data=>{
         this.topics=data;
-        this.selectedTopic=this.topics[0].topicdetails[0]
+        this.selectedTopic=this.topics[0].topicdetails[1]
       })
    }
    gototextcontent(item){

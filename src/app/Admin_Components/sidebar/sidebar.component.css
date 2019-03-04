@@ -39,12 +39,14 @@ body {
   width: 250px;
   height: 100%;
   margin-left: 0px;
+  
   margin-top: 0px;
   overflow-y: auto;
   background: #000;
 }
 #page-content-wrapper {
-  width: 100%;
+  width: 80%;
+  margin-right: 20px;
   margin-left: 250px;
   position: fixed;
   padding: 15px;
