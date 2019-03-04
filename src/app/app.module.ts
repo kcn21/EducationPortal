@@ -26,7 +26,10 @@ import { ViewTopicsComponent } from './Admin_Components/view-topics/view-topics.
 import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-tutorials.component';
 import { SanitizeHtmlPipe } from './sanitize-html.pipe';
 import { AddQuizComponent } from './Admin_Components/add-quiz/add-quiz.component';
-import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NavigationComponent } from './navigation/navigation.component';
+import { TextcontentComponent } from './textcontent/textcontent.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,9 @@ import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.
     ViewTutorialsComponent,
     SanitizeHtmlPipe,
     AddQuizComponent,
-    ViewQuizesComponent,
+    NavigationComponent,
+    TextcontentComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,8 @@ import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.
     FormsModule,
     RouterModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot()
   ],

@@ -5,7 +5,7 @@
     </title>
   </div>
   <div *ngIf="!displayEditor">
-  <div *ngFor="let ct of Coursetopics;index as ti">
+  <div *ngFor="let ct of Coursetopics | paginate: { itemsPerPage: 5, currentPage: p } index as ti;">
   <div class="mes">
     <h3>{{ct.CourseName}}</h3>
   </div>
@@ -19,7 +19,7 @@
         <th></th>
         <th></th>
       </tr>
-      <tr *ngFor="let t of ct.topicdetails; index as i">
+      <tr *ngFor="let t of ct.topicdetails;index as i">
         <td>{{i+1}}</td>
         <td>{{t.TopicName}}</td>
         <td ><button type="button" [value]="i" (click)="displayEditView(t)">Edit</button></td>
@@ -27,6 +27,7 @@
       </tr>
     </table>
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 
   <div *ngIf="displayEditor">

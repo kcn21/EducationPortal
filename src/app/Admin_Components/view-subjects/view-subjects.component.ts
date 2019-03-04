@@ -14,6 +14,7 @@ export class ViewSubjectsComponent implements OnInit {
   public editViewEnabled=false
   public indAtEditView=-1
   public itemToRemoveName=null
+  p:number=1;
   constructor(private _AdminService:AdminService) { 
     this._AdminService.getSubjects().subscribe(data=>{
       this.subjects=data;

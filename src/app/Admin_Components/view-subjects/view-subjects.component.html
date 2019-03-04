@@ -9,8 +9,8 @@
         <th></th>
         <th></th>
       </tr>
-      <tr *ngFor="let s of subjects; index as i">
-        <td>{{i+1}}</td>
+      <tr *ngFor="let s of subjects  | paginate: { itemsPerPage: 5, currentPage: p }  index as i;">
+        <td>{{((p-1)*5)+i+1}}</td>
         <td *ngIf="!isEnabledEditView(i)">{{s.SubjectName}}</td>
         <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="subjects[i].SubjectName" id=""></td>
         <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="updateSubject()">Update</button></td>
@@ -19,5 +19,6 @@
         <td *ngIf="!isEnabledEditView(i)"><button type="button" [value]="i" (click)="removeSubject(s)">Remove</button></td>
       </tr>
     </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
     
     

@@ -18,6 +18,7 @@ export class ViewTopicsComponent implements OnInit {
   public editorContent
   public editingTopicObj
   public topicNameInEditor
+  p:number=1
   constructor(private _AdminService:AdminService) { 
     this.fetchTopicData()
 }

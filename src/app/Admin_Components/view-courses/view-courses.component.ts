@@ -17,6 +17,7 @@ export class ViewCoursesComponent implements OnInit {
   private itemToRemoveName=null
   public _Message=null
   public subjects
+  p:number=1
   constructor(private _AdminService:AdminService) {
     this.fields=["Course Name","Subject","Description","Duration","Cost"]
     this._AdminService.getCourseNames().subscribe(data=>{
