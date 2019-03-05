@@ -62,7 +62,7 @@ export class AdminService {
   {
     return this._http.post<any>(this._getCourseNamesUrl,null)
   }
-
+  
   AddVideo(video)
   {
     return this._http.post<any>(this._addVideoUrl,video)

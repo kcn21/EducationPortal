@@ -217,7 +217,7 @@ app.post('/GetVideos',function(req,res){
     var data=req.body
     //console.log(data.cId)
     
-    db.collection("videos").find({}, {_id:0, CourseId:1, Title:0, Description:0}).toArray(function(err,result){
+    db.collection("videos").find({}, {_id:0, CourseId:1, TopicId:1, Title:0, Description:0}).toArray(function(err,result){
         if(err)
         {
             console.log("error while getting course names")

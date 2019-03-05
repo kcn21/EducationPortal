@@ -8,10 +8,11 @@ import {AdminService} from '../../services/admin.service';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private _AdminService:AdminService) { }
+  constructor(private _AdminService:AdminService) {
+  }
 
-  
-  ngOnInit() {
+
+  ngOnInit() { 
   }
 
 }
