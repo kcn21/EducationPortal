@@ -42,8 +42,9 @@ export class CoursedetailsComponent implements OnInit {
     var obj={
       cId:this.courses[this.currentlyshowingVideoForCourseId]._id
     }
+    console.log(obj)
     this._AdminService.getVideos(obj).subscribe(data=>{
-      //console.log(data)
+      console.log(data)
         if(data)
         {
           this.videos=data;

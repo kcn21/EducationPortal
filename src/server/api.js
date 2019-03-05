@@ -186,7 +186,7 @@ app.post('/removeTopic',function(req,res){
             throw err;
         //console.log('deleted Course With Id '+data.cId);
         res.status(200).send(result)
-})
+    })
 })
 app.post('/updateTopic',function(req,res){
     var TopicData=req.body
@@ -215,9 +215,8 @@ app.post('/AddVideo',function(req,res){
 })
 app.post('/GetVideos',function(req,res){
     var data=req.body
-    //console.log(data.cId)
-    
-    db.collection("videos").find({}, {_id:0, CourseId:1, Title:0, Description:0}).toArray(function(err,result){
+    console.log(data.cId)
+    db.collection("videos").find({CourseId:data.cId}).toArray(function(err,result){
         if(err)
         {
             console.log("error while getting course names")
@@ -393,6 +392,17 @@ app.post('/getQuestions',function(req,res){
         }
     })
 })
+app.post('/removeQuiz',function(req,res){
+    var data=req.body
+    console.log(data)
+    var myQuery={_id:mongoose.Types.ObjectId(data.qId)}
+    db.collection('quizzes').deleteOne(myQuery,function(err,result){
+        if(err)
+            throw err;
+        //console.log('deleted Course With Id '+data.cId);
+        res.status(200).send(result)
+})
+})
 app.post("/getQuizes",function(req,res){
     db.collection('courses').aggregate([
         {
@@ -413,5 +423,18 @@ app.post("/getQuizes",function(req,res){
             res.status(200).send(result)
         }
     })
+})
+app.post('/UpdateQuiz',function(req,res){
+    var QuizData=req.body
+    var myquery = { _id : mongoose.Types.ObjectId(QuizData._id)};
+    console.log(myquery)
+    var newvalues = { $set: {QuizName: QuizData.QuizName,TimeLimit:QuizData.TimeLimit } };
+    console.log(newvalues)
+    db.collection("quizzes").updateOne(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        //console.log("course updated");
+        res.status(200).send(result);
+
+      })
 })
 app.listen(8081,()=>console.log("Server listening at 8081"))

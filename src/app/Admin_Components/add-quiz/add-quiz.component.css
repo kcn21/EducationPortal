@@ -12,7 +12,7 @@ select{
     border: 1px solid #a0b3b0;
   }
 
-  select:hover ,option:hover{
+  select:hover,select:focus ,option:hover{
       outline: 0;
       border-color: #1ab188;
   }
@@ -166,7 +166,7 @@ select{
     -webkit-appearance: none;
   }
   .button:hover, .button:focus {
-    background: #179b77;
+    background: #388b75;
     cursor: pointer;
   }
   
