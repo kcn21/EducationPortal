@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="mes">
+    <title class="mes">{{_Message}}
+    </title>
+</div>
+<div>
+  <div *ngFor="let ct of CourseQuizes;index as ti">
+  <div class="mes">
+    <h3>{{ct.CourseName}}</h3>
+  </div>
+  <div class="mes" *ngIf="!ct.quizdetails.length">
+    <h4 style="color:black;">No Quizes Are Available!</h4>
+  </div>
+  <table id="customers" *ngIf="ct.quizdetails.length">
+      <tr>
+        <th>#</th>
+        <th>Quiz Name</th>
+        <th>Time Limit</th>
+        <th>Topic Name</th>
+        <th></th>
+        <th></th>
+        <th *ngIf="indAtEditView!=-1"></th>
+      </tr>
+      <tr *ngFor="let t of ct.quizdetails; index as i">
+        <td>{{i+1}}</td>
+        <td *ngIf="isEnabledEditView(ti,i)"><input type="text" [(ngModel)]="CourseQuizes[ti].quizdetails[i].QuizName"></td>
+        <td *ngIf="isEnabledEditView(ti,i)"><input type="text" [(ngModel)]="CourseQuizes[ti].quizdetails[i].TimeLimit"></td>
+        
+        <td *ngIf="!isEnabledEditView(ti,i)">{{t.QuizName}}</td>
+        <td *ngIf="!isEnabledEditView(ti,i)">{{t.TimeLimit}}</td>
+        <td>{{getTopicName(t.TopicId)}}</td>
+        <td *ngIf="isEnabledEditView(ti,i)"><button type="button" [value]="i" class="editButton" (click)="onUpdateQuiz(ti)">Update</button></td>
+        <td *ngIf="isEnabledEditView(ti,i)"><button type="button" [value]="i"  class="editButton"(click)="onEditQuestions(ti)">Edit Questions</button></td>
+        <td *ngIf="isEnabledEditView(ti,i)"><button type="button" [value]="i" class="editButton" (click)="onCancelUpdateQuiz()">Cancel</button></td>
+        <td *ngIf="!isEnabledEditView(ti,i)"><button type="button" [value]="i" (click)="onEditQuiz(ti,i)">Edit</button></td>
+        <td *ngIf="!isEnabledEditView(ti,i)"><button type="button" [value]="i" (click)="onRemoveQuiz(t._id)">Remove</button></td>
+      </tr>
+    </table>
+  </div>
+</div>

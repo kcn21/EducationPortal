@@ -1,7 +1,9 @@
 require('mongoose-type-url');
 var mongoose=require('mongoose')
+
+const Schema = mongoose.Schema;
 var VideoSchema=new mongoose.Schema({
-    CourseId:String,
+    CourseId:{ type: Schema.Types.ObjectId, ref: 'course' },
     Title:String,
     Link:String,
     Description:String
