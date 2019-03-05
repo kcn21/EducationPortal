@@ -88,11 +88,11 @@ export class SidebarComponent implements OnInit {
         this.displayAddQuiz=true;
         this.toggleQuizesMenu=true;
       }
-      else if(this.task == "viewQuizes")
+      /*else if(this.task == "viewQuizes")
       {
         this.displayViewQuiz=true;
         this.toggleQuizesMenu=true;
-      }
+      }*/
     });  
   }
 

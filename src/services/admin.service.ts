@@ -28,6 +28,7 @@ export class AdminService {
   private _getQuestionsUrl="http://localhost:8081/getQuestions"
   private _getQuizesUrl="http://localhost:8081/getQuizes" 
   private _getAllTopicsUrl="http://localhost:8081/getAllTopics"
+  private _getQuizForCourseUrl="http://localhost:8081/getQuizForCourse"
   constructor(private _http:HttpClient) { }
   AddCourse(course)
   {
@@ -111,12 +112,16 @@ export class AdminService {
   {
     return this._http.post<any>(this._addQuestionsUrl,data)
   }
-  getQuestions(quizId)
+  getQuestions()
   {
-    return this._http.post<any>(this._getQuestionsUrl,quizId)
+    return this._http.post<any>(this._getQuestionsUrl,null)
   }
   getQuizes()
   {
     return this._http.post<any>(this._getQuizesUrl,null)
+  }
+  getQuizForCourse(CourseId)
+  {
+    return this._http.post<any>(this._getQuizForCourseUrl,CourseId)
   }
 }
