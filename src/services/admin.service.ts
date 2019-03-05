@@ -23,6 +23,11 @@ export class AdminService {
   private _updateTopicUrl="http://localhost:8081/updateTopic"
   private _getTutorialUrl="http://localhost:8081/getTutorial"
   private _removeTutorialUrl="http://localhost:8081/removeTutorial"
+  private _addQuizUrl="http://localhost:8081/addQuiz"
+  private _addQuestionsUrl="http://localhost:8081/addQuestions"
+  private _getQuestionsUrl="http://localhost:8081/getQuestions"
+  private _getQuizesUrl="http://localhost:8081/getQuizes" 
+  private _getAllTopicsUrl="http://localhost:8081/getAllTopics"
   constructor(private _http:HttpClient) { }
   AddCourse(course)
   {
@@ -36,6 +41,11 @@ export class AdminService {
   {
      return this._http.post<any>(this._addTopicUrl,topic)
   }
+  getAllTopics()
+  {
+    return this._http.post<any>(this._getAllTopicsUrl,null)
+  }
+  // Topics as per course
   getTopics()
   {
       return this._http.post<any>(this._getTopicsUrl,null)
@@ -92,5 +102,21 @@ export class AdminService {
   removeTutorial(tutorialId)
   {
     return this._http.post<any>(this._removeTutorialUrl,tutorialId)
+  }
+  addQuiz(quiz)
+  {
+    return this._http.post<any>(this._addQuizUrl,quiz)
+  }
+  addQuestions(data)
+  {
+    return this._http.post<any>(this._addQuestionsUrl,data)
+  }
+  getQuestions(quizId)
+  {
+    return this._http.post<any>(this._getQuestionsUrl,quizId)
+  }
+  getQuizes()
+  {
+    return this._http.post<any>(this._getQuizesUrl,null)
   }
 }

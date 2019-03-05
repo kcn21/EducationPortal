@@ -9,6 +9,8 @@ var Video=require('./schema/video')
 var Course=require('./schema/course')
 var Subject=require('./schema/subject')
 var Topic=require('./schema/topic')
+var Quiz=require('./schema/quiz')
+var Question=require('./schema/question')
 var app=express()
 app.use(bodyParser.json())
 app.use(cors())
@@ -138,8 +140,22 @@ app.post('/getCourseNames',function(req,res){
             //console.log(result)
             res.status(200).send(result)
         }
+    })
 })
+app.post('/getAllTopics',function(req,res){
+    db.collection("topics").find({}).toArray(function(err,result){
+        if(err)
+        {
+            console.log("error while getting course names")
+        }
+        else
+        {
+            //console.log(result)
+            res.status(200).send(result)
+        }
+    })
 })
+// Gives Topics As Per Course
 app.post('/getTopics',function(req,res){
     db.collection('courses').aggregate([
         {
@@ -156,7 +172,8 @@ app.post('/getTopics',function(req,res){
             console.log("error while join")
         else
         {
-           // console.log(JSON.stringify(result));
+            console.log("=============================================\n");
+           console.log(result);
             res.status(200).send(result)
         }
     })
@@ -320,5 +337,81 @@ app.post('/getSubjects',function(req,res){
             res.status(200).send(result)
         }
 })
+})
+app.post('/addQuiz',function(req,res){
+    var quizData=req.body
+    console.log(quizData)
+    var quiz=new Quiz(quizData)
+    quiz.save((err,addedQuiz)=>{
+        if(err)
+            console.log(err)
+        else
+            res.status(200).send(addedQuiz)
+    })
+})
+app.post('/addQuestions',function(req,res){
+    var quesData=req.body
+    console.log(quesData)
+    var ques=quesData.QuizQuestions
+    ques.forEach(que=>{
+        //console.log("==========")
+        //console.log(que)
+        //console.log("==========")
+        var qData={
+          Title:que.Title,
+          OptionA:que.OptionA,
+          OptionB:que.OptionB,
+          OptionC:que.OptionC,
+          OptionD:que.OptionD,
+          CorrectOption:que.CorrectOption,
+          Marks:que.Marks,
+          QuizId:quesData.QuizId
+        }
+        var question=new Question(qData)
+        console.log(question)
+        question.save((err,data)=>{
+            if(err)
+                console.log(err)
+            else{
+                console.log("Question Added : "+que.Title)
+            }   
+        })
+    })
+    res.status(200).send({Message:"Added SuccessFully!"})
+})
+app.post('/getQuestions',function(req,res){
+    var data=req.body
+    db.collection("questions").find({QuizId:data.qId}).toArray(function(err,result){
+        if(err)
+        {
+            console.log("error while getting course names")
+        }
+        else
+        {
+            //console.log(result)
+            res.status(200).send(result)
+        }
+    })
+})
+app.post("/getQuizes",function(req,res){
+    db.collection('courses').aggregate([
+        {
+            $lookup:
+            {
+                from:'quizzes',
+                localField:'_id',
+                foreignField:'CourseId',
+                as:'quizdetails'
+            }
+        }
+    ]).toArray(function(err,result){
+        if(err)
+            console.log("error while join")
+        else
+        {
+           //console.log(JSON.stringify(result));
+            res.status(200).send(result)
+        }
+    })
 })
 app.listen(8081,()=>console.log("Server listening at 8081"))

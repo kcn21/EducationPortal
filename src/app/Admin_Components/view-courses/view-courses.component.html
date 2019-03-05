@@ -2,6 +2,7 @@
   <title class="mes">{{_Message}}
   </title>
 </div>
+<input class="search" type="text" name="search" placeholder="Search.." [(ngModel)]="term">
 <table id="customers">
   <tr>
     <th>#</th>
@@ -9,15 +10,15 @@
     <th></th>
     <th></th>
   </tr>
-  <tr *ngFor="let c of courses; index as i">
-    <td>{{i+1}}</td>
+  <tr *ngFor="let c of courses | paginate: { itemsPerPage: 5, currentPage: p } | filter:term index as i; ">
+    <td>{{((p-1)*5)+i+1}}</td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].CourseName" id=""></td>
     <td *ngIf="isEnabledEditView(i)">{{getSubjectName(c)}}</td>    
     <td class="desc" *ngIf="isEnabledEditView(i)"><textarea type="text" [(ngModel)]="courses[i].Description" ></textarea></td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Duration"></td>
     <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Cost"></td>
-    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="updateCourse()">Update</button></td>
-    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="cancelEditCourse()">Cancel</button></td>
+    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" class="editButton" (click)="updateCourse()">Update</button></td>
+    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" class="editButton" (click)="cancelEditCourse()">Cancel</button></td>
     
     <td *ngIf="!isEnabledEditView(i)">{{c.CourseName}}</td>
    <td *ngIf="!isEnabledEditView(i)">{{getSubjectName(c)}}</td>
@@ -28,4 +29,6 @@
     <td *ngIf="!isEnabledEditView(i)"><button type="button"  (click)="removeCourse(c)">Remove</button></td>    
   </tr>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
 

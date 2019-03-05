@@ -1,0 +1,158 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<button class="AddNewQueButton" *ngIf="!displayAddQuizPage" (click)="showAddQuestionPage()">Add New Question</button>
+<button class="AddNewQueButton" *ngIf="!displayAddQuizPage" (click)="addQuiz()">Submit</button>
+<div *ngIf="displayAddQuesPage" class="w3-container" style="padding-top:0px;">
+    <div class="form">
+        <div class="w3-container" *ngIf="_Message">
+            <div class="w3-card-4 w3-center w3-xlarge">
+                    <p>{{_Message}}</p>    
+            </div>
+        </div>
+      <div class="tab-content">
+          <form #AddQueForm="ngForm" (ngSubmit)="addQue(AddQueForm.value)" action="/" method="post"> 
+              <div class="task">Question No. {{QuestionCount}}</div>
+              <div class="field-wrap">
+                  <label>
+                      Question Title <span class="req">*</span>
+                  </label>
+                  <input type="text" name="Title" #Title ngModel  autocomplete="off" required/>
+                  <div *ngIf="Title.invalid" style="background-color: brown">
+                      Title is required.
+                  </div>
+              </div>
+                      
+              <div class="field-wrap">
+                  <label>
+                      Option A <span class="req">*</span>
+                  </label>
+                  <input type="text" name="OptionA" #OptionA ngModel  autocomplete="off" required/>
+                  <div *ngIf="OptionA.invalid" style="background-color: brown">
+                      Option A is required.
+                  </div>
+              </div>
+              <div class="field-wrap">
+                  <label>
+                      Option B <span class="req">*</span>
+                  </label>
+                  <input type="text" name="OptionB" #OptionB ngModel  autocomplete="off" required/>
+                  <div *ngIf="OptionB.invalid" style="background-color: brown">
+                      Option B is required.
+                  </div>
+              </div>
+              <div class="field-wrap">
+                  <label>
+                      Option C <span class="req">*</span>
+                  </label>
+                  <input type="text" name="OptionC" #OptionC ngModel  autocomplete="off" required/>
+                  <div *ngIf="OptionC.invalid" style="background-color: brown">
+                      Option C is required.
+                  </div>
+              </div>
+              <div class="field-wrap">
+                  <label>
+                      Option D <span class="req">*</span>
+                  </label>
+                  <input type="text" name="OptionD" #OptionD ngModel  autocomplete="off" required/>
+                  <div *ngIf="OptionD.invalid" style="background-color: brown">
+                      Option D is required.
+                  </div>
+              </div>
+              <div class="field-wrap">
+                  <select style="margin-right:50px;" #CorrectOption [(ngModel)]="SelectedCorrectOption" name="CorrectOption">
+                      <option value="0" selected>
+                          Select Correction Option
+                      </option>
+                      <option value="A">
+                        A
+                      </option>
+                      <option value="B">
+                        B
+                      </option>
+                      <option value="C">
+                        C
+                      </option>
+                      <option value="D">
+                        D
+                      </option>
+                  </select>
+              </div>
+              <div class="field-wrap">
+                <label>
+                    Marks <span class="req">*</span>
+                </label>
+                <input type="number" name="Marks" min="1" #Marks ngModel  autocomplete="off" required/>
+                <div *ngIf="Marks.invalid" style="background-color: brown">
+                    Marks is required.
+                </div>
+               </div>
+            
+              <button class="button button-block" >Add</button>
+            </form>
+           </div> 
+    </div>
+</div>
+<div *ngIf="displayAddQuizPage" class="w3-container">
+  
+  <div class="form">
+        <div class="task">Add Quiz</div>        
+      <div class="w3-container">
+          <div class="w3-card-4 w3-center w3-xlarge">
+                  <p>{{_Message}}</p>
+          </div>
+      </div>
+    <div class="tab-content">
+        <div class="tab-content">
+            <div class="field-wrap">
+              <select  [(ngModel)]="SelectedCourse"(change)="SelectedCourseChanged()" style="margin-right:50px;" name="CourseId">
+                  <option value="0" selected>
+                      Select Course
+                    </option>
+                  <option *ngFor="let cname of CourseNames" [ngValue]="cname._id">
+                      {{cname.CourseName}}
+                  </option>
+              </select>
+            </div>
+            <div class="field-wrap">
+              <select  [(ngModel)]="SelectedTopic" style="margin-right:50px;" name="TopicId">
+                  <option value="0" selected>
+                      Select Topic
+                    </option>
+                  <option *ngFor="let tname of TopicNames" [ngValue]="tname._id">
+                      {{tname.TopicName}}
+                  </option>
+              </select>
+            </div>
+            <div class="field-wrap">
+                <label>
+                    Quiz Name <span class="req">*</span>
+                </label>
+                <input type="text" name="TopicName" [(ngModel)]="quizName" #QuizName required autocomplete="off"/> 
+            </div>
+            <div class="field-wrap">
+                <label>
+                    Time Limit(In Min) <span class="req">*</span>
+                </label>
+                <input type="number" min="1" name="TimeLimit" [(ngModel)]="timeLimit" #TimeLimit required autocomplete="off"/> 
+            </div>
+            
+            <button class="button button-block"(click)="showAddQuestionPage()" >Next</button>
+         </div>
+            
+    </div> 
+  </div>
+</div>
+
+<div *ngIf="!displayAddQuesPage && !displayAddQuizPage" >
+    <div *ngFor="let que of Questions; index as i" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
+        <h3>Question No. {{i+1}}&emsp;:-&emsp;{{que.Title}} </h3>
+        <h4>
+            A&ensp;.&emsp;{{que.OptionA}}<br>
+            B&ensp;.&emsp;{{que.OptionB}}<br>
+            C&ensp;.&emsp;{{que.OptionC}}<br>
+            D&ensp;.&emsp;{{que.OptionD}}<br>
+            Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
+            Marks&ensp;:&emsp;{{que.Marks}}
+        </h4>
+    </div>    
+    
+</div>

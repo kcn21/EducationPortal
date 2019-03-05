@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html>
-<title>W3.CSS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">     
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
@@ -12,189 +11,65 @@ body {font-family: "Roboto", sans-serif}
   font-weight: bold;
 }
 </style>
-<body>
-
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-  <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="https://www.tutorialspoint.com/assets/videos/courses/289/images/course_289_image.png" style="width:80%;"></a>
-  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" >Close <i class="fa fa-remove"></i></a>
-  <a class="w3-bar-item w3-button w3-teal" href="home">Home</a>
-  <a *ngFor="let cname of CourseNames" class="w3-bar-item w3-button w3-teal" href="#">{{cname.CourseName}}</a>
-</nav>
-
-<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-
-<div class="w3-main" style="margin-left:250px; position: relative;">
-
-<!--div class="w3-top">
-        <div class="w3-bar w3-black w3-card">
-          <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-          <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-          <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>
-          <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
-          <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
-          <div class="w3-dropdown-hover w3-hide-small">
-            <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-            <table>
-                <tr>
-                  <td><a href="#" class="w3-bar-item w3-button">Merchandise</a>
-                    <a href="#" class="w3-bar-item w3-button" style="font-size: 15px;">
-                    Merchandise
-                    </a>
-                  </td>
-                  <td><a href="#" class="w3-bar-item w3-button">Extras</a>
-                  </td>
-              </tr>
-              <tr>
-                  <td><a href="#" class="w3-bar-item w3-button">Merchandise</a>
-                  </td>
-                 
-              </tr>
-            </table>
-              
-            </div>
-          </div>
-          <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
-        </div>
-</div-->
-<nav class="navbar navbar-inverse" style="position: relative;height:50px;z-index:99999;">
-  <div class="container-fluid" style="position: relative;height:50px;z-index:99999;">
-    <div class="navbar-header" style="position: relative;height:50px;z-index:99999;">
-      <a class="navbar-brand" routerLink="home">Education Portal</a>
-    </div>
-    <ul class="nav navbar-nav" style="position: relative;height:50px;z-index:99999;">
-      <li class="active"><a routerLink="home">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  routerLink="blog">Explore Courses <span class="caret"></span></a>
-        <ul class="dropdown-menu" style="width:1000px; overflow:auto">
-         <!--- <li><a routerLink="shakti">Shakti MicroProecessor</a></li>
-          <li><a routerLink="gmail">Gmail data security</a></li>
-          <li><a routerLink="ms">Microsoft's quantum computer</a></li-->
-            <div class="w3-row-padding" style="position: relative;height:50px;z-index:99999; background-color: rgb(0, 150, 136);">
-              <table>
-              <div class="w3-col l3 m4" >
-                <tr><h3>HTML and CSS</h3></tr>
-                <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr>
-                <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr> 
-              
-              </div>
-              <div class="w3-col l3 m4">   
-                  <tr><h3>HTML and CSS</h3></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr>           
-              </div>
-              <div class="w3-col l3 m4" >
-                  <tr><h3>HTML and CSS</h3></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                  <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr> 
-              </div>
-              <div class="w3-col l3 m4">
-               
-                <tr><h3>HTML and CSS</h3></tr>
-                <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr>
-                <tr><a class="w3-bar-item w3-button" href="/html/default.asp">Learn HTML</a></tr>
-                <tr><a class="w3-bar-item w3-button" href="/css/default.asp">Learn CSS</a></tr>               </div>
-              </table>
-            </div>
-      
-        </ul>
-      </li>
-      <!---div class="w3-dropdown-hover w3-hide-small">
-        <button class="dropdown" title="More">MORE <i class="fa fa-caret-down"></i></button>     
-        <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <table>
-            <tr>
-              <td><a href="#" class="w3-bar-item w3-button">Merchandise</a>
-                <a href="#" class="w3-bar-item w3-button" style="font-size: 15px;">
-                Merchandise
-                </a>
-              </td>
-              <td><a href="#" class="w3-bar-item w3-button">Extras</a>
-              </td>
-          </tr>
-          <tr>
-              <td><a href="#" class="w3-bar-item w3-button">Merchandise</a>
-              </td>
-             
-          </tr>
-        </table>
-          
-        </div>
-      </div-->
-    
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--<nav>
+  <div class="nav-wrapper" style="background-color: black;">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="sass.html">About</a></li>
+          <li><a href="badges.html">Login</a></li>
+      </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="sass.html">About</a></li>
+      <li><a href="badges.html">Login</a></li>
+      <li><a href="collapsible.html">Registration</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a routerLink="index"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a routerLink="login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+    <ul id="nav-mobile" class="dropdown-toggle" data-toggle="dropdown"  routerLink="#">Explore Courses<span class="caret"></span>
+    <ul  id="nav-mobile" class="dropdown-menu">
+        <div class="w3-row-padding" style="position:fixed;height:auto ; display: block;
+        overflow: auto;background-color: rgb(0, 150, 136);">
+          <table>
+          <div class="w3-col l3 m4" *ngFor="let c of courses;">
+            <tr><a class="w3-bar-item w3-button" (click)="gototextcontent(c)">{{c.CourseName}}</a></tr>
+          </div>
+          </table>
+        </div>
+  
+    </ul>
     </ul>
   </div>
-</nav>  
-      
-      <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-      <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-        <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BAND</a>
-        <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOUR</a>
-        <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a routerLink="index"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a routerLink="login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-        </ul>
+</nav>-->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+      <div class="w3-dropdown-hover w3-hide-small">
+        <button class="w3-padding-large w3-button" title="More">Explore Courses<i class="fa fa-caret-down"></i></button>     
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <div class="w3-row-padding" style="position:fixed;height:auto ; display: block;
+            overflow: auto;background-color: rgb(0, 150, 136);">
+              <table>
+              <div class="w3-col l3 m4" *ngFor="let c of courses;">
+                <tr><a class="w3-bar-item w3-button" (click)="gototextcontent(c)">{{c.CourseName}}</a></tr>
+              </div>
+              </table>
+            </div>
+        </div>
       </div>
-
-
+      <a routerLink="/signin" class="w3-padding-large w3-right">SIGN IN</a>
+      <a routerLink="/signup" class="w3-padding-large w3-right">SIGN UP</a>
+    </div>
 </div>
-<header class="w3-container w3-theme" style="padding:64px 32px">
-    <h1 class="w3-xxxlarge">W3.CSS</h1>
-    </header>
+<hr>
+<img src="../../assets/e-learning.png"/>
+<hr>
 
-<div class="w3-container" style="padding:32px" [innerHTML]="selectedTopic.Content">
-
+<div class="main">
+  <div class="row">
+    <div class="column" *ngFor="let item of courses | paginate: { itemsPerPage: 8, currentPage: p };" (click)="gototextcontent(item)" >
+      <a><img [src]="item.ImagePath"></a>
+      <div style='height:35px; width:auto; background-color:#666;text-align: center;font-size: 25px;'>
+        {{item.CourseName}}
+     </div>
+  </div>
 </div>
-
-<script>
-// Open and close the sidebar on medium and small screens
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
-}
-
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
-}
-
-// Change style of top container on scroll
-window.onscroll = function() {myFunction()};
-function myFunction() {
-  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
-    document.getElementById("myIntro").classList.add("w3-show-inline-block");
-  } else {
-    document.getElementById("myIntro").classList.remove("w3-show-inline-block");
-    document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
-  }
-}
-
-// Accordions
-function myAccordion(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-theme";
-  } else { 
-    x.className = x.className.replace("w3-show", "");
-    x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-theme", "");
-  }
-}
-</script>
-     
-</body>
-</html> 
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

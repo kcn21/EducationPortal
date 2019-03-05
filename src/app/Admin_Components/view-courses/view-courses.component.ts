@@ -7,7 +7,7 @@ import {AdminService}from '../../../services/admin.service';
   styleUrls: ['./view-courses.component.css']
 })
 export class ViewCoursesComponent implements OnInit {
-
+  public term
   public courses
   public coursesBackup
   public fields
@@ -17,6 +17,7 @@ export class ViewCoursesComponent implements OnInit {
   private itemToRemoveName=null
   public _Message=null
   public subjects
+  p:number=1
   constructor(private _AdminService:AdminService) {
     this.fields=["Course Name","Subject","Description","Duration","Cost"]
     this._AdminService.getCourseNames().subscribe(data=>{

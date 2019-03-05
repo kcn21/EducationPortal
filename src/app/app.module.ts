@@ -24,7 +24,13 @@ import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-sub
 import { AddTopicComponent } from './Admin_Components/add-topic/add-topic.component';
 import { ViewTopicsComponent } from './Admin_Components/view-topics/view-topics.component';
 import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-tutorials.component';
-
+import { SanitizeHtmlPipe } from './sanitize-html.pipe';
+import { AddQuizComponent } from './Admin_Components/add-quiz/add-quiz.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NavigationComponent } from './navigation/navigation.component';
+import { TextcontentComponent } from './textcontent/textcontent.component';
+import { QuizComponent } from './quiz/quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +49,11 @@ import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-t
     AddTopicComponent,
     ViewTopicsComponent,
     ViewTutorialsComponent,
+    SanitizeHtmlPipe,
+    AddQuizComponent,
+    NavigationComponent,
+    TextcontentComponent,
+    QuizComponent,
 
   ],
   imports: [
@@ -51,6 +62,8 @@ import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-t
     FormsModule,
     RouterModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot()
   ],

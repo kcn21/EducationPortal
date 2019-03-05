@@ -79,13 +79,26 @@
                         </a>
                     </div>
                 </li>
+                <li>
+                    <button type="button" class="menuItem" (click)="onToggleMenu('q')">
+                        Quizes
+                    </button>
+                    <div  *ngIf="toggleQuizesMenu">
+                        <a routerLink="/admin/addQuiz" class="subItem"  id="addTopic">
+                            Add Quiz
+                        </a>
+                        <a routerLink="/admin/viewQuizes" class="subItem"  id="viewTopics">
+                            View Quizes
+                        </a>
+                    </div>
+                </li>
             </ul>
         </div>
         
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" >
             <div class="container-fluid"> 
                 <!--<h1>Simple Sidebar</h1>
                 <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
@@ -117,6 +130,13 @@
                 <div *ngIf="displayViewTutorials" class="mainContent">
                     <app-view-tutorials></app-view-tutorials>
                 </div>
+                <div *ngIf="displayAddQuiz" class="maincontent">
+                    <app-add-quiz></app-add-quiz>
+                </div>
+             <!--   <div *ngIf="displayViewQuiz" class="maincontent">
+                    <app-view-quizes></app-view-quizes>            
+                </div>-->
+    
             </div>
         </div>
     

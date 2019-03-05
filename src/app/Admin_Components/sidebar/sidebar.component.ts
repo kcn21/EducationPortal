@@ -10,6 +10,7 @@ declare var $:any;
 export class SidebarComponent implements OnInit {
   public toggleCourseMenu=false;
   public toggleTopicMenu=false;
+  public toggleQuizesMenu=false;
   public toggleTutorialMenu=false;
   public toggleSubjectMenu=false;
   public displayAddCourse=false;
@@ -20,6 +21,8 @@ export class SidebarComponent implements OnInit {
   public displayAddTopic=false;
   public displayViewTopics=false;
   public displayViewTutorials=false;
+  public displayAddQuiz=false;
+  public displayViewQuiz=false;
   public task
   constructor(private route:ActivatedRoute,private router:Router) { 
     route.params.subscribe(val => {
@@ -29,6 +32,8 @@ export class SidebarComponent implements OnInit {
       this.displayViewTutorials=false;
       this.displayViewCourses=false;
       this.displayAddVideo=false;
+      this.displayAddQuiz=false;
+      this.displayViewQuiz=false;
       this.displayAddSubject=false;
       this.displayViewSubject=false;
       this.displayViewTopics=false;
@@ -37,6 +42,7 @@ export class SidebarComponent implements OnInit {
       this.toggleSubjectMenu=false;
       this.toggleTopicMenu=false;
       this.toggleTutorialMenu=false;
+      this.toggleQuizesMenu=false;
       if(this.task == 'addCourse')
       {
           this.displayAddCourse=true;
@@ -76,6 +82,16 @@ export class SidebarComponent implements OnInit {
       {
         this.toggleTutorialMenu=true;
         this.displayViewTutorials=true;
+      }
+      else if(this.task == "addQuiz")
+      {
+        this.displayAddQuiz=true;
+        this.toggleQuizesMenu=true;
+      }
+      else if(this.task == "viewQuizes")
+      {
+        this.displayViewQuiz=true;
+        this.toggleQuizesMenu=true;
       }
     });  
   }
@@ -120,6 +136,16 @@ export class SidebarComponent implements OnInit {
         else{
           this.toggleSubjectMenu=true;
         }
+    }
+    else if(data == 'q')
+    {
+      if(this.toggleQuizesMenu == true)
+      {
+        this.toggleQuizesMenu=false;
+      }
+      else{
+        this.toggleQuizesMenu=true;
+      }
     }
   }
 }
