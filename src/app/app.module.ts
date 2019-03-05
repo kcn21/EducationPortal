@@ -30,7 +30,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TextcontentComponent } from './textcontent/textcontent.component';
-import { QuizComponent } from './quiz/quiz.component';
+import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,9 +51,9 @@ import { QuizComponent } from './quiz/quiz.component';
     ViewTutorialsComponent,
     SanitizeHtmlPipe,
     AddQuizComponent,
+    ViewQuizesComponent,
     NavigationComponent,
     TextcontentComponent,
-    QuizComponent,
 
   ],
   imports: [

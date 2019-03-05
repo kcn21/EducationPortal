@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 
-<div class="w3-container" *ngFor="let t of Tutorials">
+<div class="w3-container" *ngFor="let t of Tutorials | paginate: { itemsPerPage: 5, currentPage: p }">
   <ul class="w3-ul w3-card-4">
     <li class="w3-bar">
       <!--<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>-->
@@ -19,6 +19,9 @@
       </div>
     </li>
   </ul>
+</div>
+<div style="text-align: center;">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 </body>
 </html>
