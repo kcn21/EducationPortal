@@ -1,0 +1,31 @@
+<div class="mes">
+  <title class="mes">{{_Message}}
+  </title>
+</div>
+<table id="customers">
+  <tr>
+    <th>#</th>
+    <th *ngFor="let f of fields">{{f}}</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let c of courses; index as i">
+    <td>{{i+1}}</td>
+    <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].CourseName" id=""></td>
+    <td *ngIf="isEnabledEditView(i)">{{getSubjectName(c)}}</td>    
+    <td class="desc" *ngIf="isEnabledEditView(i)"><textarea type="text" [(ngModel)]="courses[i].Description" ></textarea></td>
+    <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Duration"></td>
+    <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="courses[i].Cost"></td>
+    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="updateCourse()">Update</button></td>
+    <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="cancelEditCourse()">Cancel</button></td>
+    
+    <td *ngIf="!isEnabledEditView(i)">{{c.CourseName}}</td>
+   <td *ngIf="!isEnabledEditView(i)">{{getSubjectName(c)}}</td>
+    <td class="desc" *ngIf="!isEnabledEditView(i)">{{c.Description}}</td>
+    <td *ngIf="!isEnabledEditView(i)">{{c.Duration}}</td>
+    <td *ngIf="!isEnabledEditView(i)">{{c.Cost}}</td>
+    <td *ngIf="!isEnabledEditView(i)"><button type="button" [value]="i" (click)="displayEditView($event.target)">Edit</button></td>
+    <td *ngIf="!isEnabledEditView(i)"><button type="button"  (click)="removeCourse(c)">Remove</button></td>    
+  </tr>
+</table>
+

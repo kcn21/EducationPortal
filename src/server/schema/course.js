@@ -1,8 +1,7 @@
 var mongoose=require('mongoose')
 var CourseSchema=new mongoose.Schema({
-    CourseId:String,
     CourseName:String,
-    Subject:String,
+    SubjectId:String,
     Description:String,
     Duration:Number,
     Cost:Number,

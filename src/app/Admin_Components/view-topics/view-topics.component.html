@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="mes">
+    <title class="mes">{{_Message}}
+    </title>
+  </div>
+  <div *ngIf="!displayEditor">
+  <div *ngFor="let ct of Coursetopics;index as ti">
+  <div class="mes">
+    <h3>{{ct.CourseName}}</h3>
+  </div>
+  <table id="customers">
+      <tr>
+        <th>#</th>
+        <th>Topic Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let t of ct.topicdetails; index as i">
+        <td>{{i+1}}</td>
+        <td>{{t.TopicName}}</td>
+        <td ><button type="button" [value]="i" (click)="displayEditView(t)">Edit</button></td>
+        <td><button type="button" [value]="i" (click)="removeTopic(t)">Remove</button></td>
+      </tr>
+    </table>
+  </div>
+  </div>
+
+  <div *ngIf="displayEditor">
+      <div class="w3-row w3-section">
+          <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
+            <div class="w3-rest">
+              <input class="w3-input w3-border w3-padding" style="width:40%;height: 20%;" name="Topic Name" [(ngModel)]="topicNameInEditor" type="text" placeholder="Topic Name">
+            </div>
+        </div>      
+        <div class="editor" [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
+        <div class="w3-container">
+            <p><button class="w3-button w3-black w3-round-xxlarge" (click)="updateTopic()">Update</button>
+            &nbsp;<button class="w3-button w3-black w3-round-xxlarge" (click)="cancelUpdateTopic()">Cancel</button></p>
+        </div>
+    </div>

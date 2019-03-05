@@ -3,7 +3,7 @@ var mongoose=require('mongoose')
 var VideoSchema=new mongoose.Schema({
     CourseId:String,
     Title:String,
-    Link:mongoose.SchemaTypes.Url,
+    Link:String,
     Description:String
 })
 var Video= mongoose.model('Video',VideoSchema);

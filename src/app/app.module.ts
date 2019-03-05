@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -18,6 +18,12 @@ import { AuthGuard } from 'src/auth.guard';
 import { AddVideoComponent } from './Admin_Components/add-video/add-video.component';
 import { SafePipe } from './safe.pipe';
 import { CoursedetailsComponent } from './coursedetails/coursedetails.component';
+import { AddSubjectComponent } from './Admin_Components/add-subject/add-subject.component';
+import { ViewCoursesComponent } from './Admin_Components/view-courses/view-courses.component';
+import { ViewSubjectsComponent } from './Admin_Components/view-subjects/view-subjects.component';
+import { AddTopicComponent } from './Admin_Components/add-topic/add-topic.component';
+import { ViewTopicsComponent } from './Admin_Components/view-topics/view-topics.component';
+import { ViewTutorialsComponent } from './Admin_Components/view-tutorials/view-tutorials.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +37,13 @@ import { CoursedetailsComponent } from './coursedetails/coursedetails.component'
     AddVideoComponent,
     SafePipe,
     CoursedetailsComponent,
+    ViewCoursesComponent,
+    AddSubjectComponent,
+    ViewSubjectsComponent,
+    AddTopicComponent,
+    ViewTopicsComponent,
+    ViewTutorialsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -38,6 +51,8 @@ import { CoursedetailsComponent } from './coursedetails/coursedetails.component'
     FormsModule,
     RouterModule,
     HttpClientModule,
+    FroalaEditorModule.forRoot(), 
+    FroalaViewModule.forRoot()
   ],
   providers: [AuthServiceService,AdminService,AuthGuard],
   bootstrap: [AppComponent]
