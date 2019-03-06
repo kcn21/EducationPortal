@@ -381,14 +381,14 @@ app.post('/addQuestions',function(req,res){
 })
 app.post('/getQuestions',function(req,res){
     var data=req.body
-    db.collection("questions").find({QuizId:data.qId}).toArray(function(err,result){
+    db.collection("questions").find({}).toArray(function(err,result){
         if(err)
         {
             console.log("error while getting course names")
         }
         else
         {
-            //console.log(result)
+            console.log(result)
             res.status(200).send(result)
         }
     })
@@ -425,6 +425,21 @@ app.post("/getQuizes",function(req,res){
         }
     })
 })
+
+app.post("/getQuizForCourse",function(req,res){
+    var data=req.body
+    db.collection('quizzes').find({CourseId:mongoose.Types.ObjectId(data.cId)}).toArray(function(err,result){
+        if(err)
+        {
+            console.log(err)
+        }
+        else
+        {
+            console.log(result)
+            res.status(200).send(result)
+        }
+    })
+
 app.post('/UpdateQuiz',function(req,res){
     var QuizData=req.body
     var myquery = { _id : mongoose.Types.ObjectId(QuizData._id)};

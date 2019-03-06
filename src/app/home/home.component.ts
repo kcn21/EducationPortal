@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
    gototextcontent(item){
     console.log("hiiii")
     console.log(item.CourseName);
-    this.route.navigate(['/textcontent',item.CourseName]);
+    this.route.navigate(['/textcontent',item._id]);
   }
   ngOnInit() {
     

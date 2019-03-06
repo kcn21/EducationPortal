@@ -50,7 +50,8 @@ body {font-family: "Roboto", sans-serif}
                     <div class="column"  *ngFor="let c of courses;" >
                       <h2>{{c.CourseName}}</h2>
                     </div>
-                  </div>  
+                    
+                </div>  
             </div>
           </div>
           <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
@@ -71,18 +72,63 @@ body {font-family: "Roboto", sans-serif}
   <div style="margin-left: 300px;">
     <!--<h1 class="w3-xxxlarge">{{cName}}</h1>-->
     <h2>{{selectedTopictitle}}</h2>
+    <div class="block">
+      <a (click)="EnabledViewQuiz()">Quiz</a>
+      <a (click)="EnabledTextContent()">Text</a>
+      <a (click)="EnabledVideoContent()">Video</a>
+    </div>
     <!--<button type="button" [disabled]="enabled" style="margin-left: 500px;">next</button>
 <button type="button" style="margin-left: 500px;">previous</button>-->
   </div>
 </header>
 <div style="margin-left:300px;">
 </div>
-<div class="w3-container" style="padding:32px;margin-left: 250px;" [innerHTML]="selectedTopic | sanitizeHtml">
+<div *ngIf="TextBlock">
+  <div class="w3-container" style="padding:32px;margin-left: 250px;" [innerHTML]="selectedTopic | sanitizeHtml">
+  </div>
+  <a class="previous" (click)="displayprevcontent()">&laquo; Previous</a>
+  <a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
 </div>
-<a class="previous" (click)="displayprevcontent()"  ng-class="{disabled: addInviteesDisabled()}">&laquo; Previous</a>
-<a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
-
-
+<div *ngIf="ViewQuiz">
+  <div class="w3-container" style="padding:32px;margin-left: 250px;">
+      quizes are :
+      <div *ngFor="let que of questions; index as i" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
+          <h3>Question No. {{i+1}}&emsp;:-&emsp;{{que.Title}} </h3>
+          <h4>
+              A&ensp;.&emsp;{{que.OptionA}}<br>
+              B&ensp;.&emsp;{{que.OptionB}}<br>
+              C&ensp;.&emsp;{{que.OptionC}}<br>
+              D&ensp;.&emsp;{{que.OptionD}}<br>
+              Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
+              Marks&ensp;:&emsp;{{que.Marks}}
+          </h4>
+      </div>
+  </div>
+  <a class="previous" (click)="displayprevquiz()">&laquo; Previous</a>
+  <a class="next" (click)="displaynextquiz()">Next &raquo;</a>
+    <!--<div *ngFor="let que of Questions; index as i" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
+        <h3>Question No. {{i+1}}&emsp;:-&emsp;{{que.Title}} </h3>
+        <h4>
+            A&ensp;.&emsp;{{que.OptionA}}<br>
+            B&ensp;.&emsp;{{que.OptionB}}<br>
+            C&ensp;.&emsp;{{que.OptionC}}<br>
+            D&ensp;.&emsp;{{que.OptionD}}<br>
+            Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
+            Marks&ensp;:&emsp;{{que.Marks}}
+        </h4>
+    </div>-->    
+</div>
+<div *ngIf="VideoContent">
+  <div  class="w3-container" style="padding:32px;margin-left: 250px;">
+    Video
+  </div>
+  <a class="previous" (click)="displayprevcontent()">&laquo; Previous</a>
+  <a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
+</div>
+<!--<div  class="w3-container" style="padding:32px;margin-left: 250px;">
+  hii
+  </div>
+-->
 <script>
 // Open and close the sidebar on medium and small screens
 function w3_open() {
