@@ -14,7 +14,7 @@
             
             <div class="field-wrap">
          
-              <select  [(ngModel)]="SelectedCourse" style="margin-right:50px;" name="CourseId">
+              <select  [(ngModel)]="SelectedCourse" (change)="SelectedCourseChanged()" style="margin-right:50px;" name="CourseId">
                 <option value="0" selected>
                     Select Course
                 </option>
@@ -32,6 +32,18 @@
               -->
             </div>
           
+            <div class="field-wrap">
+         
+              <select  [(ngModel)]="SelectedTopic" style="margin-right:50px;" name="TopicId">
+                <option value="0" selected>
+                    Select Topic
+                </option>
+                <option *ngFor="let tname of TopicNames" [ngValue]="tname._id">
+                    {{tname.TopicName}}
+                </option>
+              </select>
+            </div>
+
             <div class="field-wrap">
               <label>
                   Video Title <span class="req">*</span>
