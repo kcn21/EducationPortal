@@ -125,7 +125,7 @@ export class AdminService {
   getQuizForCourse(CourseId)
   {
     return this._http.post<any>(this._getQuizForCourseUrl,CourseId)
-
+  }
   removeQuiz(quizId)
   {
     return this._http.post<any>(this._removeQuizUrl,quizId)

@@ -65,8 +65,6 @@ body {font-family: "Roboto", sans-serif}
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
       </div>
-
-
 </div>
 <header class="w3-container w3-theme" style="padding:64px 32px">
   <div style="margin-left: 300px;">
@@ -90,9 +88,10 @@ body {font-family: "Roboto", sans-serif}
   <a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
 </div>
 <div *ngIf="ViewQuiz">
+  
   <div class="w3-container" style="padding:32px;margin-left: 250px;">
-      quizes are :
-      <div *ngFor="let que of questions; index as i" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
+    
+      <!--<div *ngFor="let que of questions" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
           <h3>Question No. {{i+1}}&emsp;:-&emsp;{{que.Title}} </h3>
           <h4>
               A&ensp;.&emsp;{{que.OptionA}}<br>
@@ -102,21 +101,86 @@ body {font-family: "Roboto", sans-serif}
               Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
               Marks&ensp;:&emsp;{{que.Marks}}
           </h4>
-      </div>
-  </div>
-  <a class="previous" (click)="displayprevquiz()">&laquo; Previous</a>
-  <a class="next" (click)="displaynextquiz()">Next &raquo;</a>
-    <!--<div *ngFor="let que of Questions; index as i" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
+      </div>-->
+      <!--
+      <mat-radio-group class="example-radio-group" *ngFor="let que of questions">
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionA}}
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionB}}
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionC}}
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionD}}
+          </mat-radio-button>
+      </mat-radio-group>
+    -->
+    <!--<div *ngIf="!submitquizenabled">
+      <div *ngFor="let que of questions" class="w3-panel w3-grey w3-card-4 w3-round-xlarge">
         <h3>Question No. {{i+1}}&emsp;:-&emsp;{{que.Title}} </h3>
-        <h4>
-            A&ensp;.&emsp;{{que.OptionA}}<br>
-            B&ensp;.&emsp;{{que.OptionB}}<br>
-            C&ensp;.&emsp;{{que.OptionC}}<br>
-            D&ensp;.&emsp;{{que.OptionD}}<br>
-            Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
-            Marks&ensp;:&emsp;{{que.Marks}}
-        </h4>
-    </div>-->    
+          <input type="radio" class="w3-radio" class="w3-radio" name="gender" value={{que.OptionA}}> {{que.OptionA}}<br>
+          <input type="radio" name="gender" class="w3-radio" value={{que.OptionB}}> {{que.OptionB}}<br>
+          <input type="radio" name="gender" class="w3-radio" value={{que.OptionC}}> {{que.OptionC}}<br>
+          <input type="radio" name="gender" class="w3-radio"  value={{que.OptionD}}> {{que.OptionD}}<br>
+      </div>-->
+      <div class="row" *ngIf="!submitquizenabled" >
+        <div class="col s8 offset-s2">
+           <div class="card blue-grey darken-1">
+             <div *ngFor="let que of questions;let i = index">
+               <div class="card-content white-text">
+                 <p>{{que.Title}}</p>
+               </div>
+               <div class="card-action"> 
+                 <ul class="collection answer">
+                   <ng-container>
+                     <li class="collection-item" (click)="onClickOption($event.target,'A',i)">
+                        {{que.OptionA}}
+                     </li>
+                   </ng-container>
+                   <ng-container>
+                      <li class="collection-item" (click)="onClickOption($event.target,'B',i)">
+                        {{que.OptionB}}
+                      </li>
+                    </ng-container>
+                    <ng-container>
+                      <li class="collection-item" (click)="onClickOption($event.target,'C',i)">
+                          {{que.OptionC}}
+                      </li>
+                    </ng-container>
+                    <ng-container>
+                      <li class="collection-item" (click)="onClickOption($event.target,'D',i)">
+                          {{que.OptionD}}
+                      </li>
+                    </ng-container>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+      <a class="submit" (click)="submitquiz()">Submit Quiz</a>
+      </div>
+    <!--<form class="w3-container w3-card-4">
+        <h2>Radio Buttons</h2>
+        <p>
+        <input class="w3-radio"  type="radio" name="gender" value="male" checked>
+        <label>Male</label></p>
+        <p>
+        <input class="w3-radio" type="radio" name="gender" value="female">
+        <label>Female</label></p>
+        <p>
+        <input class="w3-radio" type="radio" name="gender" value="" disabled>
+        <label>Don't know (Disabled)</label></p>
+      </form>-->
+    <div  *ngIf="submitquizenabled">
+      you have solved {{solvedquestions}} out of {{totalquestions}}<br>
+      your marks are {{marksForQuiz}}
+    </div>
+  </div>
+  <a class="previous" (click)="displayprevcontent()">&laquo; Previous</a>
+  <a class="next" (click)="displaynextcontent()">Next &raquo;</a>
 </div>
 <div *ngIf="VideoContent">
   <div  class="w3-container" style="padding:32px;margin-left: 250px;">
