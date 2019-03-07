@@ -4,6 +4,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SafePipe} from'../safe.pipe'
 import { Router, ActivatedRoute } from '@angular/router';
+declare var jquery:any;
+declare var $ :any;
 @Component({
   selector: 'app-textcontent',
   templateUrl: './textcontent.component.html',

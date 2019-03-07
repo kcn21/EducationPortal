@@ -439,7 +439,7 @@ app.post("/getQuizForCourse",function(req,res){
             res.status(200).send(result)
         }
     })
-
+})
 app.post('/UpdateQuiz',function(req,res){
     var QuizData=req.body
     var myquery = { _id : mongoose.Types.ObjectId(QuizData._id)};
