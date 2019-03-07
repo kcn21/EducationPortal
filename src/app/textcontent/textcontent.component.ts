@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TextcontentComponent implements OnInit {
   public videos
+  public videoForSelectedTopic
   public topics
   public subjects
   public selectedTopic
@@ -30,12 +31,17 @@ export class TextcontentComponent implements OnInit {
   public QuizId
   public quiz
   public questions
+  public currentlyshowingVideoForTopicId=1
+  public currentlyshowingVideoIndex=-1
+  public currentlyshowingVideo=-1
+  public l
   constructor(private route:ActivatedRoute,private _AdminService:AdminService ) {
     this.CourseId=this.route.snapshot.paramMap.get('id')
     //console.log(this.CourseId)
       this._AdminService.getSubjects().subscribe(data=>{
           this.subjects=data;
       }) 
+      
       this._AdminService.getCourseNames().subscribe(data=>{
         this.courses=data;
         //console.log(this.courses)
@@ -63,6 +69,11 @@ export class TextcontentComponent implements OnInit {
             console.log("questions are :"+this.questions)
             this.questions=this.questions.filter(quiz=>quiz.QuizId ===  this.QuizId)
             console.log("questions are :"+this.questions)
+
+              this._AdminService.getTutorial().subscribe(data=>{
+              this.videos=data;
+              this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId)
+            })
           })
          
         })
@@ -137,4 +148,39 @@ export class TextcontentComponent implements OnInit {
     this.TextBlock=false;
     this.VideoContent=true;
   }
+  displayNextVideo(){
+    if(this.currentlyshowingVideoIndex + 1 < this.videos.length ){
+      this.currentlyshowingVideoIndex++;
+      //console.log(this.currentlyshowingVideoIndex)
+      this.currentlyshowingVideo=this.videos[this.currentlyshowingVideoIndex]
+      //console.log(this.currentlyshowingVideo)
+    }
+  }
+  displayPrevVideo(){
+    if(this.currentlyshowingVideoIndex - 1 >= 0){
+      this.currentlyshowingVideoIndex--;
+      //console.log(this.currentlyshowingVideoIndex)
+      this.currentlyshowingVideo=this.videos[this.currentlyshowingVideoIndex]
+      //console.log(this.currentlyshowingVideo)
+    }
+  }
+  selectTopicsForVideos(i){
+    this.currentlyshowingVideoForTopicId=i;
+    this.currentlyshowingVideoIndex=i;
+    var obj={
+      cId:this.courses[this.currentlyshowingVideoForTopicId]._id
+    }
+    console.log(obj)
+    this._AdminService.getVideos(obj).subscribe(data=>{
+      console.log(data)
+        if(data)
+        {
+          this.videos=data;
+          this.currentlyshowingVideoIndex=0;
+          this.currentlyshowingVideo=this.videos[this.currentlyshowingVideoIndex]
+          //console.log(this.currentlyshowingVideo)
+          //console.log("Vidos:"+this.videos)
+        }
+      })
+   }
 }

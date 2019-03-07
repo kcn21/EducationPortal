@@ -119,11 +119,41 @@ body {font-family: "Roboto", sans-serif}
     </div>-->    
 </div>
 <div *ngIf="VideoContent">
-  <div  class="w3-container" style="padding:32px;margin-left: 250px;">
-    Video
+  <!--<div  class="w3-container" style="padding:32px;margin-left: 250px;">
+    <div class="w3-container" *ngIf=" currentlyshowingVideoForCourseId > -1 && !currentlyshowingVideo">
+      <div class="w3-card-4 w3-center w3-xlarge">
+          <p>Sorry! No Tutorials Are Available.</p>
+      </div>
+    </div>
+    <div class="w3-container " *ngIf="currentlyshowingVideo">  
+      <div class="w3-card-4 w3-display-topmiddle" style="width:50%;margin-left:5%;margin-top: 200px;  border: 10px solid #fff;" >
+              <video  [src]="currentlyshowingVideo.Link" width="100%"  poster="../../assets/a.png" height="inherit" controls>
+                  Loading
+              </video>
+              
+              <iframe [src]="currentlyshowingVideo.Link | safe" width="100%"  poster="../../assets/a.png" height="315px;"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+              <div class="w3-container w3-center">
+              <p>{{currentlyshowingVideo.Title}}</p>
+              </div>
+              
+      </div>
+      <div class="w3-card-4 w3-container w3-center w3-display-bottommiddle" style="width:50%;margin-left:5%;padding-left:20px; ">
+              <p>Description <br>{{currentlyshowingVideo.Description}}</p>
+      </div>
+    </div>
+    
+  </div>-->
+<div class="w3-container" style="padding:32px;margin-left: 250px;">
+  <div *ngFor="let video of videos">
+    {{videoForSelectedTopic.Title}}
+    {{videoForSelectedTopic.Description}}
+    <iframe [src]="videoForSelectedTopic.Link | safe" width="100%"  poster="../../assets/a.png" height="315px;"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
   </div>
-  <a class="previous" (click)="displayprevcontent()">&laquo; Previous</a>
-  <a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
+  <!--[src]="currentlyshowingVideo.Link | safe"-->
+</div>
+  <a class="previous"  (click)="displayPrevVideo()">&laquo; Previous</a>
+  <a class="next"  (click)="displayNextVideo()">Next &raquo;</a>
+
 </div>
 <!--<div  class="w3-container" style="padding:32px;margin-left: 250px;">
   hii
