@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SidebarComponent } from './Admin_Components/sidebar/sidebar.component';
@@ -52,18 +52,18 @@ import { TextcontentComponent } from './textcontent/textcontent.component';
     AddQuizComponent,
     NavigationComponent,
     TextcontentComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
     FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
   ],
   providers: [AuthServiceService,AdminService,AuthGuard],
   bootstrap: [AppComponent]
