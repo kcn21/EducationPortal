@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from '../../services/admin.service';
-import {MatRadioModule} from '@angular/material/radio';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SafePipe} from'../safe.pipe'
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,6 +13,7 @@ declare var $ :any;
 })
 export class TextcontentComponent implements OnInit {
   public videos
+  public videoForSelectedTopic
   public topics
   public subjects
   public selectedTopic
@@ -74,6 +74,13 @@ export class TextcontentComponent implements OnInit {
             console.log("questions are :"+this.questions)
             this.questions=this.Allquestions.filter(quiz=>quiz.QuizId ===  this.QuizId)
             console.log("questions are :"+this.questions)
+
+
+
+            this._AdminService.getTutorial().subscribe(data=>{
+              this.videos=data;
+              this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId)
+            })
           })
          
         })
@@ -99,6 +106,7 @@ export class TextcontentComponent implements OnInit {
     this.TopicId=this.disp_topics[i]._id;
     this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
     console.log(this.selectedQuiz)
+    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId)
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
@@ -131,6 +139,7 @@ export class TextcontentComponent implements OnInit {
     this.VideoContent=false;
     this.TopicId=this.disp_topics[this.k]._id;
     this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
+    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
@@ -163,6 +172,7 @@ export class TextcontentComponent implements OnInit {
     this.VideoContent=false;
     this.TopicId=this.disp_topics[this.k]._id;
     this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
+    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
