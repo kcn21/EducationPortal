@@ -166,7 +166,7 @@ select{
     -webkit-appearance: none;
   }
   .button:hover, .button:focus {
-    background: #179b77;
+    background: #388b75;
     cursor: pointer;
   }
   
