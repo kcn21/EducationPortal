@@ -40,35 +40,33 @@ body {font-family: "Roboto", sans-serif}
 </div>
 
 <div class="w3-top">
-        <div class="w3-bar w3-black w3-card">
-          <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-          <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-          <div class="w3-dropdown-hover w3-hide-small">
-            <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
+       <!-- <div class="w3-bar w3-black w3-card">-->
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <div class="w3-dropdown-hover w3-hide-small">
+          
+      <!--   <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+            <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>  -->   
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
                 <div class="row">
                     <div class="column"  *ngFor="let c of courses;" >
                       <h2>{{c.CourseName}}</h2>
                     </div>
-                    
                 </div>  
             </div>
           </div>
           <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
         </div>
-</div>
+
       
       <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-      <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <!--  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
         <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BAND</a>
         <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOUR</a>
         <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
         <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
-      </div>
-
-
+      </div>-->
 </div>
-<header class="w3-container w3-theme" style="padding:64px 32px">
+<header class="w3-container w3-theme" style="padding:24px 32px">
   <div style="margin-left: 300px;">
     <!--<h1 class="w3-xxxlarge">{{cName}}</h1>-->
     <h2>{{selectedTopictitle}}</h2>
@@ -90,9 +88,10 @@ body {font-family: "Roboto", sans-serif}
   <a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
 </div>
 <div *ngIf="ViewQuiz">
+  
   <div class="w3-container" style="padding:32px;margin-left: 250px;">
-      quizes are :
-      <div *ngFor="let que of questions; index as i" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
+    
+      <!--<div *ngFor="let que of questions" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
           <h3>Question No. {{i+1}}&emsp;:-&emsp;{{que.Title}} </h3>
           <h4>
               A&ensp;.&emsp;{{que.OptionA}}<br>
@@ -102,58 +101,102 @@ body {font-family: "Roboto", sans-serif}
               Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
               Marks&ensp;:&emsp;{{que.Marks}}
           </h4>
-      </div>
-  </div>
-  <a class="previous" (click)="displayprevquiz()">&laquo; Previous</a>
-  <a class="next" (click)="displaynextquiz()">Next &raquo;</a>
-    <!--<div *ngFor="let que of Questions; index as i" class="w3-panel w3-red w3-card-4 w3-round-xlarge">
+      </div>-->
+      <!--
+      <mat-radio-group class="example-radio-group" *ngFor="let que of questions">
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionA}}
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionB}}
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionC}}
+          </mat-radio-button>
+          <mat-radio-button class="example-radio-button">
+              {{que.OptionD}}
+          </mat-radio-button>
+      </mat-radio-group>
+    -->
+    <!--<div *ngIf="!submitquizenabled">
+      <div *ngFor="let que of questions" class="w3-panel w3-grey w3-card-4 w3-round-xlarge">
         <h3>Question No. {{i+1}}&emsp;:-&emsp;{{que.Title}} </h3>
-        <h4>
-            A&ensp;.&emsp;{{que.OptionA}}<br>
-            B&ensp;.&emsp;{{que.OptionB}}<br>
-            C&ensp;.&emsp;{{que.OptionC}}<br>
-            D&ensp;.&emsp;{{que.OptionD}}<br>
-            Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
-            Marks&ensp;:&emsp;{{que.Marks}}
-        </h4>
-    </div>-->    
+          <input type="radio" class="w3-radio" class="w3-radio" name="gender" value={{que.OptionA}}> {{que.OptionA}}<br>
+          <input type="radio" name="gender" class="w3-radio" value={{que.OptionB}}> {{que.OptionB}}<br>
+          <input type="radio" name="gender" class="w3-radio" value={{que.OptionC}}> {{que.OptionC}}<br>
+          <input type="radio" name="gender" class="w3-radio"  value={{que.OptionD}}> {{que.OptionD}}<br>
+      </div>-->
+      <div class="row" *ngIf="!submitquizenabled" >
+        <div class="col s8 offset-s2">
+           <div class="card blue-grey darken-1">
+             <div *ngFor="let que of questions;let i = index">
+               <div class="card-content white-text">
+                 <p>{{i+1}})&nbsp;.&nbsp;{{que.Title}}</p>
+               </div>
+               <div class="card-action"> 
+                 <ul class="collection answer">
+                   <ng-container>
+                     <li class="collection-item" (click)="onClickOption($event.target,'A',i)">
+                        {{que.OptionA}}
+                     </li>
+                   </ng-container>
+                   <ng-container>
+                      <li class="collection-item" (click)="onClickOption($event.target,'B',i)">
+                        {{que.OptionB}}
+                      </li>
+                    </ng-container>
+                    <ng-container>
+                      <li class="collection-item" (click)="onClickOption($event.target,'C',i)">
+                          {{que.OptionC}}
+                      </li>
+                    </ng-container>
+                    <ng-container>
+                      <li class="collection-item" (click)="onClickOption($event.target,'D',i)">
+                          {{que.OptionD}}
+                      </li>
+                    </ng-container>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+      <a class="submit" (click)="submitquiz()">Submit Quiz</a>
+      </div>
+    <!--<form class="w3-container w3-card-4">
+        <h2>Radio Buttons</h2>
+        <p>
+        <input class="w3-radio"  type="radio" name="gender" value="male" checked>
+        <label>Male</label></p>
+        <p>
+        <input class="w3-radio" type="radio" name="gender" value="female">
+        <label>Female</label></p>
+        <p>
+        <input class="w3-radio" type="radio" name="gender" value="" disabled>
+        <label>Don't know (Disabled)</label></p>
+      </form>-->
+    <div  *ngIf="submitquizenabled">
+      you have solved {{solvedquestions}} out of {{totalquestions}}<br>
+      your marks are {{marksForQuiz}}
+    </div>
+  </div>
+  <a class="previous" (click)="displayprevcontent()">&laquo; Previous</a>
+  <a class="next" (click)="displaynextcontent()">Next &raquo;</a>
 </div>
 <div *ngIf="VideoContent">
-  <!--<div  class="w3-container" style="padding:32px;margin-left: 250px;">
-    <div class="w3-container" *ngIf=" currentlyshowingVideoForCourseId > -1 && !currentlyshowingVideo">
-      <div class="w3-card-4 w3-center w3-xlarge">
-          <p>Sorry! No Tutorials Are Available.</p>
+  <div  class="w3-container" style="padding:32px;margin-left: 250px;">
+      <div *ngFor="let video of videoForSelectedTopic">
+          <div style="width:1030px;height:auto;;">
+              {{video.Title}}
+            <br>
+              {{video.Description}}
+            <br>
+          </div>
+      <iframe width="1030px" height="1000px" [src]="video.Link | safe" poster="../../assets/a.png" height="315px;"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+    <!-- [src]="currentlyshowingVideo.Link | safe"-->
       </div>
-    </div>
-    <div class="w3-container " *ngIf="currentlyshowingVideo">  
-      <div class="w3-card-4 w3-display-topmiddle" style="width:50%;margin-left:5%;margin-top: 200px;  border: 10px solid #fff;" >
-              <video  [src]="currentlyshowingVideo.Link" width="100%"  poster="../../assets/a.png" height="inherit" controls>
-                  Loading
-              </video>
-              
-              <iframe [src]="currentlyshowingVideo.Link | safe" width="100%"  poster="../../assets/a.png" height="315px;"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
-              <div class="w3-container w3-center">
-              <p>{{currentlyshowingVideo.Title}}</p>
-              </div>
-              
-      </div>
-      <div class="w3-card-4 w3-container w3-center w3-display-bottommiddle" style="width:50%;margin-left:5%;padding-left:20px; ">
-              <p>Description <br>{{currentlyshowingVideo.Description}}</p>
-      </div>
-    </div>
-    
-  </div>-->
-<div class="w3-container" style="padding:32px;margin-left: 250px;">
-  <div *ngFor="let video of videos">
-    {{videoForSelectedTopic.Title}}
-    {{videoForSelectedTopic.Description}}
-    <iframe [src]="videoForSelectedTopic.Link | safe" width="100%"  poster="../../assets/a.png" height="315px;"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
   </div>
-  <!--[src]="currentlyshowingVideo.Link | safe"-->
-</div>
-  <a class="previous"  (click)="displayPrevVideo()">&laquo; Previous</a>
-  <a class="next"  (click)="displayNextVideo()">Next &raquo;</a>
-
+  <a class="previous" (click)="displayprevcontent()">&laquo; Previous</a>
+  <a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
 </div>
 <!--<div  class="w3-container" style="padding:32px;margin-left: 250px;">
   hii
