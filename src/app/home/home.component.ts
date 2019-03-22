@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import {AdminService} from '../../services/admin.service';
+import{AuthServiceService}from '../../services/auth-service.service'
+import {CookieService} from'ngx-cookie-service'
 import { Router } from '@angular/router';
 declare var jquery:any;
 declare var $ :any;
@@ -29,10 +31,11 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
   public ExtraData=false;
   public extra:0;
   public numberOftimes=0;
+  public username=""
   p:number=1
   count:number=1
   public subject=["Data Science","Algorith","Operating System","Programming","Algorithm","Machine Learming"];
-  constructor(private route:Router,private _AdminService:AdminService ) {
+  constructor(private route:Router,private _AdminService:AdminService ,private _cookieService:CookieService ,private _AuthService:AuthServiceService) {
       this._AdminService.getSubjects().subscribe(data=>{
           this.subjects=data;
       }) 
@@ -44,6 +47,7 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
         this.topics=data;
         this.selectedTopic=this.topics[0].topicdetails[1]
       })
+      this.username=this._cookieService.get('username')
    }
    /*textfieldempty()
    {
@@ -69,6 +73,14 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
         this.IsBelowDataEnabled=true;
       }
    }*/
+   logOut(){
+     this._AuthService.logOut().subscribe(data=>{
+      this._cookieService.delete('loggedIn')  
+      this._cookieService.delete('username')
+      this._cookieService.delete('role')
+      this.username=""
+    })
+   }
    onKey(event : any)
    {
      this.extra=0;

@@ -32,6 +32,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { NavigationComponent } from './navigation/navigation.component';
 import { TextcontentComponent } from './textcontent/textcontent.component';
 import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.component';
+import {CookieService} from 'ngx-cookie-service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,7 @@ import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
   ],
-  providers: [AuthServiceService,AdminService,AuthGuard],
+  providers: [AuthServiceService,AdminService,AuthGuard,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

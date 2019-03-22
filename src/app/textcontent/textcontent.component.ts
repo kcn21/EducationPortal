@@ -41,7 +41,7 @@ export class TextcontentComponent implements OnInit {
   public selectedquestion
   public totalquestions
   public solvedquestions=0
-  public marksForQuiz=0
+  public marksForQuiz:number=0
   public IsAttemptedTruly=[]
   public IsAnswered=[]
   public RefOfSelectedAnser=[]
@@ -319,7 +319,7 @@ export class TextcontentComponent implements OnInit {
       if(que.CorrectOption === this.Answers[queNo])
       {
         this.solvedquestions++;
-        this.marksForQuiz+=que.Marks
+        this.marksForQuiz+=parseInt(que.Marks)
       }      
     });
   }

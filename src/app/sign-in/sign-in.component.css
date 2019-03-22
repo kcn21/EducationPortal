@@ -2,9 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  overflow-y: scroll;
-}
 
 body {
   background-image: url('../../assets/banner-bg.jpg'); 

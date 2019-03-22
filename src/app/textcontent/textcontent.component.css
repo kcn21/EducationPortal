@@ -3,15 +3,17 @@
     color: white;   
     margin-left:300px;
     cursor: pointer;
-    margin-bottom: 300px;
+    margin-bottom: 20px;
+    margin-top:20px;
   }
   
   .next {
     background-color: #4CAF50;
     color: white;
-    margin-left:900px;
+    margin-left:800px;
     cursor: pointer;
-    margin-bottom: 300px;
+    margin-top:20px;
+    margin-bottom: 20px;
   } 
   a {
     text-decoration: none;

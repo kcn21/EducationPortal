@@ -44,8 +44,8 @@ body {font-family: "Roboto", sans-serif}
       <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
       <div class="w3-dropdown-hover w3-hide-small">
 
-        <button class="w3-padding-large w3-button" title="More">Explore Courses<i class="fa fa-caret-down"></i></button>     
-        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <!--<button class="w3-padding-large w3-button" title="More">Explore Courses&nbsp;<i class="fa fa-caret-down"></i></button>     
+        --><div class="w3-dropdown-content w3-bar-block w3-card-4">
             <div class="w3-card w3-light-grey" style="position:fixed;height:auto; display: block;margin-right:25px;
             overflow: auto;">
               <table>
@@ -57,8 +57,11 @@ body {font-family: "Roboto", sans-serif}
         </div>
      
       </div>
-      <a routerLink="/signin" class="w3-bar-item w3-button w3-padding-large  w3-right">SIGN IN</a>
-      <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large w3-right">SIGN UP</a>
+      <button  class="w3-bar-item w3-button w3-padding-large w3-right" (click)="logOut()" *ngIf="username">Log Out</button>
+      <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="username">Hello {{username}}!</a>
+      <a routerLink="/signin" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="!username">Login</a>
+      <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="!username">SignUp</a>
+
     </div>
 </div>
 <div class="bg-img">
@@ -67,14 +70,14 @@ body {font-family: "Roboto", sans-serif}
   </div>
   <br>
   <div class="small-data">
-      In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space telescope known as the Hubble.
-    </div>
-  <form class="container">
-    <h1 style="font-weight:800;">FIND COURSES</h1>
-    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="Search Course" [(ngModel)]="term" required>
+      Education is the passport to the future, for tomorrow belongs to those<br> who prepare for it today.
+  </div>
+  <!--<form class="container">
+    <h1>FIND COURSES</h1>
+    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="Enter Course" [(ngModel)]="term" required>
 
 
-    <!--<div *ngIf="IsBelowDataEnabled">
+    <div *ngIf="IsBelowDataEnabled">
       <div class="belowdata" *ngFor="let c of courses | filter:term;">
       {{c.CourseName}}<br>
       </div>
@@ -98,7 +101,7 @@ body {font-family: "Roboto", sans-serif}
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 <div class="availableSubjects">
-  Some of the Important subject
+  Course Categories
   </div>
 <div class="subjectmain">
   <div class="subjectrow" align="center">

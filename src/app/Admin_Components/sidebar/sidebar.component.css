@@ -42,7 +42,7 @@ body {
   
   margin-top: 0px;
   overflow-y: auto;
-  background: #000;
+  background-color:black ;
 }
 #page-content-wrapper {
   width: 80%;
@@ -54,7 +54,7 @@ body {
 
 #wrapper #sidebar-wrapper{
     width: 250px;
-    box-shadow: 0 10px 10px 10px  rgba(18, 175, 248,0.8);
+     
 }
 
 /* Sidebar Styles */
