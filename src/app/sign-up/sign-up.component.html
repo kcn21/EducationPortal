@@ -8,9 +8,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">  
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 </head>
 
 <body>
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card">
+          <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+          <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+        
+          <a routerLink="/signin" class="w3-bar-item w3-button w3-padding-large  w3-right">SIGN IN</a>
+          <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large w3-right">SIGN UP</a>
+        </div>
+    </div>
   <div class="form">
       
       <ul class="tab-group">
@@ -29,14 +40,20 @@
               <label>
                 First Name<span class="req">*</span>
               </label>
-              <input type="text" name="Fname" #Fname ngModel required autocomplete="off" />
+              <input type="text" name="Fname" #Fname="ngModel" class="input100 is-invalid form-control" ngModel required autocomplete="off" />
+              <div *ngIf="Fname.invalid && (Fname.dirty || Fname.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                  Firstname is required.
+              </div>
             </div>
         
             <div class="field-wrap">
               <label>
                 Last Name<span class="req">*</span>
               </label>
-              <input type="text" name="Lname" #Lname ngModel required autocomplete="off"/>
+              <input type="text" name="Lname" #Lname="ngModel" class="input100 is-invalid form-control"  ngModel required autocomplete="off"/>
+              <div *ngIf="Lname.invalid && (Lname.dirty || Lname.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                  Lastname is required.
+              </div>
             </div>
           </div>
 
@@ -44,14 +61,20 @@
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email" [pattern]="emailPattern" name="Email" #Email ngModel required autocomplete="off"/>
+            <input type="email" [pattern]="emailPattern" name="Email" #Email="ngModel" class="input100 is-invalid form-control"  ngModel required autocomplete="off"/>
+            <div *ngIf="Email.invalid && (Email.dirty || Email.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                Email is required.
+            </div>
           </div>
           
           <div class="field-wrap">
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password"name="Password" #Password ngModel required autocomplete="off"/>
+            <input type="password"name="Password" #Password="ngModel" class="input100 is-invalid form-control"  ngModel required autocomplete="off"/>
+            <div *ngIf="Password.invalid && (Password.dirty || Password.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                Password is required.
+            </div>
           </div>
           
           <button type="Submit" class="button button-block" [disabled]="registerForm.invalid">Register</button>

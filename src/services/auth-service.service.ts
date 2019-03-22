@@ -9,6 +9,7 @@ export class AuthServiceService {
   private _registerUrl='http://localhost:8081/register'
   private _loginUrl='http://localhost:8081/login1'
   private _isLoggedInUrl='http://localhost:8081/isLoggedIn'
+  private _logoutUrl="http://localhost:8081/logout"
   constructor(private _http:HttpClient,private cookieService:CookieService) { 
     /*_http.get('../assets/config.json').subscribe(res => {
       this._registerUrl=res["apiAddress"]+"/"+this._registerUrl;
@@ -39,13 +40,18 @@ export class AuthServiceService {
     }).subscribe(data=>{
       if(!data.loggedIn)
       {
+        console.log("Deleting cookie")
         this.cookieService.delete('loggedIn');
+        this.cookieService.delete('username');
+        this.cookieService.delete('role');
         //localStorage.removeItem('loggedIn')
       }
     })
      return !! this.cookieService.get('loggedIn')
   }
   logOut(){
-    this.cookieService.delete('loggedIn')
+    return this._http.post<any>(this._logoutUrl,null,{
+      withCredentials:true
+    }) 
   }
 }

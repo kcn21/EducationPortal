@@ -64,7 +64,7 @@ passport.use(new LocalStrategy(
         if (!user) {
           return done(null, false, { message: 'Incorrect username.' });
         }
-        if (!user.Password==password) {
+        if (user.Password!=password) {
             console.log("user")
 
             return done(null, false, { message: 'Incorrect password.' });
@@ -114,7 +114,10 @@ function(req, res, next) {
     passport.authenticate('local', {session:true},function(err, user, info) {
         console.log(user)
       if (err) { return next(err); }
-      if (!user) { return res.redirect('/login1'); }
+      if (!user) {
+        console.log("Login failed .there is no user") 
+
+          return res.status(200).send() }
       req.login(user, function(err) {
         if (err) 
         {
@@ -125,15 +128,19 @@ function(req, res, next) {
         }
         else
         {
-            //console.log("success\nreq.user = "+req.user)
+            console.log("success\nreq.user = "+req.user)
             var au=req.isAuthenticated();
-            return res.status(200).json({message:"Login Success",me:req.session});
+            return res.status(200).json({message:"Login Success",me:req.session,uname:user.FName,role:user.Role});
             //return  res.status(200).send(user)
         } 
       });
     })(req, res, next);
 });  
-
+app.post('/logout',function(req,res){
+    req.logout();
+    console.log("Log Out SuccessFull")
+    return res.status(200).json({message:"LogOut Success"})
+})
 function isvaliduser(req,res,next){
     console.log("========================>"+req.user)
     if(req.isAuthenticated()){
@@ -152,7 +159,7 @@ app.post('/isLoggedIn',function(req,res){
        return res.status(200).send({loggedIn:true})
     }
     else{
-        res.cookie('loggedIn',{expires:Date.now()})
+        //res.cookie('loggedIn',{expires:Date.now()})
         console.log("InVAlid user")
         return res.status(200).send({loggedIn:false})
     }
@@ -451,6 +458,40 @@ app.post('/getTutorial',function(req,res){
         }
     })
 })
+app.post('/updateTutorial',function(req,res){
+    var TutorialData=req.body
+    var myquery = { _id : mongoose.Types.ObjectId(TutorialData._id)};
+    //console.log(myquery)
+    var newvalues = { $set: { Title: TutorialData.Title,Link:TutorialData.Link,Description:TutorialData.Description } };
+    //console.log(newvalues)
+    db.collection("videos").updateOne(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        //console.log("course updated");
+        res.status(200).send(result);
+      })
+})
+app.post('/getCourseViseTutorial',function(req,res){
+    db.collection('courses').aggregate([
+        {
+            $lookup:
+            {
+                from:'videos',
+                localField:'_id',
+                foreignField:'CourseId',
+                as:'videodetails'
+            }
+        }
+    ]).toArray(function(err,result){
+        if(err)
+            console.log("error while join")
+        else
+        {
+            console.log("=============================================\n");
+           console.log(result);
+            res.status(200).send(result)
+        }
+    })
+})
 app.post('/removeTutorial',function(req,res){
     var data = req.body
     var myQuery = {_id : mongoose.Types.ObjectId(data.tId)}
@@ -564,6 +605,21 @@ app.post("/getQuizes",function(req,res){
         else
         {
            ////console.log(JSON.stringify(result));
+            res.status(200).send(result)
+        }
+    })
+})
+
+app.post("/getQuizForCourse",function(req,res){
+    var data=req.body
+    db.collection('quizzes').find({CourseId:mongoose.Types.ObjectId(data.cId)}).toArray(function(err,result){
+        if(err)
+        {
+            console.log(err)
+        }
+        else
+        {
+            console.log(result)
             res.status(200).send(result)
         }
     })

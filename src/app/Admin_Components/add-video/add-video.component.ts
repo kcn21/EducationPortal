@@ -10,7 +10,10 @@ import {SafePipe} from'../../safe.pipe'
 export class AddVideoComponent implements OnInit {
 
   public CourseNames
+  public topics
+  public TopicNames
   public SelectedCourse=0
+  public SelectedTopic=0
   public videourl=""
   public videoIsSet=false;
   constructor(private route:Router,private AdminService:AdminService) {
@@ -21,9 +24,25 @@ export class AddVideoComponent implements OnInit {
         this.CourseNames=data
       }
     })
+    this.AdminService.getTopics().subscribe(data=>{
+      console.log(data)
+      if(data)
+      {
+        this.topics=data
+        this.TopicNames=this.topics.filter(ct=>ct._id === this.SelectedCourse)
+        console.log(this.TopicNames)
+      }
+    })
    }
 
   ngOnInit() {
+  }
+  SelectedCourseChanged()
+  {
+    //console.log("Method Called")
+    this.TopicNames=this.topics.filter(ct=>ct._id === this.SelectedCourse)[0].topicdetails
+    //console.log(this.TopicNames)
+    this.SelectedTopic=0
   }
   urlSet(){
     if(!!this.videourl){
@@ -37,6 +56,7 @@ export class AddVideoComponent implements OnInit {
     console.log(cname.Poster)
     var Video= {
       CourseId:cname.CourseId,
+      TopicId:cname.TopicId,
       Title:cname.Title,
       Link:this.videourl,
       Description:cname.Description

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import{AuthServiceService}from '../../../services/auth-service.service'
+import {CookieService} from'ngx-cookie-service'
+
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
@@ -9,11 +12,18 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 export class ContentComponent implements OnInit {
   public router:Router;
   public task:String;
-  constructor() { 
+  constructor(private route:Router,private _cookieService:CookieService ,private _AuthService:AuthServiceService) { 
   }
 
   ngOnInit() {
-
+    
   }
-
+  logout(){
+    this._AuthService.logOut().subscribe(data=>{
+      this._cookieService.delete('loggedIn')  
+      this._cookieService.delete('username')
+      this._cookieService.delete('role')
+      this.route.navigate(['/signin']);
+    })
+  }
 }

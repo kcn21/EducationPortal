@@ -44,8 +44,8 @@ body {font-family: "Roboto", sans-serif}
       <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
       <div class="w3-dropdown-hover w3-hide-small">
 
-        <button class="w3-padding-large w3-button" title="More">Explore Courses<i class="fa fa-caret-down"></i></button>     
-        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <!--<button class="w3-padding-large w3-button" title="More">Explore Courses&nbsp;<i class="fa fa-caret-down"></i></button>     
+        --><div class="w3-dropdown-content w3-bar-block w3-card-4">
             <div class="w3-card w3-light-grey" style="position:fixed;height:auto; display: block;margin-right:25px;
             overflow: auto;">
               <table>
@@ -57,23 +57,78 @@ body {font-family: "Roboto", sans-serif}
         </div>
      
       </div>
-      <a routerLink="/signin" class="w3-bar-item w3-button w3-padding-large  w3-right">SIGN IN</a>
-      <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large w3-right">SIGN UP</a>
+      <button  class="w3-bar-item w3-button w3-padding-large w3-right" (click)="logOut()" *ngIf="username">Log Out</button>
+      <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="username">Hello {{username}}!</a>
+      <a routerLink="/signin" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="!username">Login</a>
+      <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="!username">SignUp</a>
+
     </div>
 </div>
-<hr>
-<img src="../../assets/e-learning.png"/>
-<hr>
+<div class="bg-img">
+  <div class="data">
+      WE ENSURE BETTER EDUCATION FOR A BETTER WORLD
+  </div>
+  <br>
+  <div class="small-data">
+      Education is the passport to the future, for tomorrow belongs to those<br> who prepare for it today.
+  </div>
+  <!--<form class="container">
+    <h1>FIND COURSES</h1>
+    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="Enter Course" [(ngModel)]="term" required>
 
+
+    <div *ngIf="IsBelowDataEnabled">
+      <div class="belowdata" *ngFor="let c of courses | filter:term;">
+      {{c.CourseName}}<br>
+      </div>
+    </div>
+    <div *ngIf="ExtraData">
+      No Course Is available
+    </div>
+  </form>-->
+</div>
 <div class="main">
   <div class="row">
-    <div class="column" *ngFor="let item of courses | paginate: { itemsPerPage: 8, currentPage: p };" (click)="gototextcontent(item)" >
+    <div class="column" *ngFor="let item of courses | paginate: { itemsPerPage: 8, currentPage: p } | filter:term;" (click)="gototextcontent(item)" >
       <a><img [src]="item.ImagePath"></a>
       <div style='height:35px; width:auto;text-align: center;font-size: 25px;'>
         {{item.CourseName}}
      </div>
   </div>
 </div>
+</div>
 <div style="text-align: center;">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<div class="availableSubjects">
+  Course Categories
+  </div>
+<div class="subjectmain">
+  <div class="subjectrow" align="center">
+    <div class="subjectcolumn" *ngFor="let s of subject"> 
+        {{s}}
+    </div>  
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="footer">
+  <div class="footerrow">
+    <div class="footercolumn">
+      asdasdasd
+    </div>
+    <div class="footercolumn">
+      asdasdasd
+    </div>
+    <div class="footercolumn">
+      asdasdasdas
+    </div>
+    <div class="footercolumn">
+      zxczxvzvxbv
+    </div>            
+    </div>
+    
 </div>

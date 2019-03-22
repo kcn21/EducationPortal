@@ -14,15 +14,16 @@ import { NavigationComponent } from './navigation/navigation.component';
 import {TextcontentComponent} from './textcontent/textcontent.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/signin',pathMatch:'full'},
+  {path:'',redirectTo:'/home',pathMatch:'full'},
     {path:'signin',component:SignInComponent},
     {path:'signup',component:SignUpComponent},
-    {path:'home',component:HomeComponent,canActivate:[AuthGuard]},
-    {path:'admin',component:ContentComponent},
-    {path:'admin/:task',component:SidebarComponent},
+    {path:'home',component:HomeComponent},
+    {path:'admin',component:ContentComponent,canActivate:[AuthGuard]},
+    {path:'admin/:task',component:SidebarComponent,canActivate:[AuthGuard]},
     {path:'sidebar',component:SidebarComponent},
     {path:'coursedetails',component:CoursedetailsComponent,canActivate:[AuthGuard]},
-    {path:'textcontent/:id',component:TextcontentComponent,canActivate:[AuthGuard]}
+    {path:'textcontent/:id',component:TextcontentComponent,canActivate:[AuthGuard]},
+    {path:'**',redirectTo:'/home',pathMatch: 'full'}
 
 ];
 

@@ -7,7 +7,6 @@ import {AdminService}from '../../../services/admin.service';
   styleUrls: ['./view-courses.component.css']
 })
 export class ViewCoursesComponent implements OnInit {
-
   public courses
   public coursesBackup
   public fields

@@ -21,14 +21,35 @@ export class SignInComponent implements OnInit {
     this.AuthService.loginUser(user).subscribe(data=>{
       console.log(data)
       if(data){
-        this.cookieService.set( 'loggedIn', 'true' );
+        console.log(data)
+        if(!this.cookieService.check('loggedIn'))
+        {
+          this.cookieService.set( 'loggedIn', 'true' );
+        }
+        if(!this.cookieService.check('username'))
+        {
+          this.cookieService.set('username',data.uname);
+        }
+        if(!this.cookieService.check('role'))
+        {
+          this.cookieService.set('role',data.role);
+        }
         //localStorage.setItem('loggedIn',"true")
+        if(data.role === "Admin")
+        {
+          console.log("Redirecting To ADmin Page")
+          this.route.navigate(['/admin']);
+        }
+        else
+        {
         this.route.navigate(['/home']);
+        }
       } 
       else  
       {
+        console.log("Invalid Login")
         this.checkLogin=true;
-        this.route.navigate(['/signin'])
+        //this.route.navigate(['/signin'])
       }
     })
   }

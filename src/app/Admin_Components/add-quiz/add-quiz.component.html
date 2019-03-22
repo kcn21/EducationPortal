@@ -103,7 +103,7 @@
     <div class="tab-content">
         <div class="tab-content">
             <div class="field-wrap">
-              <select  [(ngModel)]="SelectedCourse"(change)="SelectedCourseChanged()" style="margin-right:50px;" name="CourseId">
+              <select  [(ngModel)]="SelectedCourse" (change)="SelectedCourseChanged()" style="margin-right:50px;" name="CourseId">
                   <option value="0" selected>
                       Select Course
                     </option>
@@ -126,13 +126,19 @@
                 <label>
                     Quiz Name <span class="req">*</span>
                 </label>
-                <input type="text" name="TopicName" [(ngModel)]="quizName" #QuizName required autocomplete="off"/> 
+                <input type="text" name="TopicName" [(ngModel)]="quizName" #QuizName="ngModel" class="input100 is-invalid form-control" required autocomplete="off"/> 
+                <div *ngIf="QuizName.invalid && (QuizName.dirty || QuizName.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                        QuizName is required.
+                </div>
             </div>
             <div class="field-wrap">
                 <label>
                     Time Limit(In Min) <span class="req">*</span>
                 </label>
-                <input type="number" min="1" name="TimeLimit" [(ngModel)]="timeLimit" #TimeLimit required autocomplete="off"/> 
+                <input type="number" min="1" name="TimeLimit" [(ngModel)]="timeLimit" #TimeLimit="ngModel" class="input100 is-invalid form-control" required autocomplete="off"/> 
+                <div *ngIf="TimeLimit.invalid && (TimeLimit.dirty || TimeLimit.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                        TimeLimit is required.
+                </div>
             </div>
             
             <button class="button button-block"(click)="showAddQuestionPage()" >Next</button>
@@ -153,6 +159,5 @@
             Correct Option&ensp;:&emsp;{{que.CorrectOption}}<br>
             Marks&ensp;:&emsp;{{que.Marks}}
         </h4>
-    </div>    
-    
+    </div>      
 </div>
