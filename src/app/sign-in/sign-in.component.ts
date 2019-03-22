@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
           this.cookieService.set( 'loggedIn', 'true' );
         }
         if(!this.cookieService.check('username'))
-        {
+        { 
           this.cookieService.set('username',data.uname);
         }
         if(!this.cookieService.check('role'))
