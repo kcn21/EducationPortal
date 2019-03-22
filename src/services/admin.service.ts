@@ -33,6 +33,8 @@ export class AdminService {
   private _removeQuizUrl="http://localhost:8081/removeQuiz"
   private _updateQuizUrl="http://localhost:8081/UpdateQuiz"
   private _getCourseViseTutorialUrl="http://localhost:8081/getCourseViseTutorial"
+  private _updateQuestionUrl="http://localhost:8081/UpdateQuestion"
+  private _removeQuestionUrl="http://localhost:8081/removeQuestion"
   constructor(private _http:HttpClient) { }
   AddCourse(course)
   {
@@ -142,5 +144,12 @@ export class AdminService {
   updateQuiz(quizObj)
   {
     return this._http.post<any>(this._updateQuizUrl,quizObj)
+  }
+  updateQuestion(newDataOfQue)
+  {
+    return this._http.post<any>(this._updateQuestionUrl,newDataOfQue)
+  }
+  removeQuestion(QueId){
+    return this._http.post<any>(this._removeQuestionUrl,QueId)
   }
 }
