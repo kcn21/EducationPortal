@@ -21,7 +21,14 @@ export class SignInComponent implements OnInit {
       console.log(data)
       if(data){
         localStorage.setItem('token',data._id)
-        this.route.navigate(['/home']);
+        if(data.Role=='admin')
+        {
+          this.route.navigate(['/admin']);
+        }
+        else
+        {
+          this.route.navigate(['/home']);
+        }
       } 
       else  
       {

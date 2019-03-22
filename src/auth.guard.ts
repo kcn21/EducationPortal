@@ -8,7 +8,9 @@ export class AuthGuard implements CanActivate {
   constructor(private _authService:AuthServiceService,private _route:Router){
 
   }
-  canActivate():boolean{
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean{
+    let url:string=state.url;
+    console.log("this is url"+url)
    if(this._authService.loggedIn()){
       return true
    }

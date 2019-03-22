@@ -25,7 +25,7 @@
                     <a  class="menuItem" routerLink="/admin">Hello Admin</a>
                 <li>
                     <button type="button" class="menuItem" (click)="onToggleMenu('c')">
-                        Course
+                        Course&nbsp;<i class="fa fa-caret-down" style="float:right;margin-top:10px;"></i>
                     </button>
                     <div  *ngIf="toggleCourseMenu">
                         <a routerLink="/admin/addCourse" class="subItem"  id="addCourse">
@@ -39,7 +39,7 @@
                 
                 <li>
                         <button type="button" class="menuItem" (click)="onToggleMenu('s')">
-                            Subject
+                            Subject&nbsp;<i class="fa fa-caret-down" style="float:right;margin-top:10px;"></i>
                         </button>
                         <div  *ngIf="toggleSubjectMenu">
                             <a  routerLink="/admin/addSubject" class="subItem"  id="addSubject">
@@ -54,7 +54,7 @@
 
                 <li>
                     <button type="button" class="menuItem" (click)="onToggleMenu('v')">
-                        Tutorials
+                        Tutorials&nbsp;<i class="fa fa-caret-down" style="float:right;margin-top:10px;"></i>
                     </button>
                     <div  *ngIf="toggleTutorialMenu">
                         <a routerLink="/admin/addVideo" class="subItem"  id="addVideo">
@@ -68,7 +68,7 @@
                 </li>
                 <li>
                     <button type="button" class="menuItem" (click)="onToggleMenu('t')">
-                        Topic
+                        Topic&nbsp;<i class="fa fa-caret-down" style="float:right;margin-top:10px;"></i>
                     </button>
                     <div  *ngIf="toggleTopicMenu">
                         <a routerLink="/admin/addTopic" class="subItem"  id="addTopic">
@@ -81,7 +81,7 @@
                 </li>
                 <li>
                     <button type="button" class="menuItem" (click)="onToggleMenu('q')">
-                        Quizes
+                        Quizes&nbsp;<i class="fa fa-caret-down" style="float:right;margin-top:10px;"></i>
                     </button>
                     <div  *ngIf="toggleQuizesMenu">
                         <a routerLink="/admin/addQuiz" class="subItem"  id="addTopic">
