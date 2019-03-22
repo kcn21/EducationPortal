@@ -9,7 +9,7 @@
   .next {
     background-color: #4CAF50;
     color: white;
-    margin-left:705px;
+    margin-left:900px;
     cursor: pointer;
     margin-bottom: 300px;
   } 
@@ -31,7 +31,7 @@
     cursor: not-allowed;
   }
   .block {
-    background-color: #4CAF50;
+    background-color:black;
     color: white;   
     margin-left:700px;
     cursor: pointer;
@@ -43,9 +43,20 @@
     color: white;   
     margin-left:450px;
     cursor: pointer;
-    width:140px;
+    width:135px;
   }
   input[type="radio"]{
     display: inline;
   }
-  
+  .Quiz,.Text,.Video
+  {
+    width:33.33%;
+  }
+  .mes{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    position: relative;
+    text-align: center;
+    align-content: center;
+    display: block;
+    color: #f44336;
+  }

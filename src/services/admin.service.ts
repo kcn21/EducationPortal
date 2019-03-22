@@ -22,6 +22,7 @@ export class AdminService {
   private _removeTopicUrl="http://localhost:8081/removeTopic"
   private _updateTopicUrl="http://localhost:8081/updateTopic"
   private _getTutorialUrl="http://localhost:8081/getTutorial"
+  private _updateTutorialUrl="http://localhost:8081/updateTutorial"
   private _removeTutorialUrl="http://localhost:8081/removeTutorial"
   private _addQuizUrl="http://localhost:8081/addQuiz"
   private _addQuestionsUrl="http://localhost:8081/addQuestions"
@@ -31,6 +32,7 @@ export class AdminService {
   private _getQuizForCourseUrl="http://localhost:8081/getQuizForCourse"
   private _removeQuizUrl="http://localhost:8081/removeQuiz"
   private _updateQuizUrl="http://localhost:8081/UpdateQuiz"
+  private _getCourseViseTutorialUrl="http://localhost:8081/getCourseViseTutorial"
   private _updateQuestionUrl="http://localhost:8081/UpdateQuestion"
   private _removeQuestionUrl="http://localhost:8081/removeQuestion"
   constructor(private _http:HttpClient) { }
@@ -65,11 +67,8 @@ export class AdminService {
   }
   getCourseNames()
   {
-    return this._http.post<any>(this._getCourseNamesUrl,null,{
-      withCredentials:true
-    })
+    return this._http.post<any>(this._getCourseNamesUrl,null)
   }
-  
   AddVideo(video)
   {
     return this._http.post<any>(this._addVideoUrl,video)
@@ -105,6 +104,14 @@ export class AdminService {
   getTutorial()
   {
     return this._http.post<any>(this._getTutorialUrl,null)
+  }
+  updateTutorial(tutorial)
+  {
+    return this._http.post<any>(this._updateTutorialUrl,tutorial)
+  }
+  getCourseViseTutorial()
+  {
+    return this._http.post<any>(this._getCourseViseTutorialUrl,null)
   }
   removeTutorial(tutorialId)
   {

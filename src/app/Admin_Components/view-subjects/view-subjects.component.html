@@ -11,15 +11,15 @@
       </tr>
       <tr *ngFor="let s of subjects  | paginate: { itemsPerPage: 5, currentPage: p }  index as i;">
         <td>{{((p-1)*5)+i+1}}</td>
-        <td *ngIf="!isEnabledEditView(i)">{{s.SubjectName}}</td>
-        <td *ngIf="isEnabledEditView(i)"><input type="text" [(ngModel)]="subjects[i].SubjectName" id=""></td>
-        <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="updateSubject()">Update</button></td>
-        <td *ngIf="isEnabledEditView(i)"><button type="button" [value]="i" (click)="cancelEditSubject()">Cancel</button></td>
-        <td *ngIf="!isEnabledEditView(i)"><button type="button" [value]="i" (click)="displayEditView($event.target)">Edit</button></td>
-        <td *ngIf="!isEnabledEditView(i)"><button type="button" [value]="i" (click)="removeSubject(s)">Remove</button></td>
+        <td *ngIf="!isEnabledEditView(((p-1)*5)+i)">{{s.SubjectName}}</td>
+        <td *ngIf="isEnabledEditView(((p-1)*5)+i)"><input type="text" [(ngModel)]="subjects[((p-1)*5)+i].SubjectName" id=""></td>
+        <td *ngIf="isEnabledEditView(((p-1)*5)+i)"><button type="button" [value]="((p-1)*5)+i" (click)="updateSubject()">Update</button></td>
+        <td *ngIf="isEnabledEditView(((p-1)*5)+i)"><button type="button" [value]="((p-1)*5)+i" (click)="cancelEditSubject()">Cancel</button></td>
+        <td *ngIf="!isEnabledEditView(((p-1)*5)+i)"><button type="button" [value]="((p-1)*5)+i" (click)="displayEditView($event.target)">Edit</button></td>
+        <td *ngIf="!isEnabledEditView(((p-1)*5)+i)"><button type="button" [value]="((p-1)*5)+i" (click)="removeSubject(s)">Remove</button></td>
       </tr>
     </table>
-  <div style="text-align: center;">
+  <div>
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
     

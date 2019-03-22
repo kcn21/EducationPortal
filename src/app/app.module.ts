@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeComponent } from './home/home.component';
 import {FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ngx-custom-validators';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SidebarComponent } from './Admin_Components/sidebar/sidebar.component';
@@ -59,6 +60,7 @@ import { ViewQuizesComponent } from './Admin_Components/view-quizes/view-quizes.
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CustomFormsModule,
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,

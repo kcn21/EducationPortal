@@ -14,9 +14,9 @@
             <label>
               Course Name <span class="req">*</span>
             </label>
-            <input type="text" name="CourseName" #CourseName ngModel  autocomplete="off" required/>
-            <div *ngIf="CourseName.invalid" style="background-color: brown">
-                  CourseName is required.
+            <input type="text" name="CourseName" #CourseName="ngModel" class="input100 is-invalid form-control"  ngModel  autocomplete="off" required/>
+            <div *ngIf="CourseName.invalid && (CourseName.dirty || CourseName.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                    CourseName is required.
             </div>
           </div>
           
@@ -27,27 +27,36 @@
             <input type="text" name="Subject" #Subject ngModel required autocomplete="off"/>
           </div>-->
           <div class="field-wrap">
-            <select  [(ngModel)]="SelectedSubject" style="margin-right:50px;" name="SubjectId">
+            <select  [(ngModel)]="SelectedSubject" style="margin-right:50px;" name="SubjectId" #SelectSubject="ngModel" class="input100 is-invalid form-control">
                 <option value="0" selected>
                     Select Subject
                   </option>
-                <option *ngFor="let sname of SubjectNames" [ngValue]="sname._id">
+                <option *ngFor="let sname of SubjectNames" [ngValue]="sname._id" >
                     {{sname.SubjectName}}
                 </option>
+                <div *ngIf="SelectSubject.invalid && (SelectSubject.dirty || SelectSubject.touched)" style="margin-top:30px;color:red;font-size: 20px;">
+                    Select A Subject    
+                </div>
           </select>
         </div>          
             <div class="field-wrap">
               <label>
                   Description <span class="req">*</span>
               </label>
-              <input type="text" name="Description" #Description ngModel required autocomplete="off"/>
+              <input type="text" name="Description" #Description="ngModel" class="input100 is-invalid form-control" ngModel required autocomplete="off"/>
+              <div *ngIf="Description.invalid && (Description.dirty || Description.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                    Description is required.
+            </div>
             </div>    
             
             <div class="field-wrap">
                 <label>
                     ImagePath <span class="req">*</span>
                 </label>
-                <input type="url" name="ImagePath" #ImagePath [(ngModel)]="imageurl" (change)="pathSet()" required autocomplete="off"/>
+                <input type="url" name="ImagePath" #ImagePath="ngModel" class="input100 is-invalid form-control"  [(ngModel)]="imageurl" (change)="pathSet()" required autocomplete="off"/>
+                <div *ngIf="ImagePath.invalid && (ImagePath.dirty || ImagePath.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                        ImagePath is required.
+                </div>
 
                 <img *ngIf="ImageIsSet" [src]="imageurl" style="width: 450px;height:400px;" allowfullscreen>
             </div>    
@@ -55,14 +64,20 @@
                 <label>
                     Duration <span class="req">*</span>
                 </label>
-                <input type="number" name="Duration" #Duration ngModel required autocomplete="off"/>
+                <input type="number" name="Duration" #Duration="ngModel" class="input100 is-invalid form-control" ngModel required autocomplete="off"/>
+                <div *ngIf="Duration.invalid && (Duration.dirty || Duration.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                        Duration is required.
+                </div>
             </div> 
             <div class="field-wrap">
                   <label>
                       Cost <span class="req">*</span>
                   </label>
-                  <input type="number" min="0" name="Cost" #Cost ngModel required autocomplete="off"/>
-            </div>         
+                  <input type="number" min="0" name="Cost" #Cost="ngModel" class="input100 is-invalid form-control"  ngModel required autocomplete="off"/>
+                   <div *ngIf="Cost.invalid && (Cost.dirty || Cost.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                        Cost is required.
+                </div>
+                </div>         
           <button class="button button-block"  [disabled]="CourseLoginForm.invalid">Add</button>
           </form>
           <!--<div class="field-wrap" *ngIf="checkLogin"> 
