@@ -21,10 +21,8 @@ const routes: Routes = [
     {path:'admin',component:ContentComponent},
     {path:'admin/:task',component:SidebarComponent},
     {path:'sidebar',component:SidebarComponent},
-    {path:'tutorial',component:AddVideoComponent},
     {path:'coursedetails',component:CoursedetailsComponent,canActivate:[AuthGuard]},
-    {path:'navigation',component:NavigationComponent},
-    {path:'textcontent/:id',component:TextcontentComponent}
+    {path:'textcontent/:id',component:TextcontentComponent,canActivate:[AuthGuard]}
 
 ];
 

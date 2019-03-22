@@ -11,9 +11,11 @@
       <!--<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>-->
       <!--<span (click)="removeTutorial(t)" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">x</span>-->
       <span><button type="button" [value]="i" (click)="removeTutorial(t)" style="margin-left:300px;">Remove</button></span>
-      <video class="w3-bar-item" [src]="t.Link | safe" controls style="width:400px" poster="../../../assets/posters/C.png"> 
-        </video>
+    
+      
       <div class="w3-bar-item">
+          <iframe  [src]="t.Link | safe" style="width:400px" poster="../../../assets/posters/C.png"    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
         <span class="w3-large">{{t.Title}}</span><br>
         <details><span>{{t.Description}}</span></details>
       </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
 import {AdminService} from '../../services/admin.service';
+import {AuthServiceService} from '../../services/auth-service.service'
 import { Router } from '@angular/router';
 declare var jquery:any;
 declare var $ :any;
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
   public router:Router
   p:number=1
   count:number=1
-  constructor(private route:Router,private _AdminService:AdminService ) {
+  constructor(private route:Router,private _AdminService:AdminService,private _authService:AuthServiceService) {
       this._AdminService.getSubjects().subscribe(data=>{
           this.subjects=data;
       }) 

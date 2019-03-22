@@ -32,7 +32,9 @@ export class AdminService {
   private _updateQuizUrl="http://localhost:8081/UpdateQuiz"
   private _updateQuestionUrl="http://localhost:8081/UpdateQuestion"
   private _removeQuestionUrl="http://localhost:8081/removeQuestion"
+
   constructor(private _http:HttpClient) { }
+  
   AddCourse(course)
   {
     return this._http.post<any>(this._addCourseUrl,course)

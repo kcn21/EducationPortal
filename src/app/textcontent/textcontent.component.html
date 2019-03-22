@@ -75,11 +75,11 @@ body {font-family: "Roboto", sans-serif}
 <button type="button" style="margin-left: 500px;">previous</button>-->
   </div>
 </header>
-<div style="margin-left:300px;">
-</div>
+<a class="previous"  (click)="displayprevcontent()" >&laquo; Previous</a>
+<a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
 <div class="w3-container" style="padding:32px;margin-left: 250px;" [innerHTML]="selectedTopic | sanitizeHtml">
 </div>
-<a class="previous" (click)="displayprevcontent()"  ng-class="{disabled: addInviteesDisabled()}">&laquo; Previous</a>
+<a class="previous"  (click)="displayprevcontent()" >&laquo; Previous</a>
 <a class="next" (click)="displaynextcontent()" >Next &raquo;</a>
 
 
