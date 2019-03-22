@@ -69,20 +69,20 @@ body {font-family: "Roboto", sans-serif}
   <div class="small-data">
       In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space telescope known as the Hubble.
     </div>
-  <!--<form class="container">
-    <h1>FIND COURSES</h1>
-    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="Enter Course" [(ngModel)]="term" required>
+  <form class="container">
+    <h1 style="font-weight:800;">FIND COURSES</h1>
+    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="Search Course" [(ngModel)]="term" required>
 
 
-    <div *ngIf="IsBelowDataEnabled">
+    <!--<div *ngIf="IsBelowDataEnabled">
       <div class="belowdata" *ngFor="let c of courses | filter:term;">
       {{c.CourseName}}<br>
       </div>
-    </div>
-    <div *ngIf="ExtraData">
+    </div>-->
+    <!--<div *ngIf="ExtraData">
       No Course Is available
-    </div>
-  </form>-->
+    </div>-->
+  </form>
 </div>
 <div class="main">
   <div class="row">

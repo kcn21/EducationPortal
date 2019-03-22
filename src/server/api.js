@@ -23,7 +23,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/EducationPortal',function(err,databa
         db = database;
     }
 })
-
 app.post('/register',function(req,res){
     console.log("POST Request")
     var userData=req.body
