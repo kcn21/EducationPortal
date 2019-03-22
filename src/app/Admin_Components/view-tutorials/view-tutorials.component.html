@@ -5,23 +5,70 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 
-<div class="w3-container" *ngFor="let t of Tutorials | paginate: { itemsPerPage: 5, currentPage: p }">
-  <ul class="w3-ul w3-card-4">
-    <li class="w3-bar">
-      <!--<span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>-->
-      <!--<span (click)="removeTutorial(t)" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">x</span>-->
-      <span><button type="button" [value]="i" (click)="removeTutorial(t)" style="margin-left:300px;">Remove</button></span>
-      <video class="w3-bar-item" [src]="t.Link | safe" controls style="width:400px" poster="../../../assets/posters/C.png"> 
-        </video>
-      <div class="w3-bar-item">
-        <span class="w3-large">{{t.Title}}</span><br>
-        <details><span>{{t.Description}}</span></details>
+  <div class="mes">
+    <title class="mes">{{_Message}}
+    </title>
+  </div>
+  <div class="w3-container" *ngFor="let ct of CourseTutorial | paginate: { itemsPerPage: 5, currentPage: p } index as ti;"> 
+      <div class="mes">
+          <h3>{{ct.CourseName}}</h3>
       </div>
-    </li>
-  </ul>
-</div>
-<div style="text-align: center;">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-</div>
+    <ul class="w3-ul w3-card-4 " style="margin-top:20px;">     
+       
+        <div class="mes" *ngIf="!ct.videodetails.length">
+            <h4  style="color:black;">No Tutorials Are Available!</h4>
+        </div>
+        <div *ngIf="ct.videodetails.length">
+          <li class="w3-bar" *ngFor="let t of ct.videodetails;index as i">
+            <div class="">
+              <div style="float : right;">
+                  <button *ngIf="isEnabledEditView(ti,i)" class="w3-button w3-black w3-round-xxlarge" (click)="updateTutorial(ti,i)">Update</button>
+                  <button *ngIf="isEnabledEditView(ti,i)" class="w3-button w3-black w3-round-xxlarge" (click)="cancelEditTutorial()">Cancel</button>
+                  <button  *ngIf="!isEnabledEditView(ti,i)" type="button" [value]="i" (click)="displayEditView($event.target,ti)">Edit</button><br>
+                  <button *ngIf="!isEnabledEditView(ti,i)" type="button" [value]="i" (click)="removeTutorial(t)">Remove</button>    
+              </div>
+              <div style="float :left;">
+                <iframe class="w3-bar-item" width="400px" height="30%" [src]="t.Link | safe" poster="../../../assets/posters/C.png" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+                  
+                
+              </div>
+              <div class="data">
+                <h2> <span  *ngIf="!isEnabledEditView(ti,i)" class="w3-large">{{t.Title}}</span><br></h2>
+                
+                  <p><span *ngIf="!isEnabledEditView(ti,i)" >{{t.Description}}</span></p>
+                </div>  
+                <div class="editviewdata" *ngIf="editViewEnabled">
+                  <p>TITLE</p><input  *ngIf="isEnabledEditView(ti,i)"  type="text" [(ngModel)]="CourseTutorial[ti].videodetails[i].Title">
+                  <p>DESCRIPTION</p><input *ngIf="isEnabledEditView(ti,i)"  type="text" [(ngModel)]="CourseTutorial[ti].videodetails[i].Description">
+                  <p>LINK</p><input *ngIf="isEnabledEditView(ti,i)"  type="text" [(ngModel)]="CourseTutorial[ti].videodetails[i].Link">  
+                </div>  
+            </div>
+          </li>
+        </div>
+    </ul>
+  </div>
+  <div style="text-align: center;">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+    <!--<div class="w3-container">
+        <ul class="w3-ul w3-card-4" style="margin-top:20px;">     
+            <li class="w3-bar">
+                <div style="float :left;">
+                  <div *ngIf="isEnabledEditView(i)">
+                  <iframe class="w3-bar-item" width="400px" height="30%" [src]="t.Link | safe" poster="../../../assets/posters/C.png" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+                  </div>
+                  <div *ngIf="isEnabledEditView(i)" class="w3-bar-item">
+                    <span class="w3-large">t.Title</span><br>
+                    <details><span>t.Description</span></details>
+                  </div>
+                </div>
+            </li>
+        </ul>
+      <div *ngIf="isEnabledEditView(i)">edit view</div>
+      <p><button *ngIf="isEnabledEditView(i)" class="w3-button w3-black w3-round-xxlarge" (click)="updateTopic()">Update</button>
+        &nbsp;<button *ngIf="isEnabledEditView(i)" class="w3-button w3-black w3-round-xxlarge" (click)="cancelUpdateTopic()">Cancel</button></p>
+    </div>-->
+
 </body>
 </html>

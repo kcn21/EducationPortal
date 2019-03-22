@@ -315,6 +315,40 @@ app.post('/getTutorial',function(req,res){
         }
     })
 })
+app.post('/updateTutorial',function(req,res){
+    var TutorialData=req.body
+    var myquery = { _id : mongoose.Types.ObjectId(TutorialData._id)};
+    //console.log(myquery)
+    var newvalues = { $set: { Title: TutorialData.Title,Link:TutorialData.Link,Description:TutorialData.Description } };
+    //console.log(newvalues)
+    db.collection("videos").updateOne(myquery, newvalues, function(err, result) {
+        if (err) throw err;
+        //console.log("course updated");
+        res.status(200).send(result);
+      })
+})
+app.post('/getCourseViseTutorial',function(req,res){
+    db.collection('courses').aggregate([
+        {
+            $lookup:
+            {
+                from:'videos',
+                localField:'_id',
+                foreignField:'CourseId',
+                as:'videodetails'
+            }
+        }
+    ]).toArray(function(err,result){
+        if(err)
+            console.log("error while join")
+        else
+        {
+            console.log("=============================================\n");
+           console.log(result);
+            res.status(200).send(result)
+        }
+    })
+})
 app.post('/removeTutorial',function(req,res){
     var data = req.body
     var myQuery = {_id : mongoose.Types.ObjectId(data.tId)}

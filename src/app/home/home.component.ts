@@ -24,8 +24,14 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
   public numofcourses
   public lastDisplayed=-1
   public router:Router
+  public IsBelowDataEnabled=false;
+  public textvalue='';
+  public ExtraData=false;
+  public extra:0;
+  public numberOftimes=0;
   p:number=1
   count:number=1
+  public subject=["Data Science","Algorith","Operating System","Programming","Algorithm","Machine Learming"];
   constructor(private route:Router,private _AdminService:AdminService ) {
       this._AdminService.getSubjects().subscribe(data=>{
           this.subjects=data;
@@ -39,11 +45,68 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
         this.selectedTopic=this.topics[0].topicdetails[1]
       })
    }
+   /*textfieldempty()
+   {
+     if(this.textvalue!=null)
+     {
+       console.log(this.textvalue);
+        this.IsBelowDataEnabled=true;
+     }
+     else
+     {
+       this.IsBelowDataEnabled=false;
+     }
+
+   }*/
+   /*filterterm(value)
+   {
+      if(!value)
+      {
+        this.IsBelowDataEnabled=false;
+      }
+      else
+      {
+        this.IsBelowDataEnabled=true;
+      }
+   }*/
+   onKey(event : any)
+   {
+     this.extra=0;
+     this.ExtraData=false;
+    this.textvalue=event.target.value;
+    console.log(this.textvalue);
+    if(this.textvalue=='')
+    {
+      console.log("yes textvalue is null")
+      this.IsBelowDataEnabled=false;
+      this.ExtraData=false;
+    }
+    else
+    {
+      this.courses.forEach(element => {
+        if(element.CourseName==this.textvalue)
+        {
+          this.extra++;
+          console.log("extra value is increased");
+        }
+      });
+      if(this.extra>0)
+      {
+        this.ExtraData=false;
+      }
+      else
+      {
+        this.ExtraData=true;
+      }
+      this.IsBelowDataEnabled=true;
+    }
+   }
    gototextcontent(item){
     console.log("hiiii")
     console.log(item.CourseName);
     this.route.navigate(['/textcontent',item._id]);
   }
+
   ngOnInit() {
     
   }

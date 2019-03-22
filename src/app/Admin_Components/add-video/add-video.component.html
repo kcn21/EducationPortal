@@ -48,19 +48,19 @@
               <label>
                   Video Title <span class="req">*</span>
               </label>
-              <input type="text" name="Title" #Title ngModel required autocomplete="off"/>
-              <div *ngIf="Title.invalid" style="background-color: brown">
-                Title is required.
-              </div>
+              <input type="text" name="Title" #Title="ngModel" class="input100 is-invalid form-control" ngModel required autocomplete="off"/>
+              <div *ngIf="Title.invalid && (Title.dirty || Title.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                  Title is required.
+            </div>
             </div>         
           
           <div class="field-wrap">
             <label>
               Link <span class="req">*</span>
             </label>
-            <input type="url" name="link" #Link [(ngModel)]="videourl" (change)="urlSet()"  autocomplete="off" required/>
-            <div *ngIf="Link.invalid" style="background-color: brown">
-              Link is required.
+            <input type="url" name="link" #Link="ngModel" class="input100 is-invalid form-control"  [(ngModel)]="videourl" (change)="urlSet()"  autocomplete="off" required/>
+            <div *ngIf="Link.invalid && (Link.dirty || Link.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                Link is required.
             </div>
             <!--<video *ngIf="videoIsSet"  [src]="videourl | safe" controls>
             </video>
@@ -74,9 +74,9 @@
             <label>
               Description <span class="req">*</span>
             </label>
-            <input type="text" name="Description" #Description ngModel  autocomplete="off" required/>
-            <div *ngIf="Description.invalid" style="background-color: brown">
-              Description is required.
+            <input type="text" name="Description" #Description="ngModel" class="input100 is-invalid form-control"  ngModel  autocomplete="off" required/>
+            <div *ngIf="Description.invalid && (Description.dirty || Description.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                Description is required.
             </div>
           </div>
           

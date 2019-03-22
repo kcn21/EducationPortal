@@ -8,19 +8,21 @@
   <div class="form">
       <div class="tab-content">
         <div id="login">     
-            <div class="task">Add Subject</div>        
+          <div class="task">Add Subject</div>        
           <form #SubjectLoginForm="ngForm" (ngSubmit)="onSubmit(SubjectName.value)" action="/" method="post"> 
             <div class="field-wrap">
-            <label>
-                Subject Name <span class="req">*</span>
-            </label>
-            <input type="text" name="SubjectName" #SubjectName ngModel  autocomplete="off" required/>
-            <div *ngIf="SubjectName.invalid" style="background-color: brown">
-                SubjectName is required.
-            </div>
-          </div>    
-          <button class="button button-block"  [disabled]="SubjectLoginForm.invalid">Add</button>
-          </form>
+                <label>
+                    Subject Name <span class="req">*</span>
+                    
+                </label>
+                
+                <input type="text" name="SubjectName" #SubjectName="ngModel" class="input100 is-invalid form-control" ngModel  autocomplete="off" required/>
+                <div *ngIf="SubjectName.invalid && (SubjectName.dirty || SubjectName.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                        SubjectName is required.
+                </div>
+            </div>    
+          <button class="button button-block" #button [disabled]="SubjectLoginForm.invalid">Add</button>
+          </form>          
           <!--<div class="field-wrap" *ngIf="checkLogin"> 
               <label>
                   <h4 class="text-darken-2" style="font-size:20px;text-align: center;" >Please enter correct username or password</h4>
@@ -31,4 +33,5 @@
       </div><!-- tab-content -->
       
 </div> <!-- /form -->
+</div>
 

@@ -61,19 +61,71 @@ body {font-family: "Roboto", sans-serif}
       <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large w3-right">SIGN UP</a>
     </div>
 </div>
-<hr>
-<img src="../../assets/e-learning.png"/>
-<hr>
+<div class="bg-img">
+  <div class="data">
+      WE ENSURE BETTER EDUCATION FOR A BETTER WORLD
+  </div>
+  <br>
+  <div class="small-data">
+      In the history of modern astronomy, there is probably no one greater leap forward than the building and launch of the space telescope known as the Hubble.
+    </div>
+  <!--<form class="container">
+    <h1>FIND COURSES</h1>
+    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="Enter Course" [(ngModel)]="term" required>
 
+
+    <div *ngIf="IsBelowDataEnabled">
+      <div class="belowdata" *ngFor="let c of courses | filter:term;">
+      {{c.CourseName}}<br>
+      </div>
+    </div>
+    <div *ngIf="ExtraData">
+      No Course Is available
+    </div>
+  </form>-->
+</div>
 <div class="main">
   <div class="row">
-    <div class="column" *ngFor="let item of courses | paginate: { itemsPerPage: 8, currentPage: p };" (click)="gototextcontent(item)" >
+    <div class="column" *ngFor="let item of courses | paginate: { itemsPerPage: 8, currentPage: p } | filter:term;" (click)="gototextcontent(item)" >
       <a><img [src]="item.ImagePath"></a>
       <div style='height:35px; width:auto;text-align: center;font-size: 25px;'>
         {{item.CourseName}}
      </div>
   </div>
 </div>
+</div>
 <div style="text-align: center;">
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<div class="availableSubjects">
+  Some of the Important subject
+  </div>
+<div class="subjectmain">
+  <div class="subjectrow" align="center">
+    <div class="subjectcolumn" *ngFor="let s of subject"> 
+        {{s}}
+    </div>  
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="footer">
+  <div class="footerrow">
+    <div class="footercolumn">
+      asdasdasd
+    </div>
+    <div class="footercolumn">
+      asdasdasd
+    </div>
+    <div class="footercolumn">
+      asdasdasdas
+    </div>
+    <div class="footercolumn">
+      zxczxvzvxbv
+    </div>            
+    </div>
+    
 </div>

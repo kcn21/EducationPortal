@@ -14,6 +14,7 @@ declare var $ :any;
 })
 export class TextcontentComponent implements OnInit {
   public videos
+  public videoForSelectedTopic
   public topics
   public subjects
   public selectedTopic
@@ -29,6 +30,7 @@ export class TextcontentComponent implements OnInit {
   public ViewQuiz=false;
   public TextBlock=true;
   public VideoContent=false;
+  public QuizOrTextOrVideo=0;
   public submitquizenabled=false;
   public cName
   public CourseId
@@ -45,6 +47,10 @@ export class TextcontentComponent implements OnInit {
   public IsAnswered=[]
   public RefOfSelectedAnser=[]
   public Answers=[]
+  public previouslyselectedoption=null;
+  public previouslyselectedTopic=null;
+  public IsQuizSubmitted=false;
+  public textRef;
   form = new FormGroup({
     gender: new FormControl('lamb'),
   });
@@ -64,7 +70,15 @@ export class TextcontentComponent implements OnInit {
         console.log(this.topics)
         this.topics=this.topics.filter(topic=> topic._id === this.CourseId)[0];
         this.TopicId=this.topics.topicdetails[0]._id
+
+        this._AdminService.getTutorial().subscribe(data=>{
+          this.videos=data;
+          this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId)
+        })
+
         this._AdminService.getQuizForCourse({cId:this.CourseId}).subscribe(data=>{
+          if(data[0])
+          {
           this.quizes=data;
           this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
           console.log("selected quiz is :"+this.selectedQuiz)
@@ -74,31 +88,47 @@ export class TextcontentComponent implements OnInit {
             console.log("questions are :"+this.questions)
             this.questions=this.Allquestions.filter(quiz=>quiz.QuizId ===  this.QuizId)
             console.log("questions are :"+this.questions)
+          
+
+
+            
           })
-         
+        }
         })
+      
         this.disp_topics=this.topics.topicdetails
         this.selectedTopic=this.disp_topics[0].Content;
         this.selectedTopictitle=this.disp_topics[0].TopicName
       })
+
       
       this._AdminService.getCourseNames().subscribe(data=>{
         this.courses=data;
       })
    }
   ngOnInit() {
-   
+    $('.Text').css("background-color","white");
+      $('.Text').css("color","black");
   }
-  onselectedtopic(i)
+  onselectedtopic(topicRef,i)
   {
+    if(this.previouslyselectedTopic!=null)
+    {
+      $(this.previouslyselectedTopic).css("background-color", "green");
+    $(this.previouslyselectedTopic).css("color", "white");
+    }
+    $(topicRef).css("background-color", "#ddd");
+    $(topicRef).css("color", "black");
     console.log("in method")
-    this.EnabledTextContent()
+    //this.EnabledTextContent()
+    this.checkDisplayedContent()
     this.selectedTopic=this.disp_topics[i].Content;
     this.selectedTopictitle=this.disp_topics[i].TopicName;
     this.k=i;
     this.TopicId=this.disp_topics[i]._id;
     this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
     console.log(this.selectedQuiz)
+    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId)
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
@@ -126,11 +156,10 @@ export class TextcontentComponent implements OnInit {
     {
       console.log(this.k)
     }
-    this.ViewQuiz=false;
-    this.TextBlock=true;
-    this.VideoContent=false;
+    this.checkDisplayedContent()
     this.TopicId=this.disp_topics[this.k]._id;
     this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
+    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
@@ -142,8 +171,7 @@ export class TextcontentComponent implements OnInit {
       this.questions=this.Allquestions.filter(quiz=>quiz.QuizId ===  this.QuizId)
       console.log(this.questions);
       console.log(this.k)
-    }
-    
+    }  
   }
   displayprevcontent()
   {
@@ -158,11 +186,10 @@ export class TextcontentComponent implements OnInit {
     {
       console.log(this.k)
     }
-    this.ViewQuiz=false;
-    this.TextBlock=true;
-    this.VideoContent=false;
+    this.checkDisplayedContent()
     this.TopicId=this.disp_topics[this.k]._id;
     this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
+    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
@@ -194,27 +221,95 @@ export class TextcontentComponent implements OnInit {
       console.log(this.quiznumber)
     }
   }
-  EnabledViewQuiz()
+  EnabledViewQuiz(aRef)
   {
+    $('.Text').css("background-color","black");
+    $('.Text').css("color","white");
+    this.submitquizenabled=false;
+    this.IsQuizSubmitted=false;
+    if(this.previouslyselectedoption!=null)
+    {
+      $(this.previouslyselectedoption).css("background-color","black");
+      $(this.previouslyselectedoption).css("color","white");
+    }
+    $(aRef).css("background-color", "white");
+    $(aRef).css("color", "black");
+    this.previouslyselectedoption=aRef;
     this.ViewQuiz=true;
     this.TextBlock=false;
     this.VideoContent=false;
-    this.submitquizenabled=false;
+    if(this.TextBlock)
+    {
+      this.QuizOrTextOrVideo=0;
+    }
+    else if(this.VideoContent)
+    {
+      this.QuizOrTextOrVideo=1;
+    }
+    else if(this.ViewQuiz)
+    {
+      this.QuizOrTextOrVideo=2;
+    }
   }
-  EnabledTextContent()
+  EnabledTextContent(aRef)
   {
+    this.IsQuizSubmitted=false;
+    if(this.previouslyselectedoption!=null)
+    {
+      $(this.previouslyselectedoption).css("background-color","black");
+      $(this.previouslyselectedoption).css("color","white");
+    }
+    $(aRef).css("background-color", "white");
+    $(aRef).css("color", "black");
+    this.previouslyselectedoption=aRef;
     this.ViewQuiz=false;
     this.TextBlock=true;
     this.VideoContent=false;
+    if(this.TextBlock)
+    {
+      this.QuizOrTextOrVideo=0;
+    }
+    else if(this.VideoContent)
+    {
+      this.QuizOrTextOrVideo=1;
+    }
+    else if(this.ViewQuiz)
+    {
+      this.QuizOrTextOrVideo=2;
+    }
   }
-  EnabledVideoContent()
+  EnabledVideoContent(aRef)
   {
+    $('.Text').css("background-color","black");
+    $('.Text').css("color","white");
+    this.IsQuizSubmitted=false;
+    if(this.previouslyselectedoption!=null)
+    {
+      $(this.previouslyselectedoption).css("background-color","black");
+      $(this.previouslyselectedoption).css("color","white");
+    }
+    $(aRef).css("background-color", "white");
+    $(aRef).css("color", "black");
+    this.previouslyselectedoption=aRef;
     this.ViewQuiz=false;
     this.TextBlock=false;
     this.VideoContent=true;
+    if(this.TextBlock)
+    {
+      this.QuizOrTextOrVideo=0;
+    }
+    else if(this.VideoContent)
+    {
+      this.QuizOrTextOrVideo=1;
+    }
+    else if(this.ViewQuiz)
+    {
+      this.QuizOrTextOrVideo=2;
+    }
   }
   submitquiz()
   {
+    this.IsQuizSubmitted=true;
     this.solvedquestions=0
     this.marksForQuiz=0
     this.submitquizenabled=true;
@@ -228,32 +323,18 @@ export class TextcontentComponent implements OnInit {
         this.marksForQuiz+=que.Marks
       }      
     });
-    /*this.questions.filter(function(que,queNo){
-     //console.log("Que No : "+queNo+"\n Question: "+que)
-      console.log("sdas"+this.Answers[queNo])
-      if(que.CorrectOption === this.Answers[queNo])
-      {
-        this.solvedquestions++;
-        this.marksForQuiz+=que.Marks
-      }
-    })*/
   }
   selectoption(ans,i)
   {
-    //console.log("this is ans :"+ans + "   i :"+i);
-   /// console.log("correct ans is :"+ this.questions[i].CorrectOption);
+    
     if(this.questions[i].CorrectOption==ans)
-    {
-     // console.log("correct ans is ")
+    {   
       this.solvedquestions++;
       this.marksForQuiz+=this.questions[i].Marks;
-     // console.log("marks are :"+this.marksForQuiz);
-      //console.log("this marks are :"+this.questions[i].Marks)
     }
   }
   onClickOption(liRef,optionSelected,queNo)
   {
-    //console.log("ssadasdsadasdsadasdsa")
     console.log($(liRef).css('backgroundColor'))
     if(!this.IsAnswered[queNo])
     {
@@ -269,24 +350,42 @@ export class TextcontentComponent implements OnInit {
       $(liRef).css("background-color", "rgb(0, 153, 255)");
     }
     this.Answers[queNo]=optionSelected
-    console.log(this.Answers)
-    //console.log("this is ans :"+optionSelected + "   i :"+queNo);
-    //console.log("correct ans is :"+ this.questions[queNo].CorrectOption);
-    /*if(this.questions[queNo].CorrectOption == optionSelected && !this.IsAttemptedTruly[queNo]) 
+    console.log("Answer array is :"+this.Answers)
+  }
+  checkDisplayedContent()
+  {
+    if(this.IsQuizSubmitted)
     {
-      console.log("correct ans is ")
-      this.solvedquestions++;
-      this.marksForQuiz+=this.questions[queNo].Marks;
-      console.log("marks are :"+this.marksForQuiz);
-      console.log("this marks are :"+this.questions[queNo].Marks)
-      this.IsAttemptedTruly[queNo]=true;
+      this.TextBlock=true;
+      this.ViewQuiz=false;
+      this.VideoContent=false;
+      $(this.previouslyselectedoption).css("background-color","black");
+      $(this.previouslyselectedoption).css("color","white");
+      $(this.textRef).css("background-color","white");
+      $(this.textRef).css("color", "black");
+      $('.Text').css("background-color","white");
+      $('.Text').css("color","black");
     }
-    else if(this.questions[queNo].CorrectOption != optionSelected && this.IsAttemptedTruly[queNo])
+    else
     {
-      this.solvedquestions--;
-      this.marksForQuiz-=this.questions[queNo].Marks;
-      this.IsAttemptedTruly[queNo]=false;
-
-    }*/
+      if(this.QuizOrTextOrVideo==0)
+      {
+        this.TextBlock=true;
+        this.VideoContent=false;
+        this.ViewQuiz=false;
+      }
+      else if(this.QuizOrTextOrVideo==1)
+      {
+        this.TextBlock=false;
+        this.VideoContent=true;
+        this.ViewQuiz=false;
+      }
+      else if(this.QuizOrTextOrVideo==2)
+      {
+        this.TextBlock=false;
+        this.VideoContent=false;
+        this.ViewQuiz=true;
+      }
+    }  
   }
 }

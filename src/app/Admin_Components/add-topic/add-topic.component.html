@@ -31,7 +31,10 @@
                 <label>
                     Topic Name <span class="req">*</span>
                 </label>
-                <input type="text" name="TopicName" [(ngModel)]="topicName" #TopicName required autocomplete="off"/> 
+                <input type="text" name="TopicName" [(ngModel)]="topicName" #TopicName="ngModel" class="input100 is-invalid form-control" required autocomplete="off"/> 
+                <div *ngIf="TopicName.invalid && (TopicName.dirty || TopicName.touched )" style="margin-top: 30px;color: red;font-size: 20px;" >
+                        TopicName is required.
+                </div>
             </div>
             <button class="button button-block" (click)="displayTopicEditView()">Next</button>
          </div>
