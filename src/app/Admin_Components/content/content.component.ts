@@ -18,12 +18,5 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
     
   }
-  logout(){
-    this._AuthService.logOut().subscribe(data=>{
-      this._cookieService.delete('loggedIn')  
-      this._cookieService.delete('username')
-      this._cookieService.delete('role')
-      this.route.navigate(['/signin']);
-    })
-  }
+  
 }

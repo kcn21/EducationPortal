@@ -96,6 +96,9 @@ export class ViewQuizesComponent implements OnInit {
     }
     return false;
   }
+  onBackEditQuestion(){
+    this.displayEditQuestions=false;
+  }
   isEnabledEditQueView(i){
     if(this.DisplayEditQuestionView)
     {

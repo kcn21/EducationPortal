@@ -31,6 +31,11 @@ export class AuthGuard implements CanActivate {
         this._route.navigate(['/home'])
         return false
       }
+      else if(res && role_ToCheck === "User" && curr_role === "User")
+      {
+        console.log("USer is trying to access user's private pages")
+        return true
+      }
       else
       {
         console.log("Again in signin page")

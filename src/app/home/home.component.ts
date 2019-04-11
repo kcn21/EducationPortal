@@ -32,9 +32,10 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
   public extra:0;
   public numberOftimes=0;
   public username=""
+  public role
   p:number=1
   count:number=1
-  public subject=["Data Science","Algorith","Operating System","Programming","Algorithm","Machine Learming"];
+  public subject=["Data Science","AI","Operating System","Programming","Algorithm","Machine Learming"];
   constructor(private route:Router,private _AdminService:AdminService ,private _cookieService:CookieService ,private _AuthService:AuthServiceService) {
       this._AdminService.getSubjects().subscribe(data=>{
           this.subjects=data;
@@ -48,6 +49,7 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
         this.selectedTopic=this.topics[0].topicdetails[1]
       })
       this.username=this._cookieService.get('username')
+      this.role=this._cookieService.get('role')
    }
    /*textfieldempty()
    {
@@ -79,6 +81,7 @@ export class HomeComponent implements OnInit,AfterViewInit,AfterViewChecked{
       this._cookieService.delete('username')
       this._cookieService.delete('role')
       this.username=""
+      this.role=""
     })
    }
    onKey(event : any)
