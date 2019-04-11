@@ -45,7 +45,7 @@ mongoose.connect('mongodb+srv://kunj:kunj@cluster0-lappw.mongodb.net/EducationPo
     }
     else
     {
-         db = databas
+         db = database
          console.log("MongoDB Connected")
     }
 })
