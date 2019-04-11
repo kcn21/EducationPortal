@@ -38,15 +38,15 @@ app.use( function(req, res, next) {
     next();
 });
 
-mongoose.connect('mongodb://127.0.0.1:27017/EducationPortal',function(err,database){
+mongoose.connect('mongodb+srv://kunj:kunj@cluster0-lappw.mongodb.net/EducationPortal?retryWrites=true',function(err,database){
     if(err)
     {
-        //console.error("Error"+err)
+      console.error("Error"+err)
     }
     else
     {
          db = database
-        //console.log("MongoDB Connected")
+         console.log("MongoDB Connected")
     }
 })
 
