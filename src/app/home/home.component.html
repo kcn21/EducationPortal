@@ -42,6 +42,7 @@ body {font-family: "Roboto", sans-serif}
     <div class="w3-bar w3-black w3-card">
       <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
       <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+      <a routerLink="/admin" class="w3-bar-item w3-button w3-padding-large" *ngIf="role === 'Admin'">ADMIN HOME</a>
       <div class="w3-dropdown-hover w3-hide-small">
 
         <!--<button class="w3-padding-large w3-button" title="More">Explore Courses&nbsp;<i class="fa fa-caret-down"></i></button>     
@@ -60,7 +61,7 @@ body {font-family: "Roboto", sans-serif}
       <button  class="w3-bar-item w3-button w3-padding-large w3-right" (click)="logOut()" *ngIf="username">Log Out</button>
       <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="username">Hello {{username}}!</a>
       <a routerLink="/signin" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="!username">Login</a>
-      <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="!username">SignUp</a>
+      <a routerLink="/signup" class="w3-bar-item w3-button w3-padding-large  w3-right" *ngIf="!username">New User</a>
 
     </div>
 </div>
@@ -70,14 +71,13 @@ body {font-family: "Roboto", sans-serif}
   </div>
   <br>
   <div class="small-data">
-      Education is the passport to the future, for tomorrow belongs to those<br> who prepare for it today.
-  </div>
-  <!--<form class="container">
-    <h1>FIND COURSES</h1>
-    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="Enter Course" [(ngModel)]="term" required>
+      People expect to be bored by eLearning.<br>let’s show them It doesn’t have to be like that!  </div>
+  <form class="container">
+    <h1>FIND  COURSE</h1>
+    <input type="text" name="psw" #myId class="search" (keyup)="onKey($event)" placeholder="e.g. Python" [(ngModel)]="term" required>
 
 
-    <div *ngIf="IsBelowDataEnabled">
+    <!--<div *ngIf="IsBelowDataEnabled">
       <div class="belowdata" *ngFor="let c of courses | filter:term;">
       {{c.CourseName}}<br>
       </div>

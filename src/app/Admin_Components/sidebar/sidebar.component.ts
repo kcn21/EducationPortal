@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import{AuthServiceService}from '../../../services/auth-service.service'
+import {CookieService} from'ngx-cookie-service'
 declare var jquery:any;
 declare var $:any;
 @Component({
@@ -24,7 +26,7 @@ export class SidebarComponent implements OnInit {
   public displayAddQuiz=false;
   public displayViewQuiz=false;
   public task
-  constructor(private route:ActivatedRoute,private router:Router) { 
+  constructor(private route:ActivatedRoute,private router:Router,private _cookieService:CookieService ,private _AuthService:AuthServiceService) { 
     route.params.subscribe(val => {
       this.task=this.route.snapshot.paramMap.get('task');
       console.log(this.task);
@@ -97,6 +99,14 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  logout(){
+    this._AuthService.logOut().subscribe(data=>{
+      this._cookieService.delete('loggedIn')  
+      this._cookieService.delete('username')
+      this._cookieService.delete('role')
+      this.router.navigate(['/signin']);
+    })
   }
   onToggleMenu(data){
     if(data == 'c'){
