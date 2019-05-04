@@ -16,6 +16,7 @@ import {TextcontentComponent} from './textcontent/textcontent.component';
 const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
     {path:'signin',component:SignInComponent},
+    {path:'signin/:mes',component:SignInComponent},
     {path:'signup',component:SignUpComponent},
     {path:'home',component:HomeComponent},
     {path:'admin',component:ContentComponent,canActivate:[AuthGuard]},

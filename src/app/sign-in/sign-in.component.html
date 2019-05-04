@@ -21,15 +21,14 @@
 
     </div>
   </div>
-  <div class="form">
-      
+  <div class="form">  
       <ul class="tab-group">
         <li class="tab "><a routerLink="/signup">Sign Up</a></li>
         <li class="tab active"><a  routerLink="/signin">Log In</a></li>
       </ul>     
       <div class="tab-content">
         <div id="login">   
-          <h1>Welcome Back!</h1>
+          <h1>{{Message}}</h1>
           
           <form #LoginForm="ngForm" (ngSubmit)="onSubmit(Email.value,Password.value)" action="/" method="post">
           

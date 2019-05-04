@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {AuthServiceService} from '../../../src/services/auth-service.service'
 import { CookieService } from 'ngx-cookie-service';
 @Component({
@@ -9,7 +9,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SignInComponent implements OnInit {
   public checkLogin=false
-  constructor(private route:Router,private AuthService:AuthServiceService,private cookieService:CookieService) { }
+  public Message="Login"
+  constructor(private route:Router,private aRoute:ActivatedRoute,private AuthService:AuthServiceService,private cookieService:CookieService) { 
+    var mes=this.aRoute.snapshot.paramMap.get('mes')
+    if(mes)
+      this.Message=mes;
+  }
 
   ngOnInit() {
   }
