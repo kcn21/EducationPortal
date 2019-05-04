@@ -661,4 +661,4 @@ app.post('/removeQuestion',function(req,res){
         res.status(200).send(result)
     })
 })
-app.listen(8081,()=>console.log("Server listening at 8081"))
+app.listen(process.env.PORT || 8080 ,()=>console.log("Server listening at 8081"))
