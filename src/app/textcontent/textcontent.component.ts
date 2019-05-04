@@ -86,11 +86,7 @@ export class TextcontentComponent implements OnInit {
             this.Allquestions=data;
             console.log("questions are :"+this.questions)
             this.questions=this.Allquestions.filter(quiz=>quiz.QuizId ===  this.QuizId)
-            console.log("questions are :"+this.questions)
-          
-
-
-            
+            console.log("questions are :"+this.questions)    
           })
         }
         })
@@ -125,16 +121,24 @@ export class TextcontentComponent implements OnInit {
     this.selectedTopictitle=this.disp_topics[i].TopicName;
     this.k=i;
     this.TopicId=this.disp_topics[i]._id;
-    this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
-    console.log(this.selectedQuiz)
-    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId)
-    if(!this.selectedQuiz.length)
+    if(this.quizes){
+      console.log("Quiz is not null!")
+      this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
+    }
+      console.log(this.selectedQuiz)
+    
+    if(this.videos)
+      this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId)
+    if(!this.selectedQuiz)
     {
       this.questions=[]
     }
     else
     {
-      this.QuizId=this.selectedQuiz[0]._id
+      if(this.selectedQuiz[0])
+        this.QuizId=this.selectedQuiz[0]._id
+      else
+        this.QuizId=null
       console.log(this.questions);
       this.questions=this.Allquestions.filter(quiz=>quiz.QuizId ===  this.QuizId)
       console.log(this.questions);
@@ -157,8 +161,10 @@ export class TextcontentComponent implements OnInit {
     }
     this.checkDisplayedContent()
     this.TopicId=this.disp_topics[this.k]._id;
-    this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
-    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
+    if(this.quizes)
+      this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
+    if(this.videos)
+      this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
@@ -171,6 +177,7 @@ export class TextcontentComponent implements OnInit {
       console.log(this.questions);
       console.log(this.k)
     }  
+    //$("#TextBlock").animate({ scrollTop: 0 }, "slow");
   }
   displayprevcontent()
   {
@@ -187,8 +194,10 @@ export class TextcontentComponent implements OnInit {
     }
     this.checkDisplayedContent()
     this.TopicId=this.disp_topics[this.k]._id;
-    this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
-    this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
+    if(this.quizes)
+      this.selectedQuiz=this.quizes.filter(topic=>topic.TopicId === this.TopicId);
+    if(this.videos)    
+      this.videoForSelectedTopic=this.videos.filter(video=>video.TopicId==this.TopicId);
     if(!this.selectedQuiz.length)
     {
       this.questions=[]
@@ -367,19 +376,19 @@ export class TextcontentComponent implements OnInit {
     }
     else
     {
-      if(this.QuizOrTextOrVideo==0)
+      if(this.QuizOrTextOrVideo == 0)
       {
         this.TextBlock=true;
         this.VideoContent=false;
         this.ViewQuiz=false;
       }
-      else if(this.QuizOrTextOrVideo==1)
+      else if(this.QuizOrTextOrVideo == 1)
       {
         this.TextBlock=false;
         this.VideoContent=true;
         this.ViewQuiz=false;
       }
-      else if(this.QuizOrTextOrVideo==2)
+      else if(this.QuizOrTextOrVideo == 2)
       {
         this.TextBlock=false;
         this.VideoContent=false;

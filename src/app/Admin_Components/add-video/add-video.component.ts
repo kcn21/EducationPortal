@@ -17,6 +17,8 @@ export class AddVideoComponent implements OnInit {
   public videourl=""
   public videoIsSet=false;
   constructor(private route:Router,private AdminService:AdminService) {
+    this.SelectedCourse=0
+    this.SelectedTopic=0
     this.AdminService.getCourseNames().subscribe(data=>{
       console.log(data)
       if(data)
@@ -41,7 +43,7 @@ export class AddVideoComponent implements OnInit {
   {
     //console.log("Method Called")
     this.TopicNames=this.topics.filter(ct=>ct._id === this.SelectedCourse)[0].topicdetails
-    //console.log(this.TopicNames)
+    console.log(this.TopicNames)
     this.SelectedTopic=0
   }
   urlSet(){

@@ -8,7 +8,7 @@ var QuestionSchema=new mongoose.Schema({
     OptionD:String,
     CorrectOption:{type:String,enum:['A','B','C','D']},
     Marks:Number,
-    QuizId:{ type: Schema.Types.ObjectId, ref: 'quiz' },
+    QuizId:{ type: Schema.Types.ObjectId, ref: 'quiz' }
 })
 var Question= mongoose.model('Question',QuestionSchema);
 module.exports=Question;

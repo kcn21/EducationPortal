@@ -6,7 +6,7 @@ var CourseSchema=new mongoose.Schema({
     ImagePath:String,
     Description:String,
     Duration:Number,
-    Cost:Number,
+    Cost:Number
 })
 var Course= mongoose.model('Course',CourseSchema);
 module.exports=Course;

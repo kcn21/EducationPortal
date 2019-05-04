@@ -75,10 +75,10 @@
                   <button type="button" style="margin-left: 500px;">previous</button>-->
             </div>
          </header>
-        <div *ngIf="TextBlock" style="margin-left:0px;">
+        <div id="TextBlock"*ngIf="TextBlock" style="margin-left:0px;">
           <br>
           <br>
-          <div *ngIf="selectedTopic" class="w3-container" style="padding:32px;margin-left: 250px;" [innerHTML]="selectedTopic | sanitizeHtml">
+          <div *ngIf="selectedTopic" class="w3-container" style="padding-left:32px;padding-top:5px;margin-left: 250px;" [innerHTML]="selectedTopic | sanitizeHtml">
           </div>
           <div class="w3-ul w3-card-4">
               <div class="mes" *ngIf="!selectedTopic">
@@ -222,8 +222,8 @@
                <!-- [src]="currentlyshowingVideo.Link | safe"-->
             </div>
             <div class="w3-ul w3-card-4 ">
-               <div class="mes" *ngIf="!videoForSelectedTopic">
-                  <h4  style="color:black;text-align: center;" align="center">No Tutorial is Available!</h4>
+               <div class="mes" *ngIf="!videoForSelectedTopic.length">
+                  <h4  style="color:black;text-align: center;">No Tutorial is Available!</h4>
                </div>
             </div>
          </div>

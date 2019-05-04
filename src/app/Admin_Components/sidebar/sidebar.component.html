@@ -20,19 +20,25 @@
 </head>
 
 <body>
-        <div class="w3-bar w3-black w3-card">
+        <!--<div class="w3-bar w3-black w3-card">
                 <a routerLink="/admin" class="w3-bar-item w3-button w3-padding-large" style="color:white;">Hello Admin</a>
             <div style="float:right;">
                     <a routerLink="/home" class="w3-bar-item w3-button w3-padding-large" style="color:white;">HOME</a>
                     <button  class="w3-bar-item w3-button w3-padding-large" (click)="logout()">Log Out</button>
             </div>       
-        </div>
+        </div>-->
     <div id="wrapper"  >
         <!-- Sidebar -->
         <div id="sidebar-wrapper"  >
-            <ul class="sidebar-nav" style="margin-top:45px;background-color: black;">
+            <ul class="sidebar-nav" style="background-color: black;">
                 <li>
-                    <!--<a  class="menuItem" routerLink="/admin">Hello Admin</a>-->
+                    <button  type="button" class="menuItem" routerLink="/admin">Hello Admin</button>
+                    <a routerLink="/home" class="subItem">
+                        User Home 
+                    </a>  
+                    <button class="subItem"(click)="logout()">Log Out</button>
+
+                </li>
                 <li>
                     <button type="button" class="menuItem" (click)="onToggleMenu('c')">
                         Course &nbsp;<i class="fas fa-angle-down" style="float:right;margin-top:10px;"></i>
